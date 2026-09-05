@@ -36,7 +36,7 @@ export function Sidebar() {
         width: 250,
         height: '100vh',
         background: '#0D0D11',
-        borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRight: '2px solid #1E1E26',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -57,7 +57,7 @@ export function Sidebar() {
             gap: 10,
             textDecoration: 'none',
             padding: '4px 8px 24px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+            borderBottom: '2px solid #1E1E26',
             marginBottom: 16
           }}
         >
@@ -93,7 +93,7 @@ export function Sidebar() {
         </Link>
 
         {/* Navigation Links */}
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -106,14 +106,15 @@ export function Sidebar() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   padding: '10px 14px',
-                  borderRadius: 12,
+                  borderRadius: 10,
                   textDecoration: 'none',
                   fontSize: '0.86rem',
-                  fontWeight: isActive ? 700 : 500,
+                  fontWeight: isActive ? 800 : 600,
                   color: isActive ? '#FFFFFF' : '#9CA3AF',
                   background: isActive ? '#FE4A23' : 'transparent',
-                  boxShadow: isActive ? '0 4px 14px rgba(254,74,35,0.35)' : 'none',
-                  transition: 'all 0.15s ease'
+                  border: isActive ? '2px solid #000000' : '1px solid transparent',
+                  boxShadow: isActive ? '3px 3px 0px #FFD028' : 'none',
+                  transition: 'all 0.12s ease'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -124,12 +125,14 @@ export function Sidebar() {
                 {item.badge && (
                   <span
                     style={{
+                      fontFamily: "'SF Mono', monospace",
                       fontSize: '0.68rem',
                       fontWeight: 800,
                       padding: '2px 7px',
-                      borderRadius: 999,
-                      background: isActive ? 'rgba(255,255,255,0.25)' : 'rgba(254,74,35,0.15)',
-                      color: isActive ? '#FFFFFF' : '#FE4A23'
+                      borderRadius: 4,
+                      border: '1px solid currentColor',
+                      background: isActive ? '#0D0D11' : 'rgba(254,74,35,0.15)',
+                      color: isActive ? '#FFD028' : '#FE4A23'
                     }}
                   >
                     {item.badge}
@@ -144,18 +147,21 @@ export function Sidebar() {
       {/* Bottom Live System Indicator */}
       <div
         style={{
-          background: 'rgba(255, 255, 255, 0.03)',
-          borderRadius: 14,
+          background: '#14151B',
+          borderRadius: 12,
           padding: '14px',
-          border: '1px solid rgba(255, 255, 255, 0.06)'
+          border: '2px solid #1E1E26',
+          boxShadow: '3px 3px 0px #000000'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px #10B981' }} />
-          <span style={{ fontSize: '0.74rem', fontWeight: 800, color: '#FFFFFF' }}>AI Relay Mesh Active</span>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 10px #10B981' }} />
+          <span style={{ fontFamily: "'SF Mono', monospace", fontSize: '0.74rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '0.04em' }}>
+            AI RELAY ACTIVE
+          </span>
         </div>
-        <div style={{ fontSize: '0.68rem', color: '#6B7280' }}>
-          8 Agents Synchronized • Sub-second Audit
+        <div style={{ fontSize: '0.7rem', color: '#9CA3AF' }}>
+          8 Agents Synchronized • Sub-sec Audit
         </div>
       </div>
     </aside>

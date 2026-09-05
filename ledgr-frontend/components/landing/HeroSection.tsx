@@ -128,6 +128,64 @@ export function HeroSection() {
               <span style={{ marginLeft: '0.06em' }}>the future</span>
             </div>
           </div>
+
+          {/* Direct Navigation & Quick Action Buttons */}
+          <div style={{ marginTop: 36, display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+            <Link
+              href="/dashboard/reconciliation"
+              style={{
+                textDecoration: 'none',
+                background: '#FE4A23',
+                color: '#FFFFFF',
+                borderRadius: 999,
+                padding: '15px 32px',
+                fontSize: '0.96rem',
+                fontWeight: 800,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                boxShadow: '0 8px 24px rgba(254, 74, 35, 0.38)',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              <span>Launch Live AI Dashboard</span>
+              <ArrowUpRight size={17} />
+            </Link>
+
+            <Link
+              href="/portal"
+              style={{
+                textDecoration: 'none',
+                background: '#FFFFFF',
+                color: '#0D0D11',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
+                borderRadius: 999,
+                padding: '14px 28px',
+                fontSize: '0.94rem',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              <span>10,000 Data Portal</span>
+              <ArrowUpRight size={15} color="#FE4A23" />
+            </Link>
+          </div>
+
+          {/* Micro Telemetry Bar */}
+          <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 18, fontSize: '0.78rem', color: '#6B7280' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px #10B981' }} />
+              <span style={{ fontWeight: 700, color: '#0D0D11' }}>8-Agent Relay Mesh</span>
+            </div>
+            <span>•</span>
+            <span>Sub-second Forensic Audit</span>
+            <span>•</span>
+            <span>Razorpay / UPI / Cards Rails</span>
+          </div>
         </div>
 
         {/* Right: EXACT Ramos Floating Interactive Preview Card */}

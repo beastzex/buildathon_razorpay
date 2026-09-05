@@ -38,35 +38,53 @@ function Sparkline({ data, color }: { data: number[]; color: string }) {
 export function StatCard({ label, value, subtext, trend, sparkline, accentColor = 'var(--brand)' }: StatCardProps) {
   return (
     <div
-      className="card"
-      style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 12 }}
+      className="brutal-card"
+      style={{
+        padding: '20px 24px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+        borderColor: '#0D0D11',
+        boxShadow: '3px 3px 0px #0D0D11'
+      }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
         <div style={{ flex: 1 }}>
-          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', fontWeight: 500, marginBottom: 6 }}>
+          <p
+            style={{
+              fontFamily: "'SF Mono', monospace",
+              fontSize: '0.72rem',
+              color: 'var(--text-muted)',
+              fontWeight: 800,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              marginBottom: 6
+            }}
+          >
             {label}
           </p>
           <p
             className="font-display-md"
-            style={{ fontSize: '2rem', color: 'var(--text)', lineHeight: 1 }}
+            style={{ fontSize: '2.2rem', color: 'var(--text)', lineHeight: 1, fontWeight: 900 }}
           >
             {value}
           </p>
           {subtext && (
-            <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: 6 }}>
+            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 8 }}>
               {subtext}
             </p>
           )}
           {trend !== undefined && (
             <p
               style={{
-                fontSize: '0.8125rem',
+                fontSize: '0.76rem',
                 marginTop: 6,
                 color: trend >= 0 ? 'var(--success)' : 'var(--critical)',
-                fontWeight: 600,
+                fontWeight: 700,
+                fontFamily: "'SF Mono', monospace"
               }}
             >
-              {trend >= 0 ? '+' : ''}{trend.toFixed(1)}% vs prev batch
+              {trend >= 0 ? '▲ +' : '▼ '}{Math.abs(trend).toFixed(1)}% VS PREV BATCH
             </p>
           )}
         </div>

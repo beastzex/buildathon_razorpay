@@ -175,16 +175,17 @@ export function OverviewScreen() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
         {/* Financial Health Score Radial Ring Card */}
         <div
-          className="card"
+          className="brutal-card"
           style={{
-            padding: '16px 20px',
+            padding: '18px 20px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             position: 'relative',
             cursor: 'pointer',
-            border: '1px solid rgba(99, 102, 241, 0.25)',
-            background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4))',
+            border: '2px solid #0D0D11',
+            boxShadow: '3px 3px 0px #0D0D11',
+            background: 'var(--surface)',
           }}
           onClick={() => setShowHealthBreakdown(!showHealthBreakdown)}
         >

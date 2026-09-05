@@ -70,7 +70,28 @@ export function CtaFooter() {
         </p>
 
         {/* Dual buttons (from video 00:42) */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
+          <Link
+            href="/dashboard/reconciliation"
+            style={{
+              textDecoration: 'none',
+              background: '#FE4A23',
+              color: '#FFFFFF',
+              borderRadius: 999,
+              padding: '16px 36px',
+              fontSize: '0.96rem',
+              fontWeight: 800,
+              boxShadow: '0 8px 24px rgba(254,74,35,0.38)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              transition: 'transform 0.15s ease'
+            }}
+          >
+            <span>Launch AI Dashboard</span>
+            <ArrowUpRight size={17} />
+          </Link>
+
           <Link
             href="/portal"
             style={{
@@ -79,29 +100,18 @@ export function CtaFooter() {
               color: '#0D0D11',
               border: '1px solid rgba(0,0,0,0.12)',
               borderRadius: 999,
-              padding: '14px 28px',
-              fontSize: '0.92rem',
+              padding: '15px 30px',
+              fontSize: '0.94rem',
               fontWeight: 700,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              transition: 'all 0.15s ease'
             }}
           >
-            Request a demo
-          </Link>
-
-          <Link
-            href="/dashboard/reconciliation"
-            style={{
-              textDecoration: 'none',
-              background: '#FE4A23',
-              color: '#FFFFFF',
-              borderRadius: 999,
-              padding: '14px 34px',
-              fontSize: '0.92rem',
-              fontWeight: 700,
-              boxShadow: '0 6px 20px rgba(254,74,35,0.35)'
-            }}
-          >
-            Start for free
+            <span>10K Stream Portal</span>
+            <ArrowUpRight size={15} color="#FE4A23" />
           </Link>
         </div>
       </div>
@@ -110,7 +120,8 @@ export function CtaFooter() {
       <div style={{ padding: '60px 48px 48px', maxWidth: 1300, margin: '0 auto' }}>
         {/* Top Footer Row */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24, marginBottom: 50 }}>
-          <div style={{ display: 'flex', gap: 32 }}>
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/dashboard/reconciliation" style={{ textDecoration: 'none', color: '#FFD028', fontSize: '0.92rem', fontWeight: 800 }}>Dashboard ⚡</Link>
             <a href="#features" style={{ textDecoration: 'none', color: '#9CA3AF', fontSize: '0.92rem', fontWeight: 600 }}>Key Features</a>
             <a href="#architecture" style={{ textDecoration: 'none', color: '#9CA3AF', fontSize: '0.92rem', fontWeight: 600 }}>Explore</a>
             <a href="#solutions" style={{ textDecoration: 'none', color: '#9CA3AF', fontSize: '0.92rem', fontWeight: 600 }}>Solutions</a>

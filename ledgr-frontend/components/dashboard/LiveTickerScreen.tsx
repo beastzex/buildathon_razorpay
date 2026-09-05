@@ -112,6 +112,86 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
     }
   };
 
+  // Interactive Simulation: Debate & Consensus
+  const handleSimulateDebate = () => {
+    const timestamp = new Date().toISOString();
+    const debateEvt: AgentResultEvent = {
+      agent_name: 'Debate Agent',
+      record_id: 'TXN_GATEWAY_FEE_DRIFT_089',
+      batch_id: batchId,
+      timestamp,
+      duration_ms: 184,
+      status: 'ok',
+      input_summary: 'Evaluating ambiguous variance on Razorpay fee drift (₹42,500 gross vs ₹41,862.50 settlement)',
+      output_summary: 'ARBITER REACHED CONSENSUS: MATCH (Confidence 96.4%). Merchant promotional tier discount was applied at source.',
+      output_data: {
+        debate_result: {
+          record_id: 'TXN_GATEWAY_FEE_DRIFT_089',
+          rounds: 2,
+          challenger_opinion: 'Discrepancy of ₹637.50 exceeds standard 1.5% gateway ceiling. Potential fee leakage.',
+          defender_opinion: 'Merchant volume tier code PROMO_Q3 was verified in Razorpay metadata. Net settlement matches exactly.',
+          arbiter_notes: 'Evidence verified: Razorpay API fee schedule matches tier rebate. Safe to reconcile automatically.',
+          verdict: 'match',
+          consensus_confidence: 0.964
+        }
+      }
+    };
+    setActiveAgent('Debate Agent');
+    setEvents((prev) => [...prev, debateEvt]);
+  };
+
+  // Interactive Simulation: Root-Cause Forensic Agent
+  const handleSimulateRootCause = () => {
+    const timestamp = new Date().toISOString();
+    const rootCauseEvt: AgentResultEvent = {
+      agent_name: 'Detective Agent',
+      record_id: 'TXN_MULTI_HOP_ROOT_CAUSE',
+      batch_id: batchId,
+      timestamp,
+      duration_ms: 245,
+      status: 'ok',
+      input_summary: 'Investigating cluster of 14 delayed UPI transactions across 3 merchant fleets',
+      output_summary: 'ROOT-CAUSE DISCOVERED: Razorpay Webhook Retry Delay (+184ms) triggered duplicate auth retry on ICICI UPI switch. Systemic cause isolated to Gateway Ingress lag. All 14 records linked and auto-resolved.',
+      output_data: {
+        root_cause_analysis: {
+          cluster_size: 14,
+          primary_cause: 'Gateway Webhook Latency Spike (+184ms)',
+          affected_rails: ['Razorpay', 'ICICI UPI Switch'],
+          confidence: 0.982,
+          recommendation: 'Auto-link secondary trace IDs; suppress duplicate alert notifications.'
+        }
+      }
+    };
+    setActiveAgent('Detective Agent');
+    setEvents((prev) => [...prev, rootCauseEvt]);
+  };
+
+  // Interactive Simulation: 02:00 AM Night-Shift Runner
+  const handleSimulateNightShift = () => {
+    const timestamp = new Date().toISOString();
+    const nightShiftEvt: AgentResultEvent = {
+      agent_name: 'Auditor Agent',
+      record_id: 'NIGHT_SHIFT_SWEEP',
+      batch_id: batchId,
+      timestamp,
+      duration_ms: 312,
+      status: 'ok',
+      input_summary: '02:00 AM Daily Autonomous Night-Shift Run initiated across un-reconciled queue (47 items)',
+      output_summary: 'NIGHT-SHIFT COMPLETE: 46 of 47 un-reconciled items auto-resolved via T+1 bank settlement feed. 1 transaction scheduled for operator verification. Zero false positives.',
+      output_data: {
+        night_shift_summary: {
+          total_scanned: 47,
+          auto_cleared: 46,
+          escalated: 1,
+          duration_sec: 1.42,
+          status: 'SUCCESS'
+        }
+      }
+    };
+    setActiveAgent('Auditor Agent');
+    setEvents((prev) => [...prev, nightShiftEvt]);
+  };
+
   const toggleExpand = (idx: number) => {
     setExpandedIndices((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
@@ -124,26 +204,24 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, height: '100%' }}>
       {/* Top Controller Bar */}
       <div
-        className="card"
+        className="brutal-card"
         style={{
-          padding: '12px 18px',
+          padding: '14px 20px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: 12,
+          gap: 14,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
           <div
+            className="brutal-badge"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              padding: '4px 10px',
-              borderRadius: 100,
-              background: isConnected ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
-              border: `1px solid ${isConnected ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+              background: isConnected ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
+              borderColor: isConnected ? '#10b981' : '#ef4444',
+              color: isConnected ? '#10b981' : '#ef4444',
+              padding: '4px 10px'
             }}
           >
             <span
@@ -153,43 +231,42 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
                 borderRadius: '50%',
                 background: isConnected ? '#10b981' : '#ef4444',
                 boxShadow: isConnected ? '0 0 8px #10b981' : 'none',
-                animation: isConnected ? 'pulse 2s infinite' : 'none',
               }}
             />
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: isConnected ? '#10b981' : '#ef4444' }}>
-              {isConnected ? 'LIVE RELAY ACTIVE' : 'STREAM CONNECTING'}
-            </span>
+            <span>{isConnected ? 'LIVE RELAY ACTIVE' : 'STREAM CONNECTING'}</span>
           </div>
 
-          <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            Batch: <strong style={{ color: 'var(--text)' }}>#{batchId}</strong>
+          <span className="brutal-badge" style={{ background: 'var(--surface)', borderColor: 'var(--border-strong)', color: 'var(--text)' }}>
+            BATCH: <strong style={{ color: '#FE4A23', marginLeft: 4 }}>#{batchId}</strong>
           </span>
 
-          <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            Events: <strong style={{ color: 'var(--brand)' }}>{events.length}</strong>
+          <span className="brutal-badge" style={{ background: 'var(--surface)', borderColor: 'var(--border-strong)', color: 'var(--text)' }}>
+            EVENTS: <strong style={{ color: '#FFD028', marginLeft: 4 }}>{events.length}</strong>
           </span>
         </div>
 
-        {/* Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* Brutalist Action Buttons */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           {/* Filter dropdown */}
           <select
             value={filterAgent}
             onChange={(e) => setFilterAgent(e.target.value)}
             style={{
-              padding: '6px 12px',
-              borderRadius: 6,
-              background: 'var(--bg)',
+              padding: '7px 12px',
+              borderRadius: 8,
+              background: 'var(--surface)',
               color: 'var(--text)',
-              border: '1px solid var(--border)',
-              fontSize: '0.75rem',
+              border: '2px solid var(--border-strong)',
+              fontFamily: "'SF Mono', monospace",
+              fontSize: '0.74rem',
+              fontWeight: 700,
               cursor: 'pointer',
             }}
           >
-            <option value="all">Filter: All Agents</option>
+            <option value="all">ALL AGENTS</option>
             {AGENTS_LIST.map((ag) => (
               <option key={ag} value={ag}>
-                {ag}
+                {ag.toUpperCase()}
               </option>
             ))}
           </select>
@@ -197,56 +274,84 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
           {/* Autoscroll toggle */}
           <button
             onClick={() => setAutoScroll(!autoScroll)}
+            className="brutal-btn"
             style={{
               padding: '6px 12px',
-              borderRadius: 6,
-              border: '1px solid var(--border)',
-              background: autoScroll ? 'var(--brand-dim)' : 'transparent',
-              color: autoScroll ? 'var(--brand)' : 'var(--text-muted)',
-              fontSize: '0.75rem',
-              fontWeight: 500,
-              cursor: 'pointer',
+              fontSize: '0.72rem',
+              background: autoScroll ? 'rgba(254,74,35,0.1)' : 'var(--surface)',
+              color: autoScroll ? '#FE4A23' : 'var(--text)',
+              borderColor: autoScroll ? '#FE4A23' : 'var(--border-strong)'
             }}
           >
-            {autoScroll ? '⬇ Scroll Lock: ON' : '⏸ Scroll Lock: OFF'}
+            {autoScroll ? 'SCROLL: ON' : 'SCROLL: OFF'}
           </button>
 
-          {/* Clear */}
+          {/* AI Simulation Triggers */}
           <button
-            onClick={() => setEvents([])}
+            onClick={handleSimulateDebate}
+            className="brutal-btn"
             style={{
               padding: '6px 12px',
-              borderRadius: 6,
-              border: '1px solid var(--border)',
-              background: 'transparent',
-              color: 'var(--text-muted)',
-              fontSize: '0.75rem',
-              cursor: 'pointer',
+              fontSize: '0.72rem',
+              background: 'rgba(244,63,94,0.12)',
+              color: '#fb7185',
+              borderColor: '#f43f5e',
+              boxShadow: '2px 2px 0px #0D0D11'
             }}
+            title="Simulate Challenger vs Defender Consensus Debate"
           >
-            Clear
+            ⚖️ DEBATE
+          </button>
+
+          <button
+            onClick={handleSimulateRootCause}
+            className="brutal-btn"
+            style={{
+              padding: '6px 12px',
+              fontSize: '0.72rem',
+              background: 'rgba(245,158,11,0.12)',
+              color: '#f59e0b',
+              borderColor: '#f59e0b',
+              boxShadow: '2px 2px 0px #0D0D11'
+            }}
+            title="Simulate Multi-Hop Root-Cause Investigation"
+          >
+            🔍 ROOT-CAUSE
+          </button>
+
+          <button
+            onClick={handleSimulateNightShift}
+            className="brutal-btn"
+            style={{
+              padding: '6px 12px',
+              fontSize: '0.72rem',
+              background: 'rgba(139,92,246,0.12)',
+              color: '#a78bfa',
+              borderColor: '#8b5cf6',
+              boxShadow: '2px 2px 0px #0D0D11'
+            }}
+            title="Trigger 02:00 AM Autonomous Night-Shift Sweep"
+          >
+            🌙 NIGHT-SHIFT
           </button>
 
           {/* Run Reconciliation Trigger */}
           <button
             onClick={handleTriggerRun}
             disabled={isReconciling}
-            className="btn-primary"
+            className="brutal-btn brutal-btn-brand"
             style={{
-              padding: '6px 16px',
+              padding: '7px 16px',
               fontSize: '0.75rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
             }}
           >
             {isReconciling ? (
               <>
                 <span className="spinner" style={{ width: 12, height: 12 }} />
-                Relaying...
+                RELAYING...
               </>
             ) : (
-              <>▶ Run Relay Cycle</>
+              <>▶ RUN RELAY</>
             )}
           </button>
         </div>
@@ -254,7 +359,7 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
 
       {/* 6-Agent Active Relay Visualizer */}
       <div
-        className="card"
+        className="brutal-card"
         style={{
           padding: '12px 18px',
           display: 'flex',
@@ -262,6 +367,8 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
           justifyContent: 'space-between',
           overflowX: 'auto',
           gap: 8,
+          borderColor: '#0D0D11',
+          boxShadow: '3px 3px 0px #0D0D11'
         }}
       >
         {AGENTS_LIST.map((name, i) => {
@@ -283,17 +390,18 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
                   alignItems: 'center',
                   gap: 6,
                   padding: '6px 12px',
-                  borderRadius: 8,
-                  border: `1px solid ${isActive ? styling.badge : styling.border}`,
-                  background: isActive ? styling.bg : 'var(--bg)',
-                  boxShadow: isActive ? `0 0 12px ${styling.bg}` : 'none',
-                  transition: 'all 0.2s ease',
+                  borderRadius: 6,
+                  border: `2px solid ${isActive ? '#FE4A23' : '#0D0D11'}`,
+                  background: isActive ? styling.bg : 'var(--surface)',
+                  boxShadow: isActive ? '3px 3px 0px #FE4A23' : '1px 1px 0px rgba(0,0,0,0.1)',
+                  transition: 'all 0.15s ease',
+                  fontFamily: "'SF Mono', monospace"
                 }}
               >
                 <span
                   style={{
-                    width: 6,
-                    height: 6,
+                    width: 7,
+                    height: 7,
                     borderRadius: '50%',
                     background: styling.badge,
                     boxShadow: isActive ? `0 0 8px ${styling.badge}` : 'none',
@@ -301,16 +409,17 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
                 />
                 <span
                   style={{
-                    fontSize: '0.75rem',
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? styling.text : 'var(--text-muted)',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.04em',
+                    color: isActive ? styling.text : 'var(--text)',
                   }}
                 >
-                  {name.replace(' Agent', '')}
+                  {name.replace(' Agent', '').toUpperCase()}
                 </span>
               </div>
               {i < AGENTS_LIST.length - 1 && (
-                <span style={{ color: 'var(--border)', fontSize: '0.8rem', userSelect: 'none' }}>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 900, userSelect: 'none' }}>
                   →
                 </span>
               )}
@@ -322,14 +431,15 @@ export function LiveTickerScreen({ batchId = 'batch-214' }: LiveTickerProps) {
       {/* Terminal Live Stream Window */}
       <div
         ref={terminalRef}
-        className="card"
         style={{
           flex: 1,
           minHeight: 450,
           maxHeight: 'calc(100vh - 310px)',
           overflowY: 'auto',
           background: '#090b10',
-          borderColor: '#1e2433',
+          border: '2px solid #0D0D11',
+          borderRadius: 12,
+          boxShadow: '4px 4px 0px #0D0D11',
           padding: 16,
           fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
           fontSize: '0.8125rem',

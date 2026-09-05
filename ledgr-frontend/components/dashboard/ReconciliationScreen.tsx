@@ -48,89 +48,81 @@ export function ReconciliationScreen() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: '1px solid var(--border)',
-          paddingBottom: 12,
+          borderBottom: '2px solid var(--border-strong)',
+          paddingBottom: 16,
+          flexWrap: 'wrap',
+          gap: 12
         }}
       >
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <button
             onClick={() => setActiveTab('ticker')}
             id="tab-live-ticker"
+            className="brutal-btn"
             style={{
-              padding: '8px 18px',
-              borderRadius: 8,
-              border: '1px solid',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transition: 'all 0.15s ease',
-              borderColor: activeTab === 'ticker' ? 'var(--brand)' : 'var(--border)',
-              background: activeTab === 'ticker' ? 'var(--brand-dim)' : 'transparent',
-              color: activeTab === 'ticker' ? 'var(--brand)' : 'var(--text-muted)',
+              padding: '9px 18px',
+              borderColor: '#0D0D11',
+              background: activeTab === 'ticker' ? '#FE4A23' : 'var(--surface)',
+              color: activeTab === 'ticker' ? '#FFFFFF' : 'var(--text)',
+              boxShadow: activeTab === 'ticker' ? '3px 3px 0px #0D0D11' : '2px 2px 0px var(--border-strong)',
             }}
           >
             <span
               style={{
-                width: 7,
-                height: 7,
+                width: 8,
+                height: 8,
                 borderRadius: '50%',
-                background: activeTab === 'ticker' ? '#10b981' : 'var(--text-muted)',
+                background: activeTab === 'ticker' ? '#FFD028' : '#10B981',
+                boxShadow: '0 0 6px currentColor'
               }}
             />
-            Live Agent Relay & Ticker (Default)
+            LIVE AGENT RELAY & TICKER
           </button>
 
           <button
             onClick={() => setActiveTab('table')}
             id="tab-browse-table"
+            className="brutal-btn"
             style={{
-              padding: '8px 18px',
-              borderRadius: 8,
-              border: '1px solid',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              transition: 'all 0.15s ease',
-              borderColor: activeTab === 'table' ? 'var(--brand)' : 'var(--border)',
-              background: activeTab === 'table' ? 'var(--brand-dim)' : 'transparent',
-              color: activeTab === 'table' ? 'var(--brand)' : 'var(--text-muted)',
+              padding: '9px 18px',
+              borderColor: '#0D0D11',
+              background: activeTab === 'table' ? '#0D0D11' : 'var(--surface)',
+              color: activeTab === 'table' ? '#FFFFFF' : 'var(--text)',
+              boxShadow: activeTab === 'table' ? '3px 3px 0px #FE4A23' : '2px 2px 0px var(--border-strong)',
             }}
           >
             <span>📋</span>
-            Browse Records Table ({records.length})
+            BROWSE RECORDS ({records.length})
           </button>
 
           <a
             href="/portal"
             id="tab-stream-portal"
+            className="brutal-btn"
             style={{
-              padding: '8px 18px',
-              borderRadius: 8,
-              border: '1px solid rgba(254, 74, 35, 0.3)',
-              fontSize: '0.875rem',
-              fontWeight: 700,
-              textDecoration: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              background: 'rgba(254, 74, 35, 0.08)',
-              color: '#FE4A23',
+              padding: '9px 18px',
+              borderColor: '#0D0D11',
+              background: '#FFD028',
+              color: '#0D0D11',
+              boxShadow: '3px 3px 0px #0D0D11',
             }}
           >
             <span>⚡</span>
-            Stream 10,000 External Rows (Portal)
+            STREAM 10K ROWS (PORTAL)
           </a>
         </div>
 
-        <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-          Active Batch: <strong style={{ color: 'var(--text)' }}>Batch #214 / #STREAM</strong>
+        <span
+          className="brutal-badge"
+          style={{
+            fontSize: '0.76rem',
+            background: 'var(--surface)',
+            color: 'var(--text)',
+            borderColor: 'var(--border-strong)',
+            padding: '6px 12px'
+          }}
+        >
+          ACTIVE: <strong style={{ color: '#FE4A23', marginLeft: 4 }}>BATCH #214 / #STREAM</strong>
         </span>
       </div>
 

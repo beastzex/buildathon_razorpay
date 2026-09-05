@@ -14,13 +14,13 @@ export function Topbar({ title }: TopbarProps) {
   return (
     <header
       style={{
-        height: 60,
+        height: 64,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 24px',
         background: 'var(--surface)',
-        borderBottom: '1px solid var(--border)',
+        borderBottom: '2px solid var(--border-strong)',
         flexShrink: 0,
         gap: 16,
       }}
@@ -28,23 +28,23 @@ export function Topbar({ title }: TopbarProps) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
         <h1
           className="font-display-md"
-          style={{ fontSize: '1.05rem', color: 'var(--text)', letterSpacing: '-0.02em', margin: 0 }}
+          style={{ fontSize: '1.1rem', color: 'var(--text)', letterSpacing: '-0.02em', margin: 0, fontWeight: 900 }}
         >
           {title}
         </h1>
 
         <span
+          className="brutal-badge"
           style={{
-            fontSize: '0.72rem',
-            fontWeight: 800,
-            padding: '3px 9px',
-            borderRadius: 999,
-            background: 'rgba(254,74,35,0.1)',
+            background: 'rgba(254,74,35,0.12)',
             color: '#FE4A23',
-            border: '1px solid rgba(254,74,35,0.2)'
+            borderColor: '#FE4A23',
+            fontSize: '0.68rem',
+            padding: '3px 8px'
           }}
         >
-          LIVE RELAY ACTIVE
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FE4A23' }} />
+          RELAY ONLINE
         </span>
       </div>
 
@@ -52,23 +52,19 @@ export function Topbar({ title }: TopbarProps) {
         {/* Link to 10K External Portal */}
         <Link
           href="/portal"
+          className="brutal-btn"
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            padding: '6px 12px',
-            borderRadius: 999,
-            background: 'rgba(254,74,35,0.08)',
-            border: '1px solid rgba(254,74,35,0.2)',
-            color: '#FE4A23',
-            fontSize: '0.78rem',
-            fontWeight: 700,
-            textDecoration: 'none'
+            padding: '7px 14px',
+            fontSize: '0.76rem',
+            background: '#FE4A23',
+            color: '#FFFFFF',
+            borderColor: '#0D0D11',
+            boxShadow: '2px 2px 0px #0D0D11'
           }}
         >
           <Database size={13} />
-          <span>FinStream 10K Portal</span>
-          <ArrowUpRight size={12} />
+          <span>Stream 10K Portal</span>
+          <ArrowUpRight size={13} />
         </Link>
 
         {/* Batch selector */}
@@ -77,12 +73,15 @@ export function Topbar({ title }: TopbarProps) {
           className="input-field"
           style={{
             width: 'auto',
-            fontSize: '0.8125rem',
-            padding: '6px 12px',
+            fontFamily: "'SF Mono', monospace",
+            fontSize: '0.78rem',
+            fontWeight: 700,
+            padding: '7px 12px',
             borderRadius: 8,
-            border: '1px solid var(--border)',
+            border: '2px solid var(--border-strong)',
             background: 'var(--surface)',
-            color: 'var(--text)'
+            color: 'var(--text)',
+            boxShadow: '2px 2px 0px rgba(0,0,0,0.15)'
           }}
           defaultValue="batch-214"
           aria-label="Select reconciliation batch"
@@ -100,17 +99,19 @@ export function Topbar({ title }: TopbarProps) {
         {/* Avatar */}
         <div
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: '50%',
-            background: '#FE4A23',
+            width: 34,
+            height: 34,
+            borderRadius: 8,
+            background: '#FFD028',
+            border: '2px solid #0D0D11',
+            boxShadow: '2px 2px 0px #0D0D11',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#fff',
-            fontSize: '0.8rem',
-            fontWeight: 800,
-            boxShadow: '0 2px 8px rgba(254,74,35,0.3)'
+            color: '#0D0D11',
+            fontSize: '0.78rem',
+            fontWeight: 900,
+            fontFamily: "'SF Mono', monospace"
           }}
         >
           AI
