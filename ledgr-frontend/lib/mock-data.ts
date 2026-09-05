@@ -4,6 +4,17 @@
 
 export type RecordStatus = 'matched' | 'flagged' | 'mismatched';
 
+export interface DebateTranscript {
+  resolved: boolean;
+  verdict: string;
+  rounds: number;
+  disagreement_summary: string;
+  opinion_for: string;
+  opinion_against: string;
+  resolver_reasoning?: string;
+  fallback_used?: boolean;
+}
+
 export interface TransactionRecord {
   id: string;
   sourceA: {
@@ -23,6 +34,9 @@ export interface TransactionRecord {
   confidence: number; // 0–100
   status: RecordStatus;
   explanation?: string; // AI-generated, only for flagged/mismatched
+  suggested_resolution?: string;
+  explanation_status?: string;
+  debate_transcript?: DebateTranscript;
 }
 
 export interface AuditEvent {
@@ -39,6 +53,32 @@ export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
   citations?: string[]; // transaction IDs referenced
+  timestamp: string;
+}
+
+export interface NightShiftRun {
+  id: string;
+  batch_id: string;
+  total_records: number;
+  auto_matched: number;
+  debated_and_resolved: number;
+  escalated_to_human: number;
+  processing_time_seconds: number;
+  top_anomalies: string[];
+  created_at: string;
+  digest_text?: string;
+  notification_sent?: boolean;
+}
+
+export interface AgentResultEvent {
+  agent_name: string;
+  input_summary: string;
+  output_summary: string;
+  output_data?: any;
+  duration_ms: number;
+  status: 'ok' | 'flagged' | 'failed' | 'escalated' | 'disagreement';
+  record_id?: string;
+  batch_id?: string;
   timestamp: string;
 }
 

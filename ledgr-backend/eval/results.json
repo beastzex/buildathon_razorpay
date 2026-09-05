@@ -1,9 +1,9 @@
 {
   "evaluation_metadata": {
-    "timestamp": "2026-09-05T03:02:38Z",
+    "timestamp": "2026-09-05T04:10:33Z",
     "total_records_evaluated": 520,
     "held_out_dataset": "synthetic_batch_v1.csv",
-    "execution_time_seconds": 20.53,
+    "execution_time_seconds": 20.37,
     "hardware_device": "cuda"
   },
   "performance_metrics": {
@@ -13,7 +13,13 @@
     "auto_match_f1": 0.9665,
     "false_positive_rate": 0.2077,
     "false_positive_auto_matches": 27,
-    "false_negative_escalations": 0
+    "false_negative_escalations": 0,
+    "confusion_matrix": {
+      "TP_matched": 390,
+      "FP_auto_matched": 27,
+      "TN_non_matched": 390,
+      "FN_missed_matches": 0
+    }
   },
   "two_stage_gate_breakdown": {
     "auto_matched_count": 417,
@@ -23,11 +29,27 @@
     "flagged_count": 67,
     "mismatched_count": 36
   },
+  "debate_and_consensus_metrics": {
+    "debates_triggered_count": 1,
+    "debate_trigger_rate_pct": 0.19,
+    "sample_evaluated_count": 1,
+    "resolution_rate_pct": 0.0,
+    "resolution_accuracy_pct": 100.0,
+    "max_rounds_cap": 2,
+    "fallback_default": "flag for human review"
+  },
   "latency_profile_ms": {
-    "avg_ms": 39.29,
-    "p50_ms": 32.98,
-    "p95_ms": 52.24,
-    "p99_ms": 54.29
+    "fast_path": {
+      "avg_ms": 39.28,
+      "p50_ms": 33.09,
+      "p95_ms": 54.64,
+      "p99_ms": 61.74
+    },
+    "llm_escalated": {
+      "p50_ms": 1432.57,
+      "p95_ms": 1453.74,
+      "p99_ms": 1456.59
+    }
   },
   "financial_cost_impact": {
     "unit_manual_review_cost_inr": 25.0,

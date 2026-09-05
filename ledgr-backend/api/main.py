@@ -100,6 +100,11 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing Ledgr backend services and database schema...")
     await init_db()
     await seed_default_batch_if_empty()
+    try:
+        from scheduler.night_shift import init_night_shift_scheduler
+        init_night_shift_scheduler()
+    except Exception as e:
+        logger.warning(f"Night-shift scheduler init skipped: {e}")
     logger.info("Ledgr backend is ready for high-throughput reconciliation requests.")
     yield
     # Shutdown

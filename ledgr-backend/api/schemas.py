@@ -50,6 +50,7 @@ class TransactionRecordResponse(BaseModel):
     explanation: Optional[str] = None
     suggested_resolution: Optional[str] = None
     explanation_status: Optional[str] = None
+    debate_transcript: Optional[Dict[str, Any]] = None
 
 
 class RecordListResponse(BaseModel):

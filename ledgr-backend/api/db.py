@@ -55,6 +55,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def init_db():
     """Create tables on startup if not already created."""
+    import api.models  # ensure all models are registered on Base.metadata
     async with engine.begin() as conn:
         if "postgresql" in DATABASE_URL:
             # Enable pgvector extension if PostgreSQL
@@ -64,4 +65,10 @@ async def init_db():
             except Exception as e:
                 logger.warning(f"Could not initialize pgvector extension: {e}")
         await conn.run_sync(Base.metadata.create_all)
+        # Migrate new columns on existing SQLite/Postgres DBs if missing
+        try:
+            from sqlalchemy import text
+            await conn.execute(text("ALTER TABLE exceptions ADD COLUMN debate_transcript TEXT;"))
+        except Exception:
+            pass  # Already exists or not applicable
     logger.info("Database tables initialized successfully.")

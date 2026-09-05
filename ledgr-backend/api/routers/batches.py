@@ -1,21 +1,19 @@
-"""
-Batches Router for Ledgr API (Part 4.3)
-Handles batch creation, asynchronous pipeline triggering, and paginated record querying.
-"""
-
 import time
 import uuid
+import json
+import asyncio
 import logging
 from datetime import datetime
 from typing import List, Optional
 import numpy as np
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
 
 from api.db import get_db
-from api.models import Batch, Record, Match, ExceptionRecord, AuditLogEntry
+from api.models import Batch, Record, Match, ExceptionRecord, AuditLogEntry, NightShiftRun
 from api.schemas import (
     BatchCreateRequest, BatchSummaryResponse, TransactionRecordResponse,
     SourceDetail, RecordListResponse
@@ -25,9 +23,98 @@ from models.matcher import get_matcher
 from models.train_anomaly_scorer import get_anomaly_scorer
 from agents.explain_exception import explain_exception
 from agents.settlement_qa import get_qa_agent
+from agents.pipeline.orchestrator import PipelineOrchestrator
+from agents.pipeline.event_bus import get_event_bus
+from scheduler.night_shift import run_autonomous_cycle
 
 logger = logging.getLogger("ledgr.api.batches")
 router = APIRouter(prefix="/batches", tags=["batches"])
+
+
+@router.get("/autonomous/history")
+async def get_autonomous_history(db: AsyncSession = Depends(get_db)):
+    """Returns past autonomous Night-Shift reconciliation cycles."""
+    res = await db.execute(select(NightShiftRun).order_by(desc(NightShiftRun.created_at)).limit(20))
+    runs = res.scalars().all()
+    return [
+        {
+            "id": r.id,
+            "batch_id": r.batch_id,
+            "total_records": r.total_records,
+            "auto_matched": r.auto_matched,
+            "debated_and_resolved": r.debated_and_resolved,
+            "escalated_to_human": r.escalated_to_human,
+            "processing_time_seconds": r.processing_time_seconds,
+            "top_anomalies": r.top_anomalies or [],
+            "created_at": r.created_at.isoformat() + "Z"
+        }
+        for r in runs
+    ]
+
+
+@router.get("/{batch_id}/stream")
+async def stream_batch_events(
+    batch_id: str,
+    request: Request,
+    max_events: Optional[int] = Query(None, description="Optional limit of events before stream termination")
+):
+    """
+    Server-Sent Events (SSE) streaming endpoint for live multi-agent relay events.
+    Subscribes to Redis pub/sub (or local event bus) and yields AgentResult events in real time.
+    """
+    event_bus = get_event_bus()
+
+    async def event_generator():
+        yielded_count = 0
+        try:
+            # Yield initial connection confirmation
+            init_payload = {
+                "agent_name": "Pipeline Router",
+                "input_summary": f"Connecting stream for batch #{batch_id}",
+                "output_summary": f"Connected to live event stream for batch #{batch_id}. Ready for agent relay.",
+                "output_data": {"batch_id": batch_id},
+                "status": "ok",
+                "duration_ms": 0,
+                "timestamp": datetime.utcnow().isoformat() + "Z"
+            }
+            yield f"data: {json.dumps(init_payload)}\n\n"
+            yielded_count += 1
+            if max_events is not None and yielded_count >= max_events:
+                return
+
+            async for agent_event in event_bus.subscribe(batch_id):
+                if await request.is_disconnected():
+                    break
+                if agent_event is not None:
+                    yield f"data: {agent_event.model_dump_json()}\n\n"
+                    yielded_count += 1
+                    if max_events is not None and yielded_count >= max_events:
+                        return
+                else:
+                    yield ": ping\n\n"
+        except asyncio.CancelledError:
+            logger.info(f"SSE client disconnected from stream for batch #{batch_id}")
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"
+        }
+    )
+
+
+@router.post("/{batch_id}/run-autonomous")
+async def run_autonomous_endpoint(batch_id: str, db: AsyncSession = Depends(get_db)):
+    """Triggers the autonomous night-shift cycle on demand and returns the NightShiftDigest."""
+    try:
+        digest = await run_autonomous_cycle(batch_id, db)
+        return digest
+    except Exception as e:
+        logger.error(f"Autonomous cycle failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("", response_model=BatchSummaryResponse)
@@ -39,7 +126,7 @@ async def create_batch(
     Creates a reconciliation batch.
     Optionally pre-populates with authentic synthetic multi-source records.
     """
-    batch_id = req.batch_id or f"batch-{int(time.time()) % 10000}"
+    batch_id = req.batch_id or f"batch-{int(time.time() * 1000) % 100000}-{uuid.uuid4().hex[:4]}"
     
     # Check if already exists
     existing = await db.execute(select(Batch).where(Batch.id == batch_id))
@@ -223,6 +310,7 @@ async def run_reconciliation_pipeline(
 
     matcher = get_matcher()
     anomaly_scorer = get_anomaly_scorer()
+    orchestrator = PipelineOrchestrator()
 
     # Get records
     rec_res = await db.execute(select(Record).where(Record.batch_id == batch_id))
@@ -230,9 +318,12 @@ async def run_reconciliation_pipeline(
 
     # Group into pairs by base ID (e.g. TXN-5001-A and TXN-5001-B)
     pairs_map = {}
+    batch_records_pool = []
     for r in all_records:
         base_id = r.id.rsplit("-", 1)[0]
         pairs_map.setdefault(base_id, {})[r.source] = r
+        if r.source == "sourceA":
+            batch_records_pool.append(r.normalized_fields)
 
     matched_count = 0
     flagged_count = 0
@@ -255,17 +346,30 @@ async def run_reconciliation_pipeline(
             continue
 
         start_t = time.perf_counter()
-        
-        # 1. Matcher Two-Stage Gate
-        match_result = matcher.match_pair(rec_a.normalized_fields, rec_b.normalized_fields)
-        
-        # 2. Anomaly Scoring
-        anom_score = anomaly_scorer.score_pair(rec_a.normalized_fields, rec_b.normalized_fields)
-        
+        raw_a = rec_a.normalized_fields
+        raw_b = rec_b.normalized_fields
+
+        anom_score = anomaly_scorer.score_pair(raw_a, raw_b)
+
+        # Run multi-agent orchestrator relay (emits live events to SSE stream)
+        relay_res = await orchestrator.process_pair(
+            record_a=raw_a,
+            record_b=raw_b,
+            batch_id=batch_id,
+            record_id=base_id,
+            prev_audit_hash=prev_hash,
+            batch_records=batch_records_pool
+        )
+
         elapsed_ms = (time.perf_counter() - start_t) * 1000.0
         latencies_ms.append(elapsed_ms)
 
-        status = match_result["status"]
+        status = relay_res.get("status", "flagged")
+        match_details = relay_res.get("match_details", {})
+        confidence = relay_res.get("confidence", 0)
+        debate_result = relay_res.get("debate_result")
+        exp_res = relay_res.get("explanation")
+
         if status == "matched":
             matched_count += 1
         elif status == "flagged":
@@ -273,71 +377,63 @@ async def run_reconciliation_pipeline(
         else:
             mismatched_count += 1
 
-        # 3. Create/Update Match Record
+        # Create/Update Match Record
         match_record = Match(
             id=base_id,
             batch_id=batch_id,
             record_a_id=rec_a.id,
             record_b_id=rec_b.id,
-            embedding_score=match_result["embedding_score"],
-            rule_score=match_result["rule_score"],
-            final_confidence=match_result["confidence"],
+            embedding_score=match_details.get("embedding_score", 0.0),
+            rule_score=match_details.get("rule_score", 0.0),
+            final_confidence=confidence,
             status=status,
             anomaly_score=anom_score,
-            rule_breakdown=match_result["rule_breakdown"]
+            rule_breakdown=match_details.get("rule_breakdown")
         )
         db.add(match_record)
 
-        # 4. Exception Escalation to Groq if ambiguous or mismatch
         explanation_text = None
-        if match_result["requires_escalation"]:
-            exp_res = explain_exception(
-                rec_a.normalized_fields,
-                rec_b.normalized_fields,
-                match_result
-            )
-            explanation_text = exp_res.explanation
-            
+        # Record Exception if escalated or debated
+        if status != "matched" or (debate_result and not debate_result.resolved):
+            explanation_text = exp_res.explanation if exp_res else "Discrepancy escalated."
             exc = ExceptionRecord(
                 id=f"EXC-{base_id}",
                 match_id=base_id,
                 batch_id=batch_id,
-                explanation=exp_res.explanation,
-                suggested_resolution=exp_res.suggested_resolution,
-                confidence_reasoning=exp_res.confidence_reasoning,
-                explanation_status=exp_res.explanation_status,
-                resolution_status="pending"
+                explanation=explanation_text,
+                suggested_resolution=exp_res.suggested_resolution if exp_res else "Manual controller review.",
+                confidence_reasoning=exp_res.confidence_reasoning if exp_res else "Discrepancy beyond autonomous tolerance.",
+                explanation_status=exp_res.explanation_status if exp_res else "unavailable",
+                resolution_status="pending",
+                debate_transcript=debate_result.model_dump() if debate_result else None
             )
             db.add(exc)
 
-            # Audit log entry for escalation
-            esc_payload = {
-                "event": "exception_escalated",
-                "match_id": base_id,
-                "confidence": match_result["confidence"],
-                "status": status,
-                "anomaly_score": anom_score,
-                "explanation_status": exp_res.explanation_status
-            }
-            new_hash = compute_entry_hash(prev_hash, esc_payload)
-            db.add(AuditLogEntry(
-                id=f"AE-{uuid.uuid4().hex[:8]}",
-                batch_id=batch_id,
-                event_type="escalation",
-                actor="ledgr-engine",
-                description=f"{base_id} escalated — confidence {match_result['confidence']}%, status {status}",
-                payload=esc_payload,
-                prev_hash=prev_hash,
-                hash=new_hash,
-                created_at=datetime.utcnow()
-            ))
-            prev_hash = new_hash
+        # Record Auditor Agent cryptographic entry in database
+        audit_payload = relay_res.get("audit_payload", {
+            "record_id": base_id,
+            "status": status,
+            "confidence": confidence
+        })
+        new_audit_hash = relay_res.get("new_audit_hash", prev_hash)
+        db.add(AuditLogEntry(
+            id=f"AE-{uuid.uuid4().hex[:8]}",
+            batch_id=batch_id,
+            event_type="auto_match" if status == "matched" else "escalation",
+            actor="auditor-agent",
+            description=f"Transaction {base_id} sealed in audit trail (status: {status}, confidence: {confidence}%)",
+            payload=audit_payload,
+            prev_hash=prev_hash,
+            hash=new_audit_hash,
+            created_at=datetime.utcnow()
+        ))
+        prev_hash = new_audit_hash
 
         qa_indexed_records.append({
             "id": base_id,
-            "sourceA": rec_a.normalized_fields,
-            "sourceB": rec_b.normalized_fields,
-            "confidence": match_result["confidence"],
+            "sourceA": raw_a,
+            "sourceB": raw_b,
+            "confidence": confidence,
             "status": status,
             "explanation": explanation_text or ""
         })
@@ -465,7 +561,8 @@ async def get_batch_records(
             anomaly_score=m.anomaly_score,
             explanation=exc.explanation if exc else None,
             suggested_resolution=exc.suggested_resolution if exc else None,
-            explanation_status=exc.explanation_status if exc else None
+            explanation_status=exc.explanation_status if exc else None,
+            debate_transcript=exc.debate_transcript if exc else None
         ))
 
     # Pagination slice

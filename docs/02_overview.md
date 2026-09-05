@@ -51,7 +51,7 @@
 - Built-in `/audit/verify` endpoint verifies chain integrity end-to-end, detecting any single-byte payload tampering or broken linkages.
 
 ### 7. Full-Stack User Interface
-- **Next.js 14 App Router** frontend styled with Tailwind CSS and custom tokens.
+- **Next.js 16 App Router** frontend styled with Tailwind CSS and custom tokens.
 - **Smooth Motion & Micro-interactions**: Smooth scrolling via Lenis, entry reveals, GSAP ticker synchronization, and interactive hover states.
 - **6 Production Dashboard Screens**: Overview, Reconciliation Table (with interactive drawer), Exceptions Queue, Settlement Q&A, Audit Trail, and Settings.
 

@@ -13,6 +13,7 @@ import {
   type TransactionRecord,
   type AuditEvent,
   type ChatMessage,
+  type NightShiftRun,
 } from './mock-data';
 
 export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -222,3 +223,29 @@ export async function verifyAuditChain(
     };
   }
 }
+
+// ── Multi-Agent Relay & Autonomous Night-Shift (Tier 1 & Tier 2) ─────────────
+
+export function getBatchStreamUrl(batchId: string = 'batch-214'): string {
+  return `${API_BASE}/batches/${batchId}/stream`;
+}
+
+export async function runAutonomousCycle(batchId: string = 'batch-214'): Promise<any> {
+  const res = await fetch(`${API_BASE}/batches/${batchId}/run-autonomous`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return await res.json();
+}
+
+export async function fetchAutonomousHistory(): Promise<NightShiftRun[]> {
+  try {
+    const res = await fetch(`${API_BASE}/batches/autonomous/history`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+

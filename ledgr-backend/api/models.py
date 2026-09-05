@@ -89,6 +89,7 @@ class ExceptionRecord(Base):
     confidence_reasoning = Column(Text, nullable=False)
     explanation_status = Column(String(32), default="ok")  # ok, unavailable
     resolution_status = Column(String(32), default="pending")  # pending, confirmed, rejected
+    debate_transcript = Column(JSON, nullable=True)  # Stores opinions, rounds, and consensus
 
     match = relationship("Match", back_populates="exception")
 
@@ -108,3 +109,20 @@ class AuditLogEntry(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     batch = relationship("Batch", back_populates="audit_entries")
+
+
+class NightShiftRun(Base):
+    __tablename__ = "night_shift_runs"
+
+    id = Column(String(64), primary_key=True, index=True)
+    batch_id = Column(String(64), nullable=False, index=True)
+    total_records = Column(Integer, default=0)
+    auto_matched = Column(Integer, default=0)
+    debated_and_resolved = Column(Integer, default=0)
+    escalated_to_human = Column(Integer, default=0)
+    processing_time_seconds = Column(Float, default=0.0)
+    top_anomalies = Column(JSON, nullable=True)
+    digest_text = Column(Text, nullable=True)
+    notification_sent = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+

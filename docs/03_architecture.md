@@ -36,7 +36,7 @@ flowchart TD
     subgraph Interactive Applications
         API[FastAPI Backend Server\nEndpoints: /batches, /matches, /exceptions, /qa, /audit]
         RAG[Settlement Q&A Agent\nVector Index + BM25 + Tool Calling\nHinglish Support + Anti-Hallucination]
-        UI[Next.js 14 Frontend\n- Lenis Smooth Scroll\n- 6 Dashboard Screens\n- Real-time Citation Chips]
+        UI[Next.js 16 Frontend\n- Lenis Smooth Scroll\n- 6 Dashboard Screens\n- Real-time Citation Chips]
     end
 
     SRC_A --> NORM
@@ -136,3 +136,109 @@ If an attacker modifies a single byte in any historical entry $P_k$ where $k < n
 3. The `/audit/verify` verification endpoint traverses from block $0$ to block $n$, immediately detecting:
    - Linkage break at block $k+1$.
    - Payload tampering at block $k$.
+
+---
+
+## Tier 1: Multi-Agent Relay & Real-Time Event Bus
+
+Rather than executing as an opaque black-box batch script, Ledgr coordinates reconciliation across seven specialized, pipelined agents using an asynchronous event-driven relay.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SRC as Data Ingestion
+    participant NORM as Normalizer Agent
+    participant MATCH as Matcher Agent
+    participant ROUTER as Fast-Path Router
+    participant DET as Detective Agent
+    participant DEB as Debate Agent
+    participant EXP as Explainer Agent
+    participant AUD as Auditor Agent
+    participant BUS as Redis Pub/Sub SSE Bus
+
+    SRC->>NORM: Ingest Raw Ledgers (Bank, Gateway, ERP)
+    NORM->>BUS: Emit Normalized Records Event
+    NORM->>MATCH: Deliver Canonical Transactions
+    MATCH->>BUS: Emit Matching Evaluation Event
+    
+    alt Fast-Path Match (Confidence >= 80% & Rules Pass)
+        MATCH->>ROUTER: High-Confidence Match
+        ROUTER->>BUS: Emit Fast-Path Bypass Event
+        ROUTER->>AUD: Direct to Audit Chain
+    else Discrepancy or Disagreement Detected
+        MATCH->>DET: Route to Forensic Pipeline
+        DET->>BUS: Emit Account Context Search Event
+        DET->>DEB: Deliver Related Transactions Context
+        
+        opt Semantic vs Rule Disagreement
+            DEB->>BUS: Emit 2-Round Debate Opinions
+            DEB->>EXP: Deliver Consensus Verdict
+        end
+        
+        DET->>EXP: Deliver Forensic Investigation Context
+        EXP->>BUS: Emit Exception Root Cause Event
+        EXP->>AUD: Deliver Sealed Exception Payload
+    end
+
+    AUD->>BUS: Emit SHA-256 Chained Block Event
+```
+
+### Uniform Agent Schema (`AgentResult`)
+Every agent adheres to a strict contract:
+- `agent_name`: Identifying name of the executing agent.
+- `input_summary`: Human-readable summary of the input processed.
+- `output_summary`: Synthesized finding or action taken.
+- `output_data`: Structured payload containing domain-specific metrics.
+- `duration_ms`: Wall-clock execution time in milliseconds.
+- `status`: Execution state (`"ok"`, `"disagreement"`, `"escalated"`, `"failed"`).
+- `record_id` & `batch_id`: Transaction lineage identifiers.
+
+### Real-Time SSE Event Bus Architecture
+- **Primary Transport**: Redis Pub/Sub (`ledgr:batch:{batch_id}:events`).
+- **Resilient Fallback**: In-process memory queue when Redis is unavailable or unconfigured.
+- **Client Protocol**: Server-Sent Events (`GET /batches/{batch_id}/stream`) with:
+  - Event type: `event: agent_event\ndata: <JSON>\n\n`
+  - Heartbeat keep-alive pings: `: ping\n\n` every 15s to prevent intermediary proxy timeouts.
+  - Clean client cancellation: Handles `asyncio.CancelledError` without orphaned background tasks.
+
+---
+
+## Tier 2A: 2-Round Debate & Consensus Mechanism
+
+When neural semantic embeddings and deterministic rule verifiers diverge (e.g., strong counterparty match with an unexpected amount delta, or exact amount match with low semantic similarity), the transaction is submitted to a **bounded two-round multi-agent debate**:
+
+1. **Round 1 (Independent Adversarial Arguments)**:
+   - **Advocate FOR Match**: An AI Forensic Auditor primed to discover justifications for reconciliation (timing lag, MDR fee deductions, GST variations, partial settlements).
+   - **Advocate AGAINST Match**: An AI Risk Controller primed to identify balance sheet discrepancies, potential fraud, and compliance risks.
+   - Both advocates independently return arguments, verdict (`"match"`, `"mismatch"`, `"ambiguous"`), and confidence score.
+   - If both advocates independently agree, consensus is achieved immediately in Round 1.
+
+2. **Round 2 (Senior Arbiter Consensus)**:
+   - If opinions diverge, the **Resolution Arbiter** evaluates the record pair, the Detective Agent's related transaction context, and both Round 1 arguments.
+   - Emits a decisive verdict: `"match"`, `"mismatch"`, or `"flag for human review"`.
+
+3. **Deterministic Safety Fallback**:
+   - If Groq LLM times out (>8.0s) or fails, the debate engine defaults explicitly to:
+     $$\text{verdict} = \text{"flag for human review"}$$
+   - **Critical Invariant**: The system never guesses or auto-resolves ambiguous transactions in fallback mode.
+
+---
+
+## Tier 2B: Autonomous Night-Shift Agent
+
+Financial controllers require overnight reconciliation cycles that run unattended and prepare an executive morning digest.
+
+- **Scheduler**: APScheduler running daily at `02:00 IST` (or manually triggerable on-demand via `POST /batches/{batch_id}/run-autonomous`).
+- **Cycle Execution**:
+  1. Identifies un-reconciled transactions across Bank, Gateway, and ERP sources.
+  2. Executes full 7-agent relay with fast-path routing and debate escalation.
+  3. Records run telemetry in SQLite/PostgreSQL table `night_shift_runs`.
+  4. Generates an executive morning digest with KPIs:
+     - Total Volume & Match Rate (%)
+     - Auto-Resolved Volume vs Escalated Discrepancies
+     - Debated Records & Consensus Rate
+     - Net Financial Discrepancy Amount (₹)
+     - Top Action Items for Human Controller Review
+- **Four-Surface Consistency Guarantee**:
+  - All four operational surfaces—(1) Morning Digest, (2) Database Records, (3) Cryptographic Audit Trail, and (4) Historical Run Logs—maintain exact, zero-discrepancy 1-to-1 consistency.
+
