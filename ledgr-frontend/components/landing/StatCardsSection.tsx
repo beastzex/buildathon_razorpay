@@ -7,6 +7,7 @@ import { Layers, ArrowUpRight } from 'lucide-react';
 export function StatCardsSection() {
   return (
     <section
+      id="features"
       style={{
         padding: '20px 24px 100px',
         maxWidth: 1240,

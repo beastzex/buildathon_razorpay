@@ -47,57 +47,59 @@ export function HeroSection() {
               color: '#0D0D11'
             }}
           >
-            {/* Line 1: [⚡ in coral circle] [📈 in red circle] Analytics */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.22em' }}>
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '0.82em',
-                  height: '0.82em',
-                  borderRadius: '50%',
-                  background: '#FFEBE7',
-                  verticalAlign: 'middle',
-                  boxShadow: '0 2px 10px rgba(254,74,35,0.2)'
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FE4A23" />
-                </svg>
-              </span>
+            {/* Line 1: [⚡ in coral circle] [📈 in red circle overlapping] Analytics */}
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'nowrap', gap: 0, marginBottom: '0.04em' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', position: 'relative', marginRight: '0.2em' }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '0.86em',
+                    height: '0.86em',
+                    borderRadius: '50%',
+                    background: '#FFEBE7',
+                    boxShadow: '0 2px 10px rgba(254,74,35,0.2)',
+                    zIndex: 1
+                  }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FE4A23" />
+                  </svg>
+                </span>
 
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '0.82em',
-                  height: '0.82em',
-                  borderRadius: '50%',
-                  background: '#FE4A23',
-                  verticalAlign: 'middle',
-                  boxShadow: '0 4px 14px rgba(254,74,35,0.35)'
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 17L9 11L13 15L21 7" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="21" cy="7" r="2.5" fill="#FFFFFF" />
-                </svg>
-              </span>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '0.86em',
+                    height: '0.86em',
+                    borderRadius: '50%',
+                    background: '#FE4A23',
+                    marginLeft: '-0.24em',
+                    boxShadow: '0 4px 14px rgba(254,74,35,0.4)',
+                    zIndex: 2
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 17L9 11L13 15L21 7" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="21" cy="7" r="2.2" fill="#FFFFFF" />
+                  </svg>
+                </span>
+              </div>
 
-              <span style={{ marginLeft: '0.08em' }}>Analytics</span>
+              <span>Analytics</span>
             </div>
 
-            {/* Line 2: that [helps in soft italic gray] you */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.24em' }}>
+            {/* Line 2: that [helps in soft elegant light gray] you */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.24em', marginBottom: '0.04em' }}>
               <span>that</span>
               <span
                 style={{
-                  fontStyle: 'italic',
                   fontWeight: 400,
-                  color: '#9CA3AF',
-                  padding: '0 0.08em'
+                  color: '#B0B0BD',
+                  padding: '0 0.04em'
                 }}
               >
                 helps
@@ -105,48 +107,52 @@ export function HeroSection() {
               <span>you</span>
             </div>
 
-            {/* Line 3: shape [🟡 yellow circle with two black vertical bars] the future */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.24em' }}>
+            {/* Line 3: shape [🟡 yellow circle with 3 equalizer bars] the future */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.24em' }}>
               <span>shape</span>
               <span
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '0.78em',
-                  height: '0.78em',
+                  width: '0.84em',
+                  height: '0.84em',
                   borderRadius: '50%',
                   background: '#FFD028',
                   verticalAlign: 'middle',
-                  boxShadow: '0 4px 12px rgba(255,208,40,0.4)',
-                  gap: 3
+                  boxShadow: '0 4px 14px rgba(255,208,40,0.45)',
+                  gap: 3.5,
+                  padding: '0 4px'
                 }}
               >
-                <span style={{ width: 2.5, height: 12, background: '#0D0D11', borderRadius: 999 }} />
-                <span style={{ width: 2.5, height: 12, background: '#0D0D11', borderRadius: 999 }} />
+                <span style={{ width: 3, height: 10, background: '#0D0D11', borderRadius: 999 }} />
+                <span style={{ width: 3, height: 16, background: '#0D0D11', borderRadius: 999 }} />
+                <span style={{ width: 3, height: 12, background: '#0D0D11', borderRadius: 999 }} />
               </span>
-              <span style={{ marginLeft: '0.06em' }}>the future</span>
+              <span>the future</span>
             </div>
           </div>
 
-          {/* Direct Navigation & Quick Action Buttons */}
-          <div style={{ marginTop: 36, display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+          {/* Direct Navigation & Quick Action Buttons (Tactile Neo-Brutalist) */}
+          <div style={{ marginTop: 38, display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
             <Link
               href="/dashboard/reconciliation"
               style={{
                 textDecoration: 'none',
                 background: '#FE4A23',
                 color: '#FFFFFF',
-                borderRadius: 999,
-                padding: '15px 32px',
-                fontSize: '0.96rem',
+                borderRadius: 14,
+                border: '2px solid #0D0D11',
+                padding: '14px 28px',
+                fontSize: '0.94rem',
                 fontWeight: 800,
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                boxShadow: '0 8px 24px rgba(254, 74, 35, 0.38)',
-                transition: 'all 0.15s ease'
+                boxShadow: '4px 4px 0px #0D0D11',
+                transition: 'all 0.12s ease'
               }}
+              className="hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[2px] active:translate-y-[2px]"
             >
               <span>Launch Live AI Dashboard</span>
               <ArrowUpRight size={17} />
@@ -158,20 +164,21 @@ export function HeroSection() {
                 textDecoration: 'none',
                 background: '#FFFFFF',
                 color: '#0D0D11',
-                border: '1px solid rgba(0, 0, 0, 0.12)',
-                borderRadius: 999,
-                padding: '14px 28px',
-                fontSize: '0.94rem',
-                fontWeight: 700,
+                border: '2px solid #0D0D11',
+                borderRadius: 14,
+                padding: '14px 26px',
+                fontSize: '0.92rem',
+                fontWeight: 800,
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)',
-                transition: 'all 0.15s ease'
+                boxShadow: '4px 4px 0px #0D0D11',
+                transition: 'all 0.12s ease'
               }}
+              className="hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[2px] active:translate-y-[2px]"
             >
               <span>10,000 Data Portal</span>
-              <ArrowUpRight size={15} color="#FE4A23" />
+              <ArrowUpRight size={16} color="#FE4A23" />
             </Link>
           </div>
 

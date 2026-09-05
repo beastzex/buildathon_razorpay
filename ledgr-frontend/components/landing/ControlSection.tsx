@@ -7,6 +7,7 @@ import { ArrowUpRight } from 'lucide-react';
 export function ControlSection() {
   return (
     <section
+      id="architecture"
       style={{
         padding: '80px 24px 110px',
         maxWidth: 1240,
