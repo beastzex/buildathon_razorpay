@@ -215,8 +215,9 @@ export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPa
                 marginTop: 8,
                 padding: 14,
                 borderRadius: 8,
-                background: '#090b10',
-                border: '1px solid rgba(244, 63, 94, 0.3)',
+                background: 'var(--bg)',
+                border: '1.5px solid #0D0D11',
+                boxShadow: '2px 2px 0px #0D0D11',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 12,
@@ -233,16 +234,16 @@ export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPa
                 {/* FOR */}
                 <div
                   style={{
-                    padding: 10,
-                    borderRadius: 6,
-                    background: 'rgba(16, 185, 129, 0.06)',
-                    border: '1px solid rgba(16, 185, 129, 0.2)',
+                    padding: 12,
+                    borderRadius: 8,
+                    background: 'rgba(16, 185, 129, 0.08)',
+                    border: '1.5px solid #10B981',
                   }}
                 >
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#34d399', marginBottom: 4 }}>
+                  <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#059669', marginBottom: 4, fontFamily: "'SF Mono', monospace" }}>
                     ✓ Advocate FOR
                   </div>
-                  <p style={{ fontSize: '0.72rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.74rem', color: 'var(--text)', lineHeight: 1.5, fontWeight: 500 }}>
                     {dt.opinion_for}
                   </p>
                 </div>
@@ -250,17 +251,18 @@ export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPa
                 {/* VS */}
                 <div
                   style={{
-                    width: 30,
-                    height: 30,
+                    width: 32,
+                    height: 32,
                     borderRadius: '50%',
-                    background: '#1e293b',
-                    border: '1px solid #f43f5e',
-                    color: '#fb7185',
-                    fontWeight: 800,
+                    background: '#0D0D11',
+                    border: '2px solid #FE4A23',
+                    color: '#FFFFFF',
+                    fontWeight: 900,
                     fontSize: '0.68rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    fontFamily: "'SF Mono', monospace",
                   }}
                 >
                   VS
@@ -269,16 +271,16 @@ export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPa
                 {/* AGAINST */}
                 <div
                   style={{
-                    padding: 10,
-                    borderRadius: 6,
-                    background: 'rgba(244, 63, 94, 0.06)',
-                    border: '1px solid rgba(244, 63, 94, 0.2)',
+                    padding: 12,
+                    borderRadius: 8,
+                    background: 'rgba(239, 68, 68, 0.08)',
+                    border: '1.5px solid #EF4444',
                   }}
                 >
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#fb7185', marginBottom: 4 }}>
+                  <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#DC2626', marginBottom: 4, fontFamily: "'SF Mono', monospace" }}>
                     ✗ Advocate AGAINST
                   </div>
-                  <p style={{ fontSize: '0.72rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.74rem', color: 'var(--text)', lineHeight: 1.5, fontWeight: 500 }}>
                     {dt.opinion_against}
                   </p>
                 </div>
@@ -287,15 +289,18 @@ export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPa
               {dt.resolver_reasoning && (
                 <div
                   style={{
-                    padding: '8px 10px',
-                    borderRadius: 4,
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    borderLeft: '3px solid #818cf8',
-                    fontSize: '0.72rem',
-                    color: '#94a3b8',
+                    padding: '10px 12px',
+                    borderRadius: 6,
+                    background: 'var(--surface)',
+                    borderLeft: '4px solid #6366f1',
+                    border: '1px solid #0D0D11',
+                    borderLeftWidth: '4px',
+                    fontSize: '0.74rem',
+                    color: 'var(--text)',
+                    lineHeight: 1.4,
                   }}
                 >
-                  <strong style={{ color: '#e2e8f0' }}>Arbiter Reasoning:</strong> {dt.resolver_reasoning}
+                  <strong style={{ color: '#6366f1' }}>Arbiter Reasoning:</strong> {dt.resolver_reasoning}
                 </div>
               )}
             </div>

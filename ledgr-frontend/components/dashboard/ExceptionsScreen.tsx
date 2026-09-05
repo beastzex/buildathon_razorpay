@@ -203,14 +203,14 @@ export function ExceptionsScreen() {
           onClick={() => setSelectedPattern(null)}
         >
           <div
-            className="card"
+            className="brutal-card"
             style={{
               maxWidth: 680,
               width: '100%',
               padding: 28,
-              background: '#090d16',
-              border: '1px solid rgba(56, 189, 248, 0.4)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.8)',
+              background: 'var(--surface)',
+              border: '2px solid #0D0D11',
+              boxShadow: '6px 6px 0px #0D0D11',
               display: 'flex',
               flexDirection: 'column',
               gap: 20,
@@ -222,12 +222,12 @@ export function ExceptionsScreen() {
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontSize: '1.2rem' }}>✦</span>
+                <span style={{ fontSize: '1.3rem' }}>✦</span>
                 <div>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#f8fafc' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 900, color: 'var(--text)' }}>
                     Multi-Hop Root-Cause Investigation
                   </h3>
-                  <p className="font-mono-id" style={{ fontSize: '0.75rem', color: '#38bdf8', marginTop: 2 }}>
+                  <p className="font-mono-id" style={{ fontSize: '0.75rem', color: '#0284c7', marginTop: 2, fontWeight: 700 }}>
                     {selectedPattern.pattern_id} • Signature: {selectedPattern.pattern_signature}
                   </p>
                 </div>
@@ -239,7 +239,8 @@ export function ExceptionsScreen() {
                   border: 'none',
                   color: 'var(--text-muted)',
                   cursor: 'pointer',
-                  fontSize: '1.2rem',
+                  fontSize: '1.3rem',
+                  fontWeight: 800,
                 }}
               >
                 ✕
@@ -252,27 +253,29 @@ export function ExceptionsScreen() {
                 padding: '14px 16px',
                 borderRadius: 8,
                 background: 'rgba(56, 189, 248, 0.08)',
-                borderLeft: '4px solid #38bdf8',
+                borderLeft: '4px solid #0284c7',
+                border: '1.5px solid #0284c7',
+                borderLeftWidth: '5px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 6,
               }}
             >
-              <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: "'SF Mono', monospace" }}>
                 Diagnosed Systemic Cause
               </span>
-              <p style={{ fontSize: '0.875rem', color: '#f1f5f9', lineHeight: 1.5, fontWeight: 500 }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text)', lineHeight: 1.5, fontWeight: 600 }}>
                 {selectedPattern.hypothesis}
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 4, fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                <span>Confidence: <strong>{Math.round(selectedPattern.confidence * 100)}%</strong></span>
-                <span>Category: <strong style={{ color: '#cbd5e1' }}>{selectedPattern.root_cause_category}</strong></span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 4, fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                <span>Confidence: <strong style={{ color: 'var(--text)' }}>{Math.round(selectedPattern.confidence * 100)}%</strong></span>
+                <span>Category: <strong style={{ color: 'var(--text)' }}>{selectedPattern.root_cause_category}</strong></span>
               </div>
             </div>
 
-            {/* Step-by-Step Investigation Trace Reveal (THE DEMO-WORTHY PART) */}
+            {/* Step-by-Step Investigation Trace Reveal */}
             <div>
-              <p style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--text)', marginBottom: 10 }}>
+              <p style={{ fontSize: '0.8125rem', fontWeight: 800, color: 'var(--text)', marginBottom: 10 }}>
                 Autonomous Investigation Trace (Tool-Call Sequence):
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -281,9 +284,9 @@ export function ExceptionsScreen() {
                     key={idx}
                     style={{
                       padding: '10px 14px',
-                      borderRadius: 6,
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: 8,
+                      background: 'var(--bg)',
+                      border: '1.5px solid #0D0D11',
                       display: 'flex',
                       alignItems: 'flex-start',
                       gap: 10,
@@ -291,18 +294,19 @@ export function ExceptionsScreen() {
                   >
                     <span
                       style={{
-                        fontSize: '0.7rem',
-                        fontWeight: 700,
-                        padding: '2px 7px',
+                        fontSize: '0.68rem',
+                        fontWeight: 800,
+                        padding: '2px 8px',
                         borderRadius: 4,
-                        background: '#1e293b',
-                        color: '#94a3b8',
+                        background: '#0D0D11',
+                        color: '#FFFFFF',
                         marginTop: 1,
+                        fontFamily: "'SF Mono', monospace",
                       }}
                     >
                       Step {idx + 1}
                     </span>
-                    <span style={{ fontSize: '0.78rem', color: '#cbd5e1', lineHeight: 1.4, fontFamily: 'ui-monospace, monospace' }}>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text)', lineHeight: 1.4, fontFamily: "'SF Mono', monospace", fontWeight: 600 }}>
                       {step}
                     </span>
                   </div>
@@ -312,7 +316,7 @@ export function ExceptionsScreen() {
 
             {/* Affected Records Section */}
             <div>
-              <p style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>
+              <p style={{ fontSize: '0.8125rem', fontWeight: 800, color: 'var(--text)', marginBottom: 8 }}>
                 Verified Supporting Records ({selectedPattern.supporting_record_ids.length} transactions):
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -322,11 +326,12 @@ export function ExceptionsScreen() {
                     className="font-mono-id"
                     style={{
                       padding: '4px 10px',
-                      borderRadius: 4,
-                      background: '#0f172a',
-                      border: '1px solid #334155',
+                      borderRadius: 6,
+                      background: 'var(--bg)',
+                      border: '1.5px solid #0D0D11',
                       fontSize: '0.75rem',
-                      color: '#38bdf8',
+                      color: '#FE4A23',
+                      fontWeight: 800,
                     }}
                   >
                     {id}
@@ -336,10 +341,10 @@ export function ExceptionsScreen() {
             </div>
 
             {/* Footer / Bulk Action */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border)', paddingTop: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '2px solid #0D0D11', paddingTop: 16 }}>
               <button
                 onClick={() => setSelectedPattern(null)}
-                className="btn-outline"
+                className="brutal-btn"
                 style={{ padding: '8px 18px', fontSize: '0.8125rem' }}
               >
                 Close

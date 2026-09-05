@@ -43,14 +43,15 @@ export function PortfolioScreen() {
     <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Platform Vantage Point Header */}
       <div
-        className="card"
+        className="brutal-card"
         style={{
           padding: '22px 26px',
-          background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.8), rgba(15, 23, 42, 0.9))',
-          border: '1px solid rgba(129, 140, 248, 0.3)',
+          background: 'var(--surface)',
+          border: '2px solid #0D0D11',
+          boxShadow: '4px 4px 0px #0D0D11',
           display: 'flex',
           flexDirection: 'column',
-          gap: 12,
+          gap: 14,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
@@ -58,24 +59,23 @@ export function PortfolioScreen() {
             <span style={{ fontSize: '1.5rem' }}>🌐</span>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--text)' }}>
                   Platform Portfolio Vantage Point (Tier 3D)
                 </h2>
                 <span
+                  className="brutal-badge"
                   style={{
                     fontSize: '0.7rem',
-                    fontWeight: 700,
-                    padding: '2px 8px',
-                    borderRadius: 100,
-                    background: 'rgba(99, 102, 241, 0.25)',
-                    color: '#a5b4fc',
-                    border: '1px solid rgba(99, 102, 241, 0.5)',
+                    padding: '3px 8px',
+                    background: 'rgba(99, 102, 241, 0.12)',
+                    color: '#6366f1',
+                    borderColor: '#6366f1',
                   }}
                 >
                   Razorpay Risk &amp; Settlement Operations
                 </span>
               </div>
-              <p style={{ fontSize: '0.8125rem', color: '#cbd5e1', marginTop: 4, maxWidth: 800, lineHeight: 1.5 }}>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginTop: 4, maxWidth: 800, lineHeight: 1.5 }}>
                 {portfolio.platform_narrative}
               </p>
             </div>
@@ -84,33 +84,30 @@ export function PortfolioScreen() {
           <div style={{ display: 'flex', gap: 8 }}>
             <button
               onClick={() => setFilter('all')}
+              className="brutal-btn"
               style={{
-                padding: '6px 14px',
-                borderRadius: 6,
+                padding: '7px 16px',
                 fontSize: '0.78rem',
-                fontWeight: filter === 'all' ? 700 : 500,
-                background: filter === 'all' ? '#4f46e5' : 'rgba(255,255,255,0.05)',
-                color: filter === 'all' ? '#ffffff' : 'var(--text-muted)',
-                border: '1px solid var(--border)',
-                cursor: 'pointer',
+                background: filter === 'all' ? '#FE4A23' : 'var(--surface)',
+                color: filter === 'all' ? '#FFFFFF' : 'var(--text)',
+                boxShadow: filter === 'all' ? '2px 2px 0px #0D0D11' : '1px 1px 0px #0D0D11',
               }}
             >
               All Merchants ({portfolio.total_merchants})
             </button>
             <button
               onClick={() => setFilter('outliers')}
+              className="brutal-btn"
               style={{
-                padding: '6px 14px',
-                borderRadius: 6,
+                padding: '7px 16px',
                 fontSize: '0.78rem',
-                fontWeight: filter === 'outliers' ? 700 : 500,
-                background: filter === 'outliers' ? '#f43f5e' : 'rgba(255,255,255,0.05)',
-                color: filter === 'outliers' ? '#ffffff' : '#fb7185',
-                border: '1px solid rgba(244, 63, 94, 0.3)',
-                cursor: 'pointer',
+                background: filter === 'outliers' ? '#EF4444' : 'var(--surface)',
+                color: filter === 'outliers' ? '#FFFFFF' : '#EF4444',
+                borderColor: filter === 'outliers' ? '#0D0D11' : '#EF4444',
+                boxShadow: filter === 'outliers' ? '2px 2px 0px #0D0D11' : '1px 1px 0px #EF4444',
               }}
             >
-              ⚠ Statistical Outliers ({portfolio.outlier_count})
+              ⚠ Risk Outliers ({portfolio.outlier_count})
             </button>
           </div>
         </div>
@@ -121,32 +118,32 @@ export function PortfolioScreen() {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: 16,
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderTop: '2px solid #0D0D11',
             paddingTop: 14,
             marginTop: 4,
           }}
         >
           <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Daily Portfolio GMV</span>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc' }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Daily Portfolio GMV</span>
+            <p style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--text)', fontFamily: "'SF Mono', monospace" }}>
               ₹{(portfolio.total_portfolio_daily_gmv_inr / 10000000).toFixed(1)} Cr
             </p>
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Platform Avg Health Score</span>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#38bdf8' }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Platform Avg Health</span>
+            <p style={{ fontSize: '1.25rem', fontWeight: 900, color: '#6366f1', fontFamily: "'SF Mono', monospace" }}>
               {Math.round(portfolio.platform_avg_health_score)} / 100
             </p>
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Platform Auto-Match Rate</span>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#34d399' }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Auto-Match Rate</span>
+            <p style={{ fontSize: '1.25rem', fontWeight: 900, color: '#10b981', fontFamily: "'SF Mono', monospace" }}>
               {portfolio.platform_avg_match_rate.toFixed(1)}%
             </p>
           </div>
           <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Statistical Outlier Accounts</span>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fb7185' }}>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Outlier Accounts</span>
+            <p style={{ fontSize: '1.25rem', fontWeight: 900, color: '#EF4444', fontFamily: "'SF Mono', monospace" }}>
               {portfolio.outlier_count} of {portfolio.total_merchants}
             </p>
           </div>
@@ -205,23 +202,22 @@ export function PortfolioScreen() {
           return (
             <div
               key={m.merchant_id}
-              className="card"
+              className="brutal-card"
               style={{
                 padding: '20px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 14,
-                border: isOutlier ? '1px solid rgba(244, 63, 94, 0.5)' : '1px solid var(--border)',
-                background: isOutlier
-                  ? 'linear-gradient(160deg, rgba(244, 63, 94, 0.08), rgba(15, 23, 42, 0.7))'
-                  : 'var(--surface)',
+                border: isOutlier ? '2px solid #EF4444' : '2px solid #0D0D11',
+                boxShadow: isOutlier ? '4px 4px 0px #EF4444' : '3px 3px 0px #0D0D11',
+                background: isOutlier ? 'var(--surface)' : 'var(--surface)',
                 position: 'relative',
               }}
             >
               {/* Header */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
                 <div>
-                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text)' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text)' }}>
                     {m.merchant_name}
                   </h3>
                   <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 2 }}>{m.industry}</p>
@@ -229,14 +225,12 @@ export function PortfolioScreen() {
 
                 {isOutlier && (
                   <span
+                    className="brutal-badge"
                     style={{
                       fontSize: '0.68rem',
-                      fontWeight: 700,
-                      padding: '2px 8px',
-                      borderRadius: 4,
-                      background: 'rgba(244, 63, 94, 0.2)',
-                      color: '#fb7185',
-                      border: '1px solid rgba(244, 63, 94, 0.4)',
+                      background: 'rgba(239, 68, 68, 0.12)',
+                      color: '#EF4444',
+                      borderColor: '#EF4444',
                     }}
                   >
                     ⚠ OUTLIER
@@ -248,7 +242,7 @@ export function PortfolioScreen() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{ position: 'relative', width: 56, height: 56, flexShrink: 0 }}>
                   <svg width="56" height="56" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="10" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border-strong)" strokeWidth="10" />
                     <circle
                       cx="50"
                       cy="50"

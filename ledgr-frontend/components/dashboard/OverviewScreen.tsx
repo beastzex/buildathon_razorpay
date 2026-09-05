@@ -54,17 +54,17 @@ function ForecastTooltip({ active, payload, label }: any) {
   return (
     <div
       style={{
-        background: '#090d16',
-        border: '1px solid #1e293b',
+        background: 'var(--surface)',
+        border: '2px solid #0D0D11',
         borderRadius: 8,
         padding: '10px 14px',
         fontSize: '0.8125rem',
         maxWidth: 280,
-        boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+        boxShadow: '4px 4px 0px #0D0D11',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-        <span style={{ fontWeight: 700, color: '#f8fafc' }}>
+        <span style={{ fontWeight: 800, color: 'var(--text)' }}>
           {point.date} ({point.day_name})
         </span>
         {point.is_dip && (
@@ -73,20 +73,22 @@ function ForecastTooltip({ active, payload, label }: any) {
               fontSize: '0.68rem',
               padding: '2px 6px',
               borderRadius: 4,
-              background: 'rgba(244, 63, 94, 0.15)',
-              color: '#fb7185',
-              fontWeight: 600,
+              background: 'rgba(239, 68, 68, 0.12)',
+              color: '#DC2626',
+              fontWeight: 800,
+              fontFamily: "'SF Mono', monospace",
+              border: '1px solid rgba(239, 68, 68, 0.3)',
             }}
           >
-            Seasonal Outflow
+            Outflow
           </span>
         )}
       </div>
-      <p style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.95rem' }}>
+      <p style={{ color: '#FE4A23', fontWeight: 800, fontSize: '0.98rem', fontFamily: "'SF Mono', monospace" }}>
         ₹{point.predicted_net_inr.toLocaleString('en-IN')}
       </p>
-      <p style={{ color: '#94a3b8', fontSize: '0.72rem', marginTop: 2 }}>
-        90% Confidence Interval: ₹{Math.round(point.lower_bound_inr).toLocaleString('en-IN')} – ₹
+      <p style={{ color: 'var(--text-muted)', fontSize: '0.72rem', marginTop: 2 }}>
+        90% Band: ₹{Math.round(point.lower_bound_inr).toLocaleString('en-IN')} – ₹
         {Math.round(point.upper_bound_inr).toLocaleString('en-IN')}
       </p>
       {point.explanation_note && (
@@ -95,9 +97,9 @@ function ForecastTooltip({ active, payload, label }: any) {
             marginTop: 8,
             padding: '6px 8px',
             borderRadius: 4,
-            background: 'rgba(255, 255, 255, 0.05)',
-            borderLeft: '2px solid #38bdf8',
-            color: '#cbd5e1',
+            background: 'var(--bg)',
+            borderLeft: '3px solid #FE4A23',
+            color: 'var(--text)',
             fontSize: '0.75rem',
             lineHeight: 1.4,
           }}
@@ -172,12 +174,12 @@ export function OverviewScreen() {
   return (
     <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 24 }}>
       {/* Top Stat row: StatCards + Financial Health Gauge */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, alignItems: 'stretch' }}>
         {/* Financial Health Score Radial Ring Card */}
         <div
           className="brutal-card"
           style={{
-            padding: '18px 20px',
+            padding: '20px 24px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -186,11 +188,22 @@ export function OverviewScreen() {
             border: '2px solid #0D0D11',
             boxShadow: '3px 3px 0px #0D0D11',
             background: 'var(--surface)',
+            height: '100%',
+            minHeight: 140,
           }}
           onClick={() => setShowHealthBreakdown(!showHealthBreakdown)}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+            <span
+              style={{
+                fontFamily: "'SF Mono', monospace",
+                fontSize: '0.72rem',
+                color: 'var(--text-muted)',
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}
+            >
               Financial Health
             </span>
             <span
@@ -199,19 +212,21 @@ export function OverviewScreen() {
                 padding: '2px 7px',
                 borderRadius: 100,
                 background: 'rgba(99, 102, 241, 0.15)',
-                color: '#818cf8',
-                fontWeight: 700,
+                color: '#6366f1',
+                fontWeight: 800,
+                fontFamily: "'SF Mono', monospace",
+                border: '1px solid rgba(99, 102, 241, 0.3)',
               }}
             >
               Grade {healthScore?.grade || 'A+'}
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, margin: '8px 0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, margin: '4px 0' }}>
             {/* SVG Ring Gauge */}
-            <div style={{ position: 'relative', width: 64, height: 64, flexShrink: 0 }}>
-              <svg width="64" height="64" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
+            <div style={{ position: 'relative', width: 60, height: 60, flexShrink: 0 }}>
+              <svg width="60" height="60" viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border-strong)" strokeWidth="10" />
                 <circle
                   cx="50"
                   cy="50"
@@ -233,8 +248,9 @@ export function OverviewScreen() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '1.25rem',
-                  fontWeight: 800,
+                  fontWeight: 900,
                   color: 'var(--text)',
+                  fontFamily: "'Urbanist', sans-serif",
                 }}
               >
                 {scoreVal}
@@ -242,19 +258,19 @@ export function OverviewScreen() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '0.78rem', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 3 }}>
+              <span style={{ fontSize: '0.76rem', color: '#10b981', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 3, fontFamily: "'SF Mono', monospace" }}>
                 ↑ +2.4 pts
               </span>
-              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 2 }}>
+              <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: 2 }}>
                 {healthScore?.rating || 'Exceptional Hygiene'}
               </span>
-              <span style={{ fontSize: '0.68rem', color: '#818cf8', marginTop: 4, textDecoration: 'underline' }}>
+              <span style={{ fontSize: '0.68rem', color: '#6366f1', marginTop: 4, textDecoration: 'underline', fontWeight: 600 }}>
                 {showHealthBreakdown ? 'Hide Breakdown ▴' : 'View Breakdown ▾'}
               </span>
             </div>
           </div>
 
-          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
             Transparent 4-factor composite
           </div>
         </div>
@@ -287,11 +303,12 @@ export function OverviewScreen() {
       {/* Expandable Financial Health Breakdown Drawer */}
       {showHealthBreakdown && healthScore && (
         <div
-          className="card"
+          className="brutal-card"
           style={{
-            padding: '20px 24px',
-            border: '1px solid rgba(99, 102, 241, 0.3)',
-            background: 'rgba(15, 23, 42, 0.6)',
+            padding: '22px 24px',
+            border: '2px solid #0D0D11',
+            boxShadow: '4px 4px 0px #0D0D11',
+            background: 'var(--surface)',
             display: 'flex',
             flexDirection: 'column',
             gap: 16,
@@ -299,7 +316,7 @@ export function OverviewScreen() {
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
-              <h3 style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text)' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text)' }}>
                 Financial Health Score Weighting Breakdown (Tier 3C)
               </h3>
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 2 }}>
@@ -308,11 +325,10 @@ export function OverviewScreen() {
             </div>
             <button
               onClick={() => setShowHealthBreakdown(false)}
+              className="brutal-btn"
               style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-muted)',
-                cursor: 'pointer',
+                padding: '4px 10px',
+                fontSize: '0.8rem',
               }}
             >
               ✕
@@ -324,9 +340,9 @@ export function OverviewScreen() {
               <div
                 key={key}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 8,
+                  background: 'var(--bg)',
+                  border: '1.5px solid #0D0D11',
+                  borderRadius: 10,
                   padding: '14px 16px',
                   display: 'flex',
                   flexDirection: 'column',
@@ -334,24 +350,24 @@ export function OverviewScreen() {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }}>{item.name}</span>
-                  <span style={{ fontSize: '0.7rem', color: '#818cf8', fontWeight: 700 }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text)' }}>{item.name}</span>
+                  <span style={{ fontSize: '0.7rem', color: '#6366f1', fontWeight: 800, fontFamily: "'SF Mono', monospace" }}>
                     {item.contribution_points} pts
                   </span>
                 </div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--brand)' }}>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--brand)', fontFamily: "'SF Mono', monospace" }}>
                   {item.raw_metric}%
                 </div>
                 <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
                   {item.explanation}
                 </p>
-                <div style={{ marginTop: 4, height: 4, background: 'rgba(255,255,255,0.06)', borderRadius: 2 }}>
+                <div style={{ marginTop: 4, height: 6, background: 'var(--border-strong)', borderRadius: 3, overflow: 'hidden' }}>
                   <div
                     style={{
                       height: '100%',
                       width: `${item.normalized_score}%`,
                       background: ringColor,
-                      borderRadius: 2,
+                      borderRadius: 3,
                     }}
                   />
                 </div>
@@ -362,12 +378,13 @@ export function OverviewScreen() {
           {healthScore.actionable_recommendations.length > 0 && (
             <div
               style={{
-                padding: '10px 14px',
-                borderRadius: 6,
+                padding: '12px 16px',
+                borderRadius: 8,
                 background: 'rgba(99, 102, 241, 0.08)',
-                border: '1px solid rgba(99, 102, 241, 0.2)',
+                border: '1.5px solid #6366f1',
                 fontSize: '0.78rem',
-                color: '#cbd5e1',
+                color: 'var(--text)',
+                fontWeight: 600,
               }}
             >
               <strong>💡 Controller Recommendation:</strong> {healthScore.actionable_recommendations[0]}
@@ -378,32 +395,32 @@ export function OverviewScreen() {
 
       {/* Cash-Flow Forecasting Section (Tier 3B) */}
       <div
-        className="card"
+        className="brutal-card"
         style={{
-          padding: '20px 24px',
+          padding: '22px 24px',
           display: 'flex',
           flexDirection: 'column',
           gap: 16,
-          border: '1px solid rgba(56, 189, 248, 0.2)',
-          background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.7), rgba(9, 13, 22, 0.9))',
+          border: '2px solid #0D0D11',
+          boxShadow: '4px 4px 0px #0D0D11',
+          background: 'var(--surface)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: '1.1rem' }}>📈</span>
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text)' }}>
                 Cash-Flow Liquidity Forecast &amp; Uncertainty Band (Tier 3B)
               </h3>
               <span
+                className="brutal-badge"
                 style={{
-                  fontSize: '0.7rem',
-                  padding: '2px 8px',
-                  borderRadius: 100,
-                  background: 'rgba(56, 189, 248, 0.15)',
-                  color: '#38bdf8',
-                  border: '1px solid rgba(56, 189, 248, 0.3)',
-                  fontWeight: 600,
+                  fontSize: '0.68rem',
+                  padding: '3px 8px',
+                  background: 'rgba(254, 74, 35, 0.12)',
+                  color: '#FE4A23',
+                  borderColor: '#FE4A23',
                 }}
               >
                 Meta Prophet Engine
@@ -415,19 +432,32 @@ export function OverviewScreen() {
           </div>
 
           {/* Horizon toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0,0,0,0.4)', padding: 4, borderRadius: 6, border: '1px solid var(--border)' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+              background: 'var(--bg)',
+              padding: 4,
+              borderRadius: 8,
+              border: '2px solid #0D0D11',
+              boxShadow: '2px 2px 0px #0D0D11',
+            }}
+          >
             {[3, 7, 30].map((h) => (
               <button
                 key={h}
                 onClick={() => setForecastHorizon(h)}
                 style={{
-                  padding: '4px 12px',
-                  borderRadius: 4,
+                  padding: '5px 14px',
+                  borderRadius: 6,
                   fontSize: '0.75rem',
-                  fontWeight: forecastHorizon === h ? 700 : 500,
-                  background: forecastHorizon === h ? '#0284c7' : 'transparent',
-                  color: forecastHorizon === h ? '#ffffff' : 'var(--text-muted)',
-                  border: 'none',
+                  fontWeight: 800,
+                  fontFamily: "'SF Mono', monospace",
+                  background: forecastHorizon === h ? '#FE4A23' : 'transparent',
+                  color: forecastHorizon === h ? '#FFFFFF' : 'var(--text-muted)',
+                  border: forecastHorizon === h ? '1.5px solid #0D0D11' : '1.5px solid transparent',
+                  boxShadow: forecastHorizon === h ? '1px 1px 0px #0D0D11' : 'none',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
                 }}
@@ -441,22 +471,23 @@ export function OverviewScreen() {
         {/* Notice of synthetic data (HONESTY REQUIREMENT) */}
         <div
           style={{
-            padding: '6px 12px',
-            borderRadius: 4,
-            background: 'rgba(245, 158, 11, 0.08)',
-            borderLeft: '3px solid #f59e0b',
+            padding: '8px 14px',
+            borderRadius: 8,
+            background: '#FEF3C7',
+            border: '1.5px solid #F59E0B',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            fontSize: '0.72rem',
-            color: '#fde68a',
+            fontSize: '0.74rem',
+            color: '#78350F',
+            fontWeight: 600,
           }}
         >
           <span>
             ℹ️ <strong>Honesty Disclosure:</strong> Trained on synthetic historical settlement patterns. Forecast bounds and seasonal dips reflect modeled recurring vendor outflows.
           </span>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.68rem' }}>
-            Volatility: {forecastData ? `${Math.round(forecastData.forecast_volatility * 100)}%` : '28%'}
+          <span style={{ color: '#92400E', fontSize: '0.7rem', fontWeight: 800, fontFamily: "'SF Mono', monospace" }}>
+            VOLATILITY: {forecastData ? `${Math.round(forecastData.forecast_volatility * 100)}%` : '28%'}
           </span>
         </div>
 
@@ -466,20 +497,20 @@ export function OverviewScreen() {
             <AreaChart data={forecastData?.forecast_points || []} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
               <defs>
                 <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#FE4A23" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#FE4A23" stopOpacity={0.04} />
+                  <stop offset="0%" stopColor="#FE4A23" stopOpacity={0.25} />
+                  <stop offset="100%" stopColor="#FE4A23" stopOpacity={0.03} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-strong)" vertical={false} />
               <XAxis
                 dataKey="date"
-                tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
-                axisLine={false}
+                tick={{ fontSize: 11, fill: 'var(--text-muted)', fontWeight: 600 }}
+                axisLine={{ stroke: 'var(--border-strong)' }}
                 tickLine={false}
                 tickFormatter={(d) => d.slice(5)}
               />
               <YAxis
-                tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
+                tick={{ fontSize: 11, fill: 'var(--text-muted)', fontWeight: 600 }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={(v) => `₹${Math.round(v / 1000)}k`}
@@ -491,7 +522,7 @@ export function OverviewScreen() {
                 dataKey="upper_bound_inr"
                 stroke="rgba(254, 74, 35, 0.4)"
                 strokeDasharray="4 4"
-                strokeWidth={1}
+                strokeWidth={1.5}
                 fill="url(#bandGrad)"
               />
               {/* Center Forecast Line */}
@@ -501,8 +532,8 @@ export function OverviewScreen() {
                 stroke="#FE4A23"
                 strokeWidth={2.5}
                 fill="none"
-                dot={{ r: 4, fill: '#FE4A23' }}
-                activeDot={{ r: 6, fill: '#FE4A23', stroke: '#ffffff', strokeWidth: 2 }}
+                dot={{ r: 4, fill: '#FE4A23', stroke: '#0D0D11', strokeWidth: 1.5 }}
+                activeDot={{ r: 6, fill: '#FE4A23', stroke: '#0D0D11', strokeWidth: 2 }}
               />
               {/* Lower Bound */}
               <Area
@@ -510,7 +541,7 @@ export function OverviewScreen() {
                 dataKey="lower_bound_inr"
                 stroke="rgba(254, 74, 35, 0.4)"
                 strokeDasharray="4 4"
-                strokeWidth={1}
+                strokeWidth={1.5}
                 fill="none"
               />
             </AreaChart>
@@ -521,10 +552,13 @@ export function OverviewScreen() {
 
       {/* Autonomous Night-Shift Section */}
       <div
-        className="card"
+        className="brutal-card"
         style={{
-          padding: '20px 24px',
-          borderLeft: '4px solid #8b5cf6',
+          padding: '22px 24px',
+          border: '2px solid #0D0D11',
+          borderLeft: '6px solid #8b5cf6',
+          boxShadow: '4px 4px 0px #0D0D11',
+          background: 'var(--surface)',
           display: 'flex',
           flexDirection: 'column',
           gap: 16,
@@ -534,18 +568,17 @@ export function OverviewScreen() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: '1.1rem' }}>🌙</span>
-              <p className="font-display-md" style={{ fontSize: '1rem', color: 'var(--text)', fontWeight: 700 }}>
+              <p className="font-display-md" style={{ fontSize: '1.05rem', color: 'var(--text)', fontWeight: 800 }}>
                 Autonomous Night-Shift Runner (Tier 2B)
               </p>
               <span
+                className="brutal-badge"
                 style={{
-                  fontSize: '0.72rem',
+                  fontSize: '0.7rem',
                   padding: '2px 8px',
-                  borderRadius: 100,
-                  background: 'rgba(139, 92, 246, 0.15)',
-                  color: '#a78bfa',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                  fontWeight: 600,
+                  background: 'rgba(139, 92, 246, 0.12)',
+                  color: '#8b5cf6',
+                  borderColor: '#8b5cf6',
                 }}
               >
                 Cron: 02:00 IST Daily
@@ -559,15 +592,14 @@ export function OverviewScreen() {
           <button
             onClick={handleRunAutonomous}
             disabled={isRunningNight}
-            className="btn-primary"
+            className="brutal-btn"
             style={{
               padding: '8px 18px',
               fontSize: '0.8125rem',
-              background: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
-              border: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
+              background: '#8b5cf6',
+              color: '#FFFFFF',
+              borderColor: '#0D0D11',
+              boxShadow: '2px 2px 0px #0D0D11',
             }}
           >
             {isRunningNight ? (
@@ -585,28 +617,28 @@ export function OverviewScreen() {
         <div style={{ overflowX: 'auto' }}>
           <table className="data-table">
             <thead>
-              <tr>
-                <th>Run ID</th>
-                <th>Batch</th>
-                <th>Run Timestamp</th>
-                <th>Total Records</th>
-                <th>Auto-Matched</th>
-                <th>Debated &amp; Resolved</th>
-                <th>Escalated</th>
-                <th>Runtime</th>
-                <th>Digest</th>
+              <tr style={{ borderBottom: '2px solid #0D0D11' }}>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Run ID</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Batch</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Run Timestamp</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Total Records</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Auto-Matched</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Debated &amp; Resolved</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Escalated</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Runtime</th>
+                <th style={{ fontWeight: 800, color: 'var(--text)' }}>Digest</th>
               </tr>
             </thead>
             <tbody>
               {nightRuns.map((r) => (
-                <tr key={r.id}>
+                <tr key={r.id} style={{ borderBottom: '1px solid var(--border-strong)' }}>
                   <td>
-                    <span className="font-mono-id" style={{ fontSize: '0.78rem', color: '#a78bfa' }}>
+                    <span className="font-mono-id" style={{ fontSize: '0.78rem', color: '#8b5cf6', fontWeight: 700 }}>
                       {r.id}
                     </span>
                   </td>
                   <td>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text)' }}>#{r.batch_id}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text)', fontWeight: 700, fontFamily: "'SF Mono', monospace" }}>#{r.batch_id}</span>
                   </td>
                   <td style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
                     {new Date(r.created_at).toLocaleString('en-IN', {
@@ -617,22 +649,19 @@ export function OverviewScreen() {
                       hour12: false,
                     })}
                   </td>
-                  <td style={{ color: 'var(--text)', fontSize: '0.8rem', fontWeight: 600 }}>{r.total_records}</td>
-                  <td style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 600 }}>{r.auto_matched}</td>
-                  <td style={{ color: '#6366f1', fontSize: '0.8rem', fontWeight: 600 }}>{r.debated_and_resolved}</td>
-                  <td style={{ color: '#f59e0b', fontSize: '0.8rem', fontWeight: 600 }}>{r.escalated_to_human}</td>
-                  <td style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{r.processing_time_seconds}s</td>
+                  <td style={{ color: 'var(--text)', fontSize: '0.8rem', fontWeight: 700 }}>{r.total_records}</td>
+                  <td style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 700 }}>{r.auto_matched}</td>
+                  <td style={{ color: '#6366f1', fontSize: '0.8rem', fontWeight: 700 }}>{r.debated_and_resolved}</td>
+                  <td style={{ color: '#f59e0b', fontSize: '0.8rem', fontWeight: 700 }}>{r.escalated_to_human}</td>
+                  <td style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontFamily: "'SF Mono', monospace" }}>{r.processing_time_seconds}s</td>
                   <td>
                     <button
                       onClick={() => setSelectedDigest(r.digest_text || 'No digest text recorded.')}
+                      className="brutal-btn"
                       style={{
-                        padding: '3px 10px',
-                        borderRadius: 4,
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid var(--border)',
-                        color: 'var(--text-muted)',
+                        padding: '4px 10px',
                         fontSize: '0.72rem',
-                        cursor: 'pointer',
+                        boxShadow: '1px 1px 0px #0D0D11',
                       }}
                     >
                       View Digest
@@ -646,10 +675,18 @@ export function OverviewScreen() {
       </div>
 
       {/* Match rate trend chart */}
-      <div className="card" style={{ padding: '20px 24px' }}>
+      <div
+        className="brutal-card"
+        style={{
+          padding: '22px 24px',
+          border: '2px solid #0D0D11',
+          boxShadow: '4px 4px 0px #0D0D11',
+          background: 'var(--surface)',
+        }}
+      >
         <p
           className="font-display-md"
-          style={{ fontSize: '0.9375rem', color: 'var(--text)', marginBottom: 4 }}
+          style={{ fontSize: '1rem', color: 'var(--text)', fontWeight: 800, marginBottom: 4 }}
         >
           Match rate — last 14 batches
         </p>
@@ -661,20 +698,20 @@ export function OverviewScreen() {
             <AreaChart data={MATCH_RATE_TREND} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="rateGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--brand)" stopOpacity={0.2} />
-                  <stop offset="100%" stopColor="var(--brand)" stopOpacity={0} />
+                  <stop offset="0%" stopColor="var(--brand)" stopOpacity={0.25} />
+                  <stop offset="100%" stopColor="var(--brand)" stopOpacity={0.02} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-strong)" vertical={false} />
               <XAxis
                 dataKey="batch"
-                tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
-                axisLine={false}
+                tick={{ fontSize: 11, fill: 'var(--text-muted)', fontWeight: 600 }}
+                axisLine={{ stroke: 'var(--border-strong)' }}
                 tickLine={false}
               />
               <YAxis
                 domain={[90, 100]}
-                tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
+                tick={{ fontSize: 11, fill: 'var(--text-muted)', fontWeight: 600 }}
                 axisLine={false}
                 tickLine={false}
                 tickFormatter={v => `${v}%`}
@@ -684,10 +721,10 @@ export function OverviewScreen() {
                 type="monotone"
                 dataKey="rate"
                 stroke="var(--brand)"
-                strokeWidth={2}
+                strokeWidth={2.5}
                 fill="url(#rateGrad)"
                 dot={false}
-                activeDot={{ r: 4, fill: 'var(--brand)', stroke: 'var(--surface)', strokeWidth: 2 }}
+                activeDot={{ r: 5, fill: 'var(--brand)', stroke: '#0D0D11', strokeWidth: 2 }}
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -695,27 +732,36 @@ export function OverviewScreen() {
       </div>
 
       {/* Recent batches */}
-      <div className="card" style={{ padding: '0' }}>
-        <div style={{ padding: '16px 24px 12px', borderBottom: '1px solid var(--border)' }}>
-          <p className="font-display-md" style={{ fontSize: '0.9375rem', color: 'var(--text)' }}>
+      <div
+        className="brutal-card"
+        style={{
+          padding: '0',
+          border: '2px solid #0D0D11',
+          boxShadow: '4px 4px 0px #0D0D11',
+          background: 'var(--surface)',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ padding: '16px 24px 12px', borderBottom: '2px solid #0D0D11' }}>
+          <p className="font-display-md" style={{ fontSize: '1rem', color: 'var(--text)', fontWeight: 800 }}>
             Recent activity
           </p>
         </div>
         <table className="data-table">
           <thead>
-            <tr>
-              <th>Batch</th>
-              <th>Run at</th>
-              <th>Records</th>
-              <th>Match rate</th>
-              <th>Status</th>
+            <tr style={{ borderBottom: '1px solid #0D0D11' }}>
+              <th style={{ fontWeight: 800, color: 'var(--text)' }}>Batch</th>
+              <th style={{ fontWeight: 800, color: 'var(--text)' }}>Run at</th>
+              <th style={{ fontWeight: 800, color: 'var(--text)' }}>Records</th>
+              <th style={{ fontWeight: 800, color: 'var(--text)' }}>Match rate</th>
+              <th style={{ fontWeight: 800, color: 'var(--text)' }}>Status</th>
             </tr>
           </thead>
           <tbody>
             {RECENT_BATCHES.map(b => (
-              <tr key={b.id}>
+              <tr key={b.id} style={{ borderBottom: '1px solid var(--border-strong)' }}>
                 <td>
-                  <span className="font-mono-id" style={{ fontSize: '0.8rem', color: 'var(--text)' }}>
+                  <span className="font-mono-id" style={{ fontSize: '0.8rem', color: 'var(--text)', fontWeight: 700 }}>
                     {b.label}
                   </span>
                 </td>
@@ -728,8 +774,8 @@ export function OverviewScreen() {
                     hour12: false,
                   })}
                 </td>
-                <td style={{ color: 'var(--text)', fontSize: '0.8125rem' }}>{b.totalRecords}</td>
-                <td style={{ fontSize: '0.8125rem', fontWeight: 600, color: b.matchRate >= 97 ? 'var(--success)' : b.matchRate >= 94 ? 'var(--warning)' : 'var(--critical)' }}>
+                <td style={{ color: 'var(--text)', fontSize: '0.8125rem', fontWeight: 700 }}>{b.totalRecords}</td>
+                <td style={{ fontSize: '0.8125rem', fontWeight: 800, fontFamily: "'SF Mono', monospace", color: b.matchRate >= 97 ? 'var(--success)' : b.matchRate >= 94 ? 'var(--warning)' : 'var(--critical)' }}>
                   {b.matchRate.toFixed(1)}%
                 </td>
                 <td>
@@ -750,7 +796,7 @@ export function OverviewScreen() {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0, 0, 0, 0.7)',
+            background: 'rgba(0, 0, 0, 0.65)',
             backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
@@ -761,13 +807,14 @@ export function OverviewScreen() {
           onClick={() => setSelectedDigest(null)}
         >
           <div
-            className="card"
+            className="brutal-card"
             style={{
               maxWidth: 600,
               width: '100%',
               padding: 24,
-              background: '#090b10',
-              border: '1px solid #334155',
+              background: 'var(--surface)',
+              border: '2px solid #0D0D11',
+              boxShadow: '6px 6px 0px #0D0D11',
               display: 'flex',
               flexDirection: 'column',
               gap: 16,
@@ -777,7 +824,7 @@ export function OverviewScreen() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span>📬</span>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text)' }}>
                   Autonomous Shift Digest
                 </h3>
               </div>
@@ -788,7 +835,8 @@ export function OverviewScreen() {
                   border: 'none',
                   color: 'var(--text-muted)',
                   cursor: 'pointer',
-                  fontSize: '1.2rem',
+                  fontSize: '1.3rem',
+                  fontWeight: 700,
                 }}
               >
                 ✕
@@ -800,11 +848,11 @@ export function OverviewScreen() {
                 fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
                 fontSize: '0.8rem',
                 lineHeight: 1.6,
-                color: '#cbd5e1',
-                background: '#040508',
+                color: 'var(--text)',
+                background: 'var(--bg)',
                 padding: 16,
-                borderRadius: 6,
-                border: '1px solid #1e293b',
+                borderRadius: 8,
+                border: '1.5px solid #0D0D11',
                 whiteSpace: 'pre-wrap',
                 maxHeight: 350,
                 overflowY: 'auto',
@@ -815,8 +863,8 @@ export function OverviewScreen() {
 
             <button
               onClick={() => setSelectedDigest(null)}
-              className="btn-primary"
-              style={{ alignSelf: 'flex-end', padding: '6px 16px', fontSize: '0.8rem' }}
+              className="brutal-btn-brand"
+              style={{ alignSelf: 'flex-end', padding: '8px 18px', fontSize: '0.8rem' }}
             >
               Close Digest
             </button>

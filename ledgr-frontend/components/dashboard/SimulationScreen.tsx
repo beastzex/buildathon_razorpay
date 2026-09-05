@@ -806,9 +806,10 @@ export function SimulationScreen() {
             <div
               style={{
                 height: 380,
-                background: '#090D16',
+                background: 'var(--bg)',
                 borderRadius: 12,
-                border: '2px solid #1E293B',
+                border: '2px solid #0D0D11',
+                boxShadow: '3px 3px 0px #0D0D11',
                 position: 'relative',
                 overflow: 'hidden',
                 display: 'flex',
@@ -817,18 +818,18 @@ export function SimulationScreen() {
               }}
             >
               {/* Document Skeleton Graphic */}
-              <div style={{ width: '85%', height: '85%', background: '#0F172A', borderRadius: 8, padding: 24, border: '1px solid #334155', position: 'relative' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #334155', paddingBottom: 12, marginBottom: 20 }}>
+              <div style={{ width: '85%', height: '85%', background: 'var(--surface)', borderRadius: 8, padding: 24, border: '2px solid #0D0D11', boxShadow: '2px 2px 0px #0D0D11', position: 'relative' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1.5px solid #0D0D11', paddingBottom: 12, marginBottom: 20 }}>
                   <div>
-                    <div style={{ fontWeight: 800, color: '#FFF', fontSize: '1rem' }}>
+                    <div style={{ fontWeight: 900, color: 'var(--text)', fontSize: '1rem' }}>
                       {multimodalResult?.document_type || 'Corporate Statement'}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                       Timestamp: {multimodalResult?.extracted_timestamp}
                     </div>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.74rem', color: '#38BDF8', fontWeight: 800 }}>
+                    <div style={{ fontSize: '0.74rem', color: '#0284c7', fontWeight: 800, fontFamily: "'SF Mono', monospace" }}>
                       CONFIDENCE: {((multimodalResult?.confidence_score || 0.98) * 100).toFixed(1)}%
                     </div>
                   </div>

@@ -43,9 +43,13 @@ export function StatCard({ label, value, subtext, trend, sparkline, accentColor 
         padding: '20px 24px',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100%',
+        minHeight: 140,
         gap: 12,
-        borderColor: '#0D0D11',
-        boxShadow: '3px 3px 0px #0D0D11'
+        border: '2px solid #0D0D11',
+        boxShadow: '3px 3px 0px #0D0D11',
+        background: 'var(--surface)',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
@@ -58,7 +62,7 @@ export function StatCard({ label, value, subtext, trend, sparkline, accentColor 
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              marginBottom: 6
+              marginBottom: 6,
             }}
           >
             {label}
@@ -81,7 +85,7 @@ export function StatCard({ label, value, subtext, trend, sparkline, accentColor 
                 marginTop: 6,
                 color: trend >= 0 ? 'var(--success)' : 'var(--critical)',
                 fontWeight: 700,
-                fontFamily: "'SF Mono', monospace"
+                fontFamily: "'SF Mono', monospace",
               }}
             >
               {trend >= 0 ? '▲ +' : '▼ '}{Math.abs(trend).toFixed(1)}% VS PREV BATCH
