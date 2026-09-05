@@ -185,15 +185,15 @@ sequenceDiagram
     participant Auditor as Auditor Agent
     participant Ledger as Ledger DB
 
-    Record->>Orch: Ingest Discrepant Pair (e.g. ₹9,320 vs ₹9,308)
-    Orch->>AdvFor: Construct arguments supporting match (MDR drift, lag)
-    Orch->>AdvAgainst: Construct arguments against match (Paisa leakage, fraud)
-    AdvFor-->>Orch: "Semantic tokens match; delta matches standard 0.4% gateway surcharge"
-    AdvAgainst-->>Orch: "Delta exceeds strict paisa tolerance; risk of balance sheet leakage"
-    Orch->>Arbiter: Present adversarial briefs + rule breakdown
-    Arbiter-->>Orch: Verdict: "Resolution approved with fee candidate adjustment"
+    Record->>Orch: Ingest Discrepant Pair (e.g. INR 9320 vs INR 9308)
+    Orch->>AdvFor: Construct arguments supporting match (MDR drift and lag)
+    Orch->>AdvAgainst: Construct arguments against match (Paisa leakage and risk)
+    AdvFor-->>Orch: Semantic tokens align and delta matches standard 0.4% gateway surcharge
+    AdvAgainst-->>Orch: Delta exceeds strict paisa tolerance and risks balance leakage
+    Orch->>Arbiter: Present adversarial briefs and rule breakdown
+    Arbiter-->>Orch: Resolution approved with fee candidate adjustment
     Orch->>Auditor: Seal record with cryptographic payload
-    Auditor->>Ledger: Commit match + SHA-256 hash chaining
+    Auditor->>Ledger: Commit match and SHA-256 hash chaining
 ```
 
 ---
