@@ -8,7 +8,7 @@ import os
 import json
 import asyncio
 import logging
-from typing import AsyncGenerator, Dict, Set, Optional
+from typing import AsyncGenerator, Dict, Set, Optional, Any
 from agents.pipeline.agent_base import AgentResult
 
 logger = logging.getLogger("ledgr.event_bus")
@@ -36,10 +36,15 @@ class EventBus:
                 self._redis_available = False
                 logger.warning(f"EventBus: Redis unavailable ({e}). Using in-process queue for single-process delivery.")
 
-    async def publish(self, batch_id: str, event: AgentResult):
-        """Publish an AgentResult event to Redis channel and in-process subscribers."""
+    async def publish(self, batch_id: str, event: Any):
+        """Publish an AgentResult or dict event to Redis channel and in-process subscribers."""
         await self._init_redis()
-        payload = event.model_dump_json()
+        if hasattr(event, "model_dump_json"):
+            payload = event.model_dump_json()
+        elif isinstance(event, dict):
+            payload = json.dumps(event)
+        else:
+            payload = str(event)
 
         # 1. Primary: Redis Pub/Sub for cross-process worker delivery
         if self._redis_available and self._redis:

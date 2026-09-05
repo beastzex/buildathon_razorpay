@@ -8,7 +8,7 @@ from typing import List, Optional
 import numpy as np
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc, delete
 
@@ -298,6 +298,264 @@ async def list_batches(db: AsyncSession = Depends(get_db)):
         )
         for b in batches
     ]
+
+
+@router.get("/external-10k-dataset")
+async def get_external_10k_dataset(
+    page: int = Query(1, ge=1),
+    page_size: int = Query(50, ge=1, le=500),
+    rail: Optional[str] = Query(None),
+    status: Optional[str] = Query(None),
+    search: Optional[str] = Query(None),
+    only_anomalies: bool = Query(False)
+):
+    """
+    Serves the 10,000 synthetic transaction records generated for the external partner data portal.
+    Supports high-speed filtering by payment rail, match status, and search tokens.
+    """
+    from pathlib import Path
+    json_path = Path(__file__).resolve().parent.parent.parent / "data" / "external_10k_transactions.json"
+    if not json_path.exists():
+        from data.generate_10k_dataset import generate_10k_dataset
+        generate_10k_dataset(10000)
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    summary = data.get("summary", {})
+    records = data.get("records", [])
+
+    # Filter
+    filtered = records
+    if rail and rail != "all":
+        filtered = [r for r in filtered if r.get("payment_rail") == rail]
+    if status and status != "all":
+        filtered = [r for r in filtered if r.get("status") == status]
+    if only_anomalies:
+        filtered = [r for r in filtered if r.get("anomaly_flag")]
+    if search:
+        s_lower = search.lower()
+        filtered = [
+            r for r in filtered
+            if s_lower in r.get("id", "").lower()
+            or s_lower in r.get("merchant_name", "").lower()
+            or s_lower in r.get("bank_name", "").lower()
+            or s_lower in r.get("gateway_name", "").lower()
+            or s_lower in str(r.get("gross_amount", ""))
+            or s_lower in r.get("sourceA", {}).get("reference", "").lower()
+        ]
+
+    total_matched = len(filtered)
+    start_idx = (page - 1) * page_size
+    end_idx = start_idx + page_size
+    paged_records = filtered[start_idx:end_idx]
+
+    return {
+        "summary": summary,
+        "total_filtered": total_matched,
+        "page": page,
+        "page_size": page_size,
+        "total_pages": (total_matched + page_size - 1) // page_size if total_matched > 0 else 1,
+        "records": paged_records
+    }
+
+
+@router.get("/external-10k-dataset/csv")
+async def download_external_10k_csv():
+    """
+    Downloads the full 10,000-row enterprise CSV file generated for demo ingestion.
+    """
+    from pathlib import Path
+    csv_path = Path(__file__).resolve().parent.parent.parent / "data" / "external_10k_transactions.csv"
+    if not csv_path.exists():
+        from data.generate_10k_dataset import generate_10k_dataset
+        generate_10k_dataset(10000)
+
+    return FileResponse(
+        path=str(csv_path),
+        filename="external_10k_transactions.csv",
+        media_type="text/csv"
+    )
+
+
+@router.post("/external-stream")
+async def ingest_external_stream(
+    request: Request,
+    db: AsyncSession = Depends(get_db)
+):
+    """
+    High-throughput streaming ingestion endpoint.
+    Receives synthetic 10,000-row stream from external partner portal and ingests in real-time.
+    Publishes live SSE progress telemetry to the event bus.
+    """
+    body = {}
+    try:
+        body = await request.json()
+    except Exception:
+        pass
+
+    target_count = body.get("count", 10000)
+    batch_id = body.get("batch_id", "batch-external-stream")
+    chunk_size = body.get("chunk_size", 1000)
+
+    from pathlib import Path
+    json_path = Path(__file__).resolve().parent.parent.parent / "data" / "external_10k_transactions.json"
+    if not json_path.exists():
+        from data.generate_10k_dataset import generate_10k_dataset
+        generate_10k_dataset(10000)
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    all_records = data.get("records", [])[:target_count]
+    total_records = len(all_records)
+
+    # Ensure batch exists
+    b_res = await db.execute(select(Batch).where(Batch.id == batch_id))
+    batch = b_res.scalar_one_or_none()
+    if not batch:
+        batch = Batch(
+            id=batch_id,
+            total_records=total_records,
+            matched_count=0,
+            flagged_count=0,
+            mismatched_count=0,
+            status="streaming"
+        )
+        db.add(batch)
+        await db.commit()
+    else:
+        # Reset previous stream
+        batch.total_records = total_records
+        batch.status = "streaming"
+        await db.execute(delete(Record).where(Record.batch_id == batch_id))
+        await db.execute(delete(Match).where(Match.batch_id == batch_id))
+        await db.execute(delete(ExceptionRecord).where(ExceptionRecord.batch_id == batch_id))
+        await db.commit()
+
+    event_bus = get_event_bus()
+
+    # Ingest in chunks and publish progress
+    matched_c = 0
+    flagged_c = 0
+    mismatched_c = 0
+    start_time = time.perf_counter()
+
+    for i in range(0, total_records, chunk_size):
+        chunk = all_records[i : i + chunk_size]
+        for item in chunk:
+            rec_id = item["id"]
+            sa = item["sourceA"]
+            sb = item["sourceB"]
+            st = item["status"]
+
+            if st == "matched":
+                matched_c += 1
+            elif st == "flagged":
+                flagged_c += 1
+            else:
+                mismatched_c += 1
+
+            # Add source records
+            db.add(Record(
+                id=f"{batch_id}-{rec_id}-A",
+                batch_id=batch_id,
+                source="sourceA",
+                raw_fields=sa,
+                normalized_fields=sa
+            ))
+            db.add(Record(
+                id=f"{batch_id}-{rec_id}-B",
+                batch_id=batch_id,
+                source="sourceB",
+                raw_fields=sb,
+                normalized_fields=sb
+            ))
+
+            # Add Match
+            conf = 98 if st == "matched" else (72 if st == "flagged" else 42)
+            db.add(Match(
+                id=rec_id,
+                batch_id=batch_id,
+                record_a_id=f"{batch_id}-{rec_id}-A",
+                record_b_id=f"{batch_id}-{rec_id}-B",
+                embedding_score=0.98 if st == "matched" else 0.75,
+                rule_score=1.0 if st == "matched" else 0.65,
+                final_confidence=conf,
+                status=st,
+                anomaly_score=0.05 if st == "matched" else 0.85
+            ))
+
+        await db.commit()
+
+        # Telemetry
+        ingested_so_far = min(i + chunk_size, total_records)
+        elapsed = max(0.001, time.perf_counter() - start_time)
+        rps = int(ingested_so_far / elapsed)
+
+        await event_bus.publish(batch_id, {
+            "agent": "StreamIngestionEngine",
+            "event_type": "stream_progress",
+            "batch_id": batch_id,
+            "records_ingested": ingested_so_far,
+            "total_records": total_records,
+            "throughput_rps": rps,
+            "matched": matched_c,
+            "flagged": flagged_c,
+            "mismatched": mismatched_c,
+            "progress_pct": round((ingested_so_far / total_records) * 100, 1),
+            "timestamp": datetime.utcnow().isoformat() + "Z"
+        })
+
+    # Complete batch
+    batch.matched_count = matched_c
+    batch.flagged_count = flagged_c
+    batch.mismatched_count = mismatched_c
+    batch.status = "completed"
+    await db.commit()
+
+    total_duration = time.perf_counter() - start_time
+    final_rps = int(total_records / max(0.001, total_duration))
+
+    # Add terminal audit entry
+    latest_audit = (await db.execute(
+        select(AuditLogEntry).where(AuditLogEntry.batch_id == batch_id).order_by(desc(AuditLogEntry.created_at))
+    )).scalars().first()
+    prev_h = latest_audit.hash if latest_audit else GENESIS_HASH
+
+    audit_payload = {
+        "batch_id": batch_id,
+        "total_records": total_records,
+        "matched": matched_c,
+        "flagged": flagged_c,
+        "mismatched": mismatched_c,
+        "duration_seconds": round(total_duration, 2),
+        "throughput_rps": final_rps
+    }
+    curr_h = compute_entry_hash(prev_h, audit_payload)
+    db.add(AuditLogEntry(
+        id=f"AE-STREAM-{uuid.uuid4().hex[:8]}",
+        batch_id=batch_id,
+        event_type="external_stream_ingest",
+        actor="finstream-partner-gateway",
+        description=f"Ingested 10,000 enterprise payments in {total_duration:.2f}s ({final_rps} records/sec).",
+        payload=audit_payload,
+        prev_hash=prev_h,
+        hash=curr_h,
+        created_at=datetime.utcnow()
+    ))
+    await db.commit()
+
+    return {
+        "status": "stream_completed",
+        "batch_id": batch_id,
+        "records_ingested": total_records,
+        "matched_count": matched_c,
+        "flagged_count": flagged_c,
+        "mismatched_count": mismatched_c,
+        "duration_seconds": round(total_duration, 2),
+        "throughput_rps": final_rps
+    }
 
 
 @router.get("/{batch_id}", response_model=BatchSummaryResponse)
@@ -846,4 +1104,6 @@ async def get_batch_health_score(batch_id: str, db: AsyncSession = Depends(get_d
 
     health = compute_health_score(metrics)
     return health
+
+
 

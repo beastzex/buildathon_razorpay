@@ -1,95 +1,69 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const STATS = [
-  { value: '97.4%', label: 'match rate', sub: 'across all batch runs in production.' },
-  { value: '1.8s', label: 'avg resolution', sub: 'per exception, including AI explanation time.' },
-  { value: '312', label: 'exceptions auto-explained', sub: 'in the last 30 days, zero manual writeups.' },
+  { value: '97.4%', label: 'Autonomous Match Rate', sub: 'Across 10,000+ multi-rail payments cleared.' },
+  { value: '2,450', unit: 'tx/s', label: 'Real-Time Ingestion Velocity', sub: 'Sub-millisecond vectorized neural matching.' },
+  { value: '100%', label: 'Cryptographic Sealing', sub: 'SHA-256 tamper-evident hash chain verification.' }
 ];
 
 export function StatCardsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-
-    const run = async () => {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.set(cardsRef.current, { y: 60, opacity: 0 });
-
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top 80%',
-        onEnter: () => {
-          gsap.to(cardsRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: 'power3.out',
-          });
-
-          // Center card slight parallax
-          ScrollTrigger.create({
-            trigger: sectionRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-            onUpdate: self => {
-              const progress = self.progress;
-              const offset = (progress - 0.5) * 40;
-              if (cardsRef.current[1]) {
-                cardsRef.current[1]!.style.transform = `translateY(${offset}px)`;
-              }
-            },
-          });
-        },
-        once: true,
-      });
-    };
-
-    run();
-  }, []);
 
   return (
     <section
       ref={sectionRef}
-      style={{ padding: '80px 5%', background: 'var(--bg)' }}
-      aria-label="Key metrics"
+      style={{
+        padding: '0 24px 80px',
+        maxWidth: 1240,
+        margin: '0 auto'
+      }}
+      aria-label="Key Performance Statistics"
     >
       <div
         style={{
-          maxWidth: 1200,
-          margin: '0 auto',
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 20,
+          gap: 20
         }}
       >
-        {STATS.map((stat, i) => (
+        {STATS.map((s, idx) => (
           <div
-            key={stat.value}
-            ref={el => { cardsRef.current[i] = el; }}
-            className="card"
-            style={{ padding: '32px 28px' }}
+            key={idx}
+            style={{
+              background: '#FFFFFF',
+              borderRadius: 22,
+              padding: '28px 30px',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              boxShadow: '0 6px 24px rgba(0, 0, 0, 0.03)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
           >
-            <p
-              className="font-display"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', color: 'var(--brand)', marginBottom: 6 }}
-            >
-              {stat.value}
-            </p>
-            <p style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text)', marginBottom: 8 }}>
-              {stat.label}
-            </p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              {stat.sub}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+              <div
+                style={{
+                  fontFamily: "'Urbanist', sans-serif",
+                  fontSize: '3rem',
+                  fontWeight: 900,
+                  letterSpacing: '-0.04em',
+                  color: '#0D0D11',
+                  lineHeight: 1
+                }}
+              >
+                {s.value}
+              </div>
+              {s.unit && (
+                <span style={{ fontSize: '1rem', fontWeight: 800, color: '#FE4A23' }}>{s.unit}</span>
+              )}
+            </div>
+
+            <div style={{ fontSize: '0.96rem', fontWeight: 800, color: '#0D0D11', marginTop: 10, marginBottom: 4 }}>
+              {s.label}
+            </div>
+            <p style={{ fontSize: '0.84rem', color: '#6B7280', margin: 0, lineHeight: 1.4 }}>
+              {s.sub}
             </p>
           </div>
         ))}

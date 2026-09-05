@@ -1,306 +1,290 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
-const CHART_BARS = [
-  { label: 'Mon', value: 8 },
-  { label: 'Tue', value: 3 },
-  { label: 'Wed', value: 12 },
-  { label: 'Thu', value: 5 },
-  { label: 'Fri', value: 9 },
-  { label: 'Sat', value: 2 },
-  { label: 'Sun', value: 6 },
-];
-const MAX_VAL = Math.max(...CHART_BARS.map(b => b.value));
+import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import {
+  Shield,
+  Zap,
+  Activity,
+  CheckCircle2,
+  TrendingUp,
+  Cpu,
+  ArrowRight,
+  Database,
+  Search,
+  Sparkles
+} from 'lucide-react';
 
 export function WordmarkSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const wordmarkRef = useRef<HTMLDivElement>(null);
-  const laptopRef = useRef<HTMLDivElement>(null);
-  const barsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      barsRef.current.forEach(b => { if (b) b.style.transform = 'scaleY(1)'; });
-      return;
-    }
-
-    const run = async () => {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Background wordmark parallax (0.5x scroll speed)
-      gsap.to(wordmarkRef.current, {
-        y: '20%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-
-      // Laptop slides up on enter
-      gsap.set(laptopRef.current, { y: 60, opacity: 0 });
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        onEnter: () => {
-          gsap.to(laptopRef.current, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
-
-          // Staggered bar chart grow
-          gsap.set(barsRef.current, { scaleY: 0, transformOrigin: 'bottom' });
-          gsap.to(barsRef.current, {
-            scaleY: 1,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: 'power2.out',
-            delay: 0.3,
-          });
-        },
-        once: true,
-      });
-    };
-
-    run();
-  }, []);
+  const [activeTab, setActiveTab] = useState<'stream' | 'debate' | 'audit'>('stream');
 
   return (
     <section
       ref={sectionRef}
+      id="architecture"
       style={{
-        padding: '120px 5%',
-        background: 'var(--bg)',
-        overflow: 'hidden',
+        padding: '100px 24px 120px',
         position: 'relative',
+        overflow: 'hidden',
+        background: '#F6F6F9'
       }}
-      aria-label="Product capabilities"
+      aria-label="Device Mockup & Brand Watermark"
     >
-      {/* Background wordmark */}
+      {/* Massive Ramos-Style Brand Watermark running behind cards */}
       <div
-        ref={wordmarkRef}
-        aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '50%',
+          bottom: '10%',
           left: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: 'clamp(8rem, 18vw, 16rem)',
-          fontFamily: "'DM Sans', 'Inter', sans-serif",
+          transform: 'translateX(-50%)',
+          fontSize: 'clamp(8rem, 24vw, 22rem)',
           fontWeight: 900,
-          letterSpacing: '-0.05em',
-          color: 'var(--border)',
+          fontFamily: "'Urbanist', sans-serif",
+          color: 'rgba(254, 74, 35, 0.08)',
+          letterSpacing: '-0.06em',
           userSelect: 'none',
           pointerEvents: 'none',
           whiteSpace: 'nowrap',
-          zIndex: 0,
+          zIndex: 1
         }}
       >
-        LEDGR
+        Ledgr
       </div>
 
-      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: 60 }}>
+      <div style={{ maxWidth: 1240, margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#FFFFFF', padding: '6px 16px', borderRadius: 999, border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', marginBottom: 16 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#FE4A23' }} />
+            <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#0D0D11', letterSpacing: '0.04em' }}>
+              AUTONOMOUS LEDGER ARCHITECTURE
+            </span>
+          </div>
+
           <h2
-            className="font-display"
             style={{
-              fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-              color: 'var(--text)',
-              marginBottom: 16,
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: 'clamp(2.2rem, 4.2vw, 3.6rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.04em',
+              color: '#0D0D11',
+              lineHeight: 1.1,
+              maxWidth: 750,
+              margin: '0 auto 16px'
             }}
           >
-            Full view. Both sources. One truth.
+            Full control over every rupee with multi-agent consensus
           </h2>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-muted)', maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
-            The reconciliation console and the settlement agent work from the same grounded dataset — no hallucinated answers.
+          <p style={{ fontSize: '1.05rem', color: '#6B7280', maxWidth: 620, margin: '0 auto', lineHeight: 1.5 }}>
+            From ingestion of 10,000 raw bank lines to dual-agent consensus debate and cryptographically sealed audit blocks.
           </p>
         </div>
 
-        {/* Device mockups */}
+        {/* Side-by-side Device Frame Mockups (Laptop Frame + Phone Frame) */}
         <div
-          ref={laptopRef}
-          style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, alignItems: 'start' }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.6fr 0.9fr',
+            gap: 32,
+            alignItems: 'center'
+          }}
         >
-          {/* Laptop mockup — Reconciliation */}
+          {/* Laptop Device Frame */}
           <div
-            className="card"
-            style={{ padding: 0, overflow: 'hidden' }}
+            style={{
+              background: '#0D0D11',
+              borderRadius: 28,
+              padding: '16px 16px 24px',
+              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              position: 'relative'
+            }}
           >
-            {/* Browser chrome */}
-            <div
-              style={{
-                background: 'var(--surface-hover)',
-                padding: '10px 14px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-                borderBottom: '1px solid var(--border)',
-              }}
-            >
-              {['#F0555A', '#F5A623', '#34d399'].map((c, i) => (
-                <span key={i} style={{ width: 10, height: 10, borderRadius: '50%', background: c, opacity: 0.7 }} />
-              ))}
-              <span
-                style={{
-                  flex: 1,
-                  background: 'var(--border)',
-                  height: 20,
-                  borderRadius: 4,
-                  marginLeft: 8,
-                  fontSize: '0.7rem',
-                  color: 'var(--text-muted)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  paddingLeft: 8,
-                }}
-              >
-                ledgr.app/dashboard/reconciliation
+            {/* Laptop Camera Notch / Dots */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12, paddingLeft: 8 }}>
+              <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#EF4444' }} />
+              <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#F59E0B' }} />
+              <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#10B981' }} />
+              <span style={{ fontSize: '0.72rem', color: '#6B7280', marginLeft: 10, fontFamily: 'monospace' }}>
+                ledgr.internal / live-reconciliation-mesh
               </span>
             </div>
 
-            {/* Screen content */}
-            <div style={{ padding: '16px' }}>
-              <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: 12 }}>
-                Exception volume — last 7 days
-              </p>
-
-              {/* Animated bar chart */}
-              <div
-                style={{
-                  display: 'flex',
-                  gap: 6,
-                  alignItems: 'flex-end',
-                  height: 72,
-                  marginBottom: 16,
-                }}
-              >
-                {CHART_BARS.map((bar, i) => (
-                  <div key={bar.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, height: '100%', justifyContent: 'flex-end' }}>
-                    <div
-                      ref={el => { barsRef.current[i] = el; }}
-                      style={{
-                        width: '100%',
-                        height: `${(bar.value / MAX_VAL) * 100}%`,
-                        background: `var(--brand)`,
-                        opacity: 0.7 + (bar.value / MAX_VAL) * 0.3,
-                        borderRadius: '3px 3px 0 0',
-                        transformOrigin: 'bottom',
-                      }}
-                    />
-                    <span style={{ fontSize: '0.6rem', color: 'var(--text-faint)' }}>{bar.label}</span>
+            {/* Mock Screen Content */}
+            <div
+              style={{
+                background: '#14151B',
+                borderRadius: 18,
+                padding: 22,
+                color: '#FFFFFF'
+              }}
+            >
+              {/* Screen Top Bar */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: '#FE4A23', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Cpu size={16} color="#FFFFFF" />
                   </div>
-                ))}
+                  <div>
+                    <div style={{ fontSize: '0.86rem', fontWeight: 800 }}>8-Agent Relay • Active Consensus</div>
+                    <div style={{ fontSize: '0.72rem', color: '#9CA3AF' }}>Batch #214 & Stream Engine</div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {(['stream', 'debate', 'audit'] as const).map((t) => (
+                    <button
+                      key={t}
+                      onClick={() => setActiveTab(t)}
+                      style={{
+                        padding: '4px 12px',
+                        borderRadius: 999,
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        border: 'none',
+                        cursor: 'pointer',
+                        background: activeTab === t ? '#FE4A23' : 'rgba(255,255,255,0.06)',
+                        color: activeTab === t ? '#FFFFFF' : '#9CA3AF'
+                      }}
+                    >
+                      {t.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Fake table rows */}
-              {[
-                { id: 'TXN-4003', status: 'flagged', conf: 71 },
-                { id: 'TXN-4006', status: 'mismatched', conf: 48 },
-                { id: 'TXN-4001', status: 'matched', conf: 98 },
-              ].map(row => (
-                <div
-                  key={row.id}
+              {/* Real-time Ticker Simulation Window */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 16 }}>
+                <div>
+                  <div style={{ fontSize: '0.74rem', color: '#9CA3AF', marginBottom: 8 }}>RECONCILIATION RADAR</div>
+                  <div style={{ background: '#0D0D11', borderRadius: 14, padding: 14, border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: '0.75rem' }}>
+                      <span style={{ color: '#D1D5DB' }}>TXN-4001 HDFC ↔ Razorpay</span>
+                      <span style={{ color: '#10B981', fontWeight: 700 }}>98% MATCH</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: '0.75rem' }}>
+                      <span style={{ color: '#D1D5DB' }}>TXN-4003 ICICI ↔ Razorpay (Fee)</span>
+                      <span style={{ color: '#F59E0B', fontWeight: 700 }}>71% FLAGGED</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
+                      <span style={{ color: '#D1D5DB' }}>TXN-4006 Axis ↔ Razorpay (₹1,700)</span>
+                      <span style={{ color: '#EF4444', fontWeight: 700 }}>48% MISMATCH</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style={{ fontSize: '0.74rem', color: '#9CA3AF', marginBottom: 8 }}>HEALTH SCORE METER</div>
+                  <div style={{ background: '#0D0D11', borderRadius: 14, padding: 14, border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+                    <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#FE4A23', lineHeight: 1 }}>92</div>
+                    <div style={{ fontSize: '0.72rem', color: '#10B981', fontWeight: 700, marginTop: 4 }}>GRADE A (OPTIMAL)</div>
+                    <div style={{ fontSize: '0.68rem', color: '#6B7280', marginTop: 2 }}>Sub-second resolution velocity</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Quick Controls */}
+              <div style={{ display: 'flex', gap: 10, marginTop: 16 }}>
+                <Link
+                  href="/dashboard/reconciliation"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '7px 8px',
-                    borderRadius: 6,
-                    background: 'var(--bg)',
-                    marginBottom: 4,
-                    gap: 10,
+                    flex: 1,
+                    textDecoration: 'none',
+                    background: '#FE4A23',
+                    color: '#FFFFFF',
+                    padding: '9px',
+                    borderRadius: 10,
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    textAlign: 'center'
                   }}
                 >
-                  <span className="font-mono-id" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{row.id}</span>
-                  <div
-                    style={{
-                      height: 4,
-                      flex: 1,
-                      background: 'var(--border-strong)',
-                      borderRadius: 100,
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: '100%',
-                        width: `${row.conf}%`,
-                        background: row.conf >= 85 ? 'var(--success)' : row.conf >= 60 ? 'var(--warning)' : 'var(--critical)',
-                        borderRadius: 100,
-                      }}
-                    />
-                  </div>
-                  <span
-                    style={{
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      background: row.status === 'matched' ? 'var(--success)' : row.status === 'flagged' ? 'var(--warning)' : 'var(--critical)',
-                      flexShrink: 0,
-                    }}
-                  />
-                </div>
-              ))}
+                  Inspect Live Ticker
+                </Link>
+                <Link
+                  href="/portal"
+                  style={{
+                    flex: 1,
+                    textDecoration: 'none',
+                    background: 'rgba(255,255,255,0.06)',
+                    color: '#FFFFFF',
+                    padding: '9px',
+                    borderRadius: 10,
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    textAlign: 'center'
+                  }}
+                >
+                  Stream 10K Rows
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Phone mockup — Settlement Q&A */}
+          {/* Mobile Phone Mockup Frame */}
           <div
-            className="card"
-            style={{ padding: '16px', maxWidth: 280, margin: '0 auto', width: '100%' }}
+            style={{
+              background: '#FFFFFF',
+              borderRadius: 36,
+              padding: '18px',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+              border: '6px solid #0D0D11',
+              maxWidth: 320,
+              margin: '0 auto'
+            }}
           >
-            <p style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: 12 }}>
-              Settlement Q&A
-            </p>
+            {/* Phone Dynamic Island */}
+            <div style={{ width: 80, height: 18, background: '#0D0D11', borderRadius: 999, margin: '0 auto 18px' }} />
 
-            {/* Chat messages */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div
-                style={{
-                  background: 'var(--brand)',
-                  color: '#fff',
-                  borderRadius: '12px 12px 4px 12px',
-                  padding: '8px 10px',
-                  fontSize: '0.75rem',
-                  lineHeight: 1.5,
-                  alignSelf: 'flex-end',
-                  maxWidth: '85%',
-                }}
-              >
-                Why is this settlement short by ₹60?
+            <div style={{ padding: '0 6px' }}>
+              <div style={{ fontSize: '0.74rem', color: '#6B7280', fontWeight: 700 }}>CASHFLOW FORECAST</div>
+              <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11', marginTop: 2 }}>
+                ₹8,42,510
               </div>
-              <div
-                style={{
-                  background: 'var(--bg)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px 12px 12px 4px',
-                  padding: '8px 10px',
-                  fontSize: '0.75rem',
-                  lineHeight: 1.55,
-                  color: 'var(--text)',
-                  maxWidth: '90%',
-                }}
-              >
-                The ₹60 difference matches two gateway processing fees (₹12 each) plus a ₹36 late settlement surcharge. Confidence 88%.
-                <div style={{ marginTop: 6, display: 'flex', gap: 4 }}>
-                  <span
+              <div style={{ fontSize: '0.72rem', color: '#10B981', fontWeight: 700, marginBottom: 14 }}>
+                +14.2% projected (90% Conf.)
+              </div>
+
+              {/* Mini Prophet bars */}
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 75, marginBottom: 16 }}>
+                {[35, 55, 42, 70, 85, 60, 92].map((val, idx) => (
+                  <div
+                    key={idx}
                     style={{
-                      fontSize: '0.65rem',
-                      background: 'var(--brand-dim)',
-                      color: 'var(--brand)',
-                      border: '1px solid var(--brand)',
-                      borderRadius: 100,
-                      padding: '1px 6px',
-                      fontFamily: 'monospace',
+                      flex: 1,
+                      height: `${val}%`,
+                      borderRadius: 4,
+                      background: idx === 6 ? '#FE4A23' : '#FFD028'
                     }}
-                  >
-                    TXN-4009
-                  </span>
-                </div>
+                  />
+                ))}
               </div>
+
+              <div style={{ background: '#F6F6F9', borderRadius: 14, padding: 12, marginBottom: 12 }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#0D0D11' }}>Night-Shift Autonomous</div>
+                <div style={{ fontSize: '0.66rem', color: '#6B7280', marginTop: 2 }}>02:00 AM IST scheduled run</div>
+              </div>
+
+              <Link
+                href="/dashboard/overview"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 6,
+                  textDecoration: 'none',
+                  background: '#0D0D11',
+                  color: '#FFFFFF',
+                  padding: '9px',
+                  borderRadius: 999,
+                  fontSize: '0.75rem',
+                  fontWeight: 700
+                }}
+              >
+                <span>Open Controller</span>
+                <ArrowRight size={12} />
+              </Link>
             </div>
           </div>
         </div>

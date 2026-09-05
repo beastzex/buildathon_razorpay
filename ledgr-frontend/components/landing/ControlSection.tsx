@@ -1,140 +1,201 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
-const FEATURES = [
-  {
-    title: 'Explainable exceptions',
-    description:
-      'Every flagged record comes with a plain-language reason — amount difference, date lag, fee deduction — so your team knows exactly what to check. No black boxes.',
-    detail: (
-      <div
-        style={{
-          marginTop: 16,
-          padding: '12px 14px',
-          background: 'var(--bg)',
-          borderRadius: 8,
-          borderLeft: '3px solid var(--warning)',
-          fontSize: '0.8rem',
-          color: 'var(--text-muted)',
-          lineHeight: 1.6,
-        }}
-      >
-        &ldquo;Amount differs by ₹12.00 — likely a gateway processing fee. Confidence 71%, below auto-match threshold.&rdquo;
-      </div>
-    ),
-  },
-  {
-    title: 'Hash-chained audit trail',
-    description:
-      'Every ingestion, match, escalation, and resolution is written to an append-only, hash-chained log. Tamper-evident by design. One click to export for compliance.',
-    detail: (
-      <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        {['AE-003', 'AE-004', 'AE-005'].map((id, i) => (
-          <div
-            key={id}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              padding: '7px 10px',
-              background: 'var(--bg)',
-              borderRadius: 6,
-              border: '1px solid var(--border)',
-            }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
-              {i < 2 && <div style={{ width: 1, height: 12, background: 'var(--border)', marginTop: 2 }} />}
-            </div>
-            <span className="font-mono-id" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-              {id}
-            </span>
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-faint)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {id === 'AE-003' ? 'Match complete — 97.4%' : id === 'AE-004' ? 'TXN-4003 escalated' : 'TXN-4006 confirmed mismatch'}
-            </span>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-];
+import React from 'react';
+import Link from 'next/link';
+import {
+  ShieldCheck,
+  Search,
+  CheckCircle2,
+  AlertTriangle,
+  ArrowRight,
+  TrendingUp,
+  Activity,
+  ArrowUpRight,
+  Sparkles
+} from 'lucide-react';
 
 export function ControlSection() {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-
-    const run = async () => {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.set(cardsRef.current, { y: 50, opacity: 0 });
-      ScrollTrigger.create({
-        trigger: cardsRef.current[0],
-        start: 'top 80%',
-        onEnter: () => {
-          gsap.to(cardsRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: 'power3.out',
-          });
-        },
-        once: true,
-      });
-    };
-
-    run();
-  }, []);
-
   return (
     <section
+      id="forecasting"
       style={{
-        padding: '100px 5%',
-        background: 'var(--surface)',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
+        padding: '90px 24px 100px',
+        maxWidth: 1240,
+        margin: '0 auto',
+        position: 'relative'
       }}
-      aria-label="Product features"
+      aria-label="Root Cause and Health Intelligence"
     >
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ marginBottom: 48, maxWidth: 560 }}>
-          <h2
-            className="font-display"
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', color: 'var(--text)', marginBottom: 14 }}
-          >
-            Full control over your data.
-          </h2>
-          <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-            Reconciliation that holds up to audit. Every decision is explainable and every record is traceable.
-          </p>
+      <div style={{ textAlign: 'center', marginBottom: 54 }}>
+        <h2
+          style={{
+            fontFamily: "'Urbanist', sans-serif",
+            fontSize: 'clamp(2.2rem, 4.2vw, 3.5rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.04em',
+            color: '#0D0D11',
+            lineHeight: 1.1,
+            margin: '0 auto 14px'
+          }}
+        >
+          We give you actionable financial intelligence
+        </h2>
+        <p style={{ fontSize: '1.05rem', color: '#6B7280', maxWidth: 640, margin: '0 auto', lineHeight: 1.5 }}>
+          Investigate systemic anomalies with multi-hop forensic reasoning and track your overall ledger integrity with real-time composite health scoring.
+        </p>
+      </div>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 1fr',
+          gap: 24,
+          alignItems: 'stretch'
+        }}
+      >
+        {/* Card 1: Multi-Hop Root Cause Forensic Agent */}
+        <div
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 28,
+            padding: 36,
+            border: '1px solid rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 10px 36px rgba(0, 0, 0, 0.04)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', color: '#FE4A23', background: 'rgba(254,74,35,0.1)', padding: '3px 10px', borderRadius: 999 }}>
+                MULTI-HOP FORENSIC REASONING
+              </span>
+            </div>
+            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.6rem', fontWeight: 800, color: '#0D0D11', letterSpacing: '-0.03em', marginBottom: 10 }}>
+              Root-Cause Chain Agent
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: '#6B7280', lineHeight: 1.5, marginBottom: 20 }}>
+              Instead of flagging anomalies in isolation, Ledgr traverses related counterparties, fees, and timestamps across 4 iterations to isolate the underlying systemic flaw.
+            </p>
+
+            {/* Forensic investigation preview */}
+            <div style={{ background: '#F6F6F9', borderRadius: 16, padding: 18, border: '1px solid rgba(0,0,0,0.04)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#FE4A23' }} />
+                <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#0D0D11' }}>PATTERN RC-7001: 2.0% GATEWAY INTERCHANGE DRIFT</span>
+              </div>
+              <p style={{ fontSize: '0.8rem', color: '#4B5563', margin: '0 0 10px', lineHeight: 1.4 }}>
+                15 transactions affected (Dunzo & Cleartrip). Root cause: Payment gateway adjusted fee tier from 1.8% to 2.0% without ERP synchronization.
+              </p>
+              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: 4, background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', fontWeight: 600 }}>
+                  15/15 Precision Recall
+                </span>
+                <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: 4, background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', fontWeight: 600 }}>
+                  0 Hallucinated IDs
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: '0.8rem', color: '#6B7280' }}>1-Click Bulk Exception Resolution</span>
+            <Link
+              href="/dashboard/exceptions"
+              style={{
+                textDecoration: 'none',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                color: '#FE4A23',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4
+              }}
+            >
+              <span>View Exception Chains</span>
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-          {FEATURES.map((feature, i) => (
-            <div
-              key={feature.title}
-              ref={el => { cardsRef.current[i] = el; }}
-              className="card"
-              style={{ padding: '28px 28px' }}
-            >
-              <h3
-                className="font-display-md"
-                style={{ fontSize: '1.1875rem', color: 'var(--text)', marginBottom: 10 }}
-              >
-                {feature.title}
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                {feature.description}
-              </p>
-              {feature.detail}
+        {/* Card 2: Financial Health Score Composite Metric */}
+        <div
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 28,
+            padding: 36,
+            border: '1px solid rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 10px 36px rgba(0, 0, 0, 0.04)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', color: '#10B981', background: 'rgba(16,185,129,0.1)', padding: '3px 10px', borderRadius: 999 }}>
+                COMPOSITE LEDGER INTEGRITY
+              </span>
             </div>
-          ))}
+            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.6rem', fontWeight: 800, color: '#0D0D11', letterSpacing: '-0.03em', marginBottom: 10 }}>
+              Financial Health Score
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: '#6B7280', lineHeight: 1.5, marginBottom: 20 }}>
+              Transparent mathematical combination of match rate (35%), amount accuracy (30%), aging velocity (20%), and fee tolerance (15%).
+            </p>
+
+            {/* Health Score Radial Gauge Simulation */}
+            <div style={{ background: '#F6F6F9', borderRadius: 16, padding: 20, textAlign: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20 }}>
+                <div style={{ position: 'relative', width: 84, height: 84 }}>
+                  <svg width="84" height="84" viewBox="0 0 84 84">
+                    <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(0,0,0,0.06)" strokeWidth="8" />
+                    <circle
+                      cx="42"
+                      cy="42"
+                      r="34"
+                      fill="none"
+                      stroke="#FE4A23"
+                      strokeWidth="8"
+                      strokeDasharray="213.6"
+                      strokeDashoffset="17"
+                      strokeLinecap="round"
+                      transform="rotate(-90 42 42)"
+                    />
+                  </svg>
+                  <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 900, color: '#0D0D11' }}>
+                    92
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0D0D11' }}>Grade A+ (Optimal)</div>
+                  <div style={{ fontSize: '0.75rem', color: '#10B981', fontWeight: 700 }}>+4 pts historical trend</div>
+                  <div style={{ fontSize: '0.72rem', color: '#6B7280', marginTop: 2 }}>Sub-second audit verification</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 24, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: '0.8rem', color: '#6B7280' }}>Platform Multi-Merchant View</span>
+            <Link
+              href="/dashboard/portfolio"
+              style={{
+                textDecoration: 'none',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                color: '#FE4A23',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4
+              }}
+            >
+              <span>10-Merchant Fleet</span>
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

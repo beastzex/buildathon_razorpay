@@ -105,10 +105,32 @@ export function ReconciliationScreen() {
             <span>📋</span>
             Browse Records Table ({records.length})
           </button>
+
+          <a
+            href="/portal"
+            id="tab-stream-portal"
+            style={{
+              padding: '8px 18px',
+              borderRadius: 8,
+              border: '1px solid rgba(254, 74, 35, 0.3)',
+              fontSize: '0.875rem',
+              fontWeight: 700,
+              textDecoration: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              background: 'rgba(254, 74, 35, 0.08)',
+              color: '#FE4A23',
+            }}
+          >
+            <span>⚡</span>
+            Stream 10,000 External Rows (Portal)
+          </a>
         </div>
 
         <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-          Active Batch: <strong style={{ color: 'var(--text)' }}>Batch #214</strong>
+          Active Batch: <strong style={{ color: 'var(--text)' }}>Batch #214 / #STREAM</strong>
         </span>
       </div>
 

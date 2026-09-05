@@ -1,150 +1,265 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React from 'react';
+import Link from 'next/link';
+import {
+  Zap,
+  Sparkles,
+  ShieldCheck,
+  TrendingUp,
+  BrainCircuit,
+  MessageSquare,
+  Search,
+  Scale,
+  ArrowUpRight,
+  BarChart3,
+  CheckCircle2
+} from 'lucide-react';
 
 export function ProductExplainer() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const pillRef = useRef<HTMLSpanElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const supportRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const run = async () => {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
-
-      if (!prefersReduced) {
-        // Scroll-scrubbed pill sliding in from left
-        gsap.set(pillRef.current, { x: -180, opacity: 0 });
-
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'top 20%',
-          scrub: 1,
-          onUpdate: self => {
-            if (pillRef.current) {
-              const p = self.progress;
-              pillRef.current.style.transform = `translateX(${-180 * (1 - p)}px)`;
-              pillRef.current.style.opacity = String(Math.min(p * 2, 1));
-            }
-          },
-        });
-
-        // Regular reveals
-        gsap.set([textRef.current, supportRef.current], { y: 40, opacity: 0 });
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          onEnter: () => {
-            gsap.to([textRef.current, supportRef.current], {
-              y: 0,
-              opacity: 1,
-              duration: 0.7,
-              stagger: 0.15,
-              ease: 'power3.out',
-            });
-          },
-          once: true,
-        });
-      }
-    };
-
-    run();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
+      id="features"
       style={{
-        padding: '100px 5%',
-        background: 'var(--surface)',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
+        padding: '90px 24px 100px',
+        maxWidth: 1240,
+        margin: '0 auto',
+        position: 'relative'
       }}
-      aria-label="How matching works"
+      aria-label="Features & Capabilities"
     >
-      <div style={{ maxWidth: 840, margin: '0 auto' }}>
-        <div ref={textRef}>
-          <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: 20, lineHeight: 1.6 }}>
-            Matching that understands{' '}
-            <span style={{ color: 'var(--brand)', fontWeight: 600 }}>messy data</span>
-          </p>
-
-          <h2
-            className="font-display"
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', color: 'var(--text)', marginBottom: 28, lineHeight: 1.1 }}
-          >
-            Every match passes through our{' '}
-            <span
-              ref={pillRef}
-              style={{
-                display: 'inline-block',
-                background: 'var(--warning-dim)',
-                color: 'var(--warning)',
-                border: '1px solid var(--warning)',
-                borderRadius: 100,
-                padding: '2px 14px',
-                fontSize: '0.7em',
-                fontWeight: 700,
-                verticalAlign: 'middle',
-                letterSpacing: '0.01em',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              two-stage confidence gate
-            </span>{' '}
-            before it is trusted.
-          </h2>
-        </div>
-
-        <div ref={supportRef} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 8 }}>
-          <div
+      {/* Top Headline with Ramos-style circular badges */}
+      <div style={{ marginBottom: 50 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+          <span
             style={{
-              padding: '24px',
-              background: 'var(--bg)',
-              borderRadius: 12,
-              border: '1px solid var(--border)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              background: '#FE4A23',
+              boxShadow: '0 4px 12px rgba(254,74,35,0.4)'
             }}
           >
-            <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>
-              Stage 1 — semantic similarity
-            </p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>
-              An embedding model checks whether two records describe the same economic event — regardless of how each source phrases it.
-            </p>
-          </div>
-          <div
+            <Zap size={16} color="#FFFFFF" fill="#FFFFFF" />
+          </span>
+          <span
             style={{
-              padding: '24px',
-              background: 'var(--bg)',
-              borderRadius: 12,
-              border: '1px solid var(--border)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              background: '#FFD028',
+              boxShadow: '0 4px 12px rgba(255,208,40,0.4)'
             }}
           >
-            <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>
-              Stage 2 — deterministic rules
-            </p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>
-              Amount tolerance, date window, reference prefix matching. Both stages must agree before a record is auto-resolved.
-            </p>
-          </div>
+            <Sparkles size={16} color="#0D0D11" />
+          </span>
+          <span
+            style={{
+              fontSize: '0.84rem',
+              fontWeight: 800,
+              color: '#FE4A23',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase'
+            }}
+          >
+            ACTIONABLE RECONCILIATION INTELLIGENCE
+          </span>
         </div>
 
-        <p
+        <h2
           style={{
-            marginTop: 28,
-            fontSize: '1rem',
-            color: 'var(--text-muted)',
-            lineHeight: 1.75,
-            maxWidth: 680,
+            fontFamily: "'Urbanist', sans-serif",
+            fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.04em',
+            color: '#0D0D11',
+            lineHeight: 1.08,
+            maxWidth: 820
           }}
         >
-          Anything that falls below the confidence threshold goes to a human-readable explanation — not a black box error code.
-        </p>
+          Maximize efficiency with our autonomous AI relay
+        </h2>
+      </div>
+
+      {/* 3-Card Bento Grid */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 24
+        }}
+      >
+        {/* Bento 1: 8-Agent Relay & Consensus */}
+        <div
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 24,
+            padding: 32,
+            border: '1px solid rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          <div>
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 14,
+                background: 'rgba(254, 74, 35, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 20
+              }}
+            >
+              <BrainCircuit size={22} color="#FE4A23" />
+            </div>
+            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
+              8-Agent Relay Pipeline
+            </h3>
+            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
+              Ingestion, Normalization, Neural Matcher, Rule Verifier, Detective, Debate, Explainer, and Auditor execute in visible synchronized sequence.
+            </p>
+          </div>
+
+          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
+            <div style={{ fontSize: '0.74rem', color: '#9CA3AF', fontWeight: 700, marginBottom: 8 }}>RELAY STAGES</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {['Ingest', 'Normalize', 'Match', 'Verify', 'Detective', 'Debate', 'Explain', 'Audit'].map((agent, i) => (
+                <span
+                  key={agent}
+                  style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    padding: '3px 8px',
+                    borderRadius: 6,
+                    background: i < 4 ? '#0D0D11' : '#FE4A23',
+                    color: '#FFFFFF'
+                  }}
+                >
+                  {agent}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bento 2: 2-Round Multi-Agent Debate */}
+        <div
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 24,
+            padding: 32,
+            border: '1px solid rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          <div>
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 14,
+                background: 'rgba(255, 208, 40, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 20
+              }}
+            >
+              <Scale size={22} color="#D97706" />
+            </div>
+            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
+              Debate & Consensus Engine
+            </h3>
+            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
+              When rule verifiers and vector matchers disagree, two specialized agents argue evidence over two rounds until reaching mathematical consensus.
+            </p>
+          </div>
+
+          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+              <span style={{ fontSize: '0.74rem', color: '#6B7280' }}>Dispute Resolution Rate</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#10B981' }}>94.2%</span>
+            </div>
+            <div style={{ width: '100%', height: 6, background: 'rgba(0,0,0,0.06)', borderRadius: 999, overflow: 'hidden' }}>
+              <div style={{ width: '94.2%', height: '100%', background: '#10B981', borderRadius: 999 }} />
+            </div>
+          </div>
+        </div>
+
+        {/* Bento 3: Meta Prophet Forecasting */}
+        <div
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 24,
+            padding: 32,
+            border: '1px solid rgba(0, 0, 0, 0.06)',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          <div>
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 14,
+                background: 'rgba(16, 185, 129, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 20
+              }}
+            >
+              <TrendingUp size={22} color="#10B981" />
+            </div>
+            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
+              Prophet Cash-Flow Engine
+            </h3>
+            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
+              7/30-day forward projections with 90% confidence uncertainty bounds grounded in scheduled payrolls, tax sweeps, and settlement dips.
+            </p>
+          </div>
+
+          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Horizon Confidence</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0D0D11' }}>90% Lower/Upper</div>
+              </div>
+              <Link
+                href="/dashboard/overview"
+                style={{
+                  textDecoration: 'none',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  color: '#FE4A23',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 3
+                }}
+              >
+                <span>Forecasts</span>
+                <ArrowUpRight size={13} />
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

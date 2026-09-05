@@ -1,16 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* ─── Design tokens — dark mode (default) ─── */
+/* ─── Design tokens — Ramos theme default (warm off-white & charcoal) ─── */
 :root,
+[data-theme="light"] {
+  --bg: #F6F6F9;
+  --surface: #FFFFFF;
+  --surface-hover: #F0F0F5;
+  --surface-dark: #0D0D11;
+  --surface-dark-text: #FFFFFF;
+  --brand: #FE4A23;
+  --brand-dim: rgba(254, 74, 35, 0.12);
+  --brand-hover: #E33E18;
+  --accent-yellow: #FFD028;
+  --accent-yellow-dim: rgba(255, 208, 40, 0.14);
+  --data: #FE4A23;
+  --data-dim: rgba(254, 74, 35, 0.10);
+  --warning: #F59E0B;
+  --warning-dim: rgba(245, 158, 11, 0.12);
+  --critical: #EF4444;
+  --critical-dim: rgba(239, 68, 68, 0.12);
+  --success: #10B981;
+  --success-dim: rgba(16, 185, 129, 0.12);
+  --text: #0E0F14;
+  --text-muted: #6B7280;
+  --text-faint: #9CA3AF;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --card-shadow: 0 6px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --pill-bg: #FFFFFF;
+}
+
+/* ─── Dark mode option ─── */
 [data-theme="dark"] {
-  --bg: #0A0E1A;
-  --surface: #131826;
-  --surface-hover: #1a2035;
-  --brand: #4F5EFF;
-  --brand-dim: rgba(79, 94, 255, 0.12);
-  --data: #3ABFF8;
-  --data-dim: rgba(58, 191, 248, 0.12);
+  --bg: #0C0D12;
+  --surface: #14151B;
+  --surface-hover: #1D1E26;
+  --surface-dark: #070709;
+  --surface-dark-text: #FFFFFF;
+  --brand: #FE4A23;
+  --brand-dim: rgba(254, 74, 35, 0.16);
+  --brand-hover: #FF5D38;
+  --accent-yellow: #FFD028;
+  --accent-yellow-dim: rgba(255, 208, 40, 0.15);
+  --data: #FE4A23;
+  --data-dim: rgba(254, 74, 35, 0.12);
   --warning: #F5A623;
   --warning-dim: rgba(245, 166, 35, 0.12);
   --critical: #F0555A;
@@ -18,36 +53,13 @@
   --success: #34d399;
   --success-dim: rgba(52, 211, 153, 0.12);
   --text: #F4F5F7;
-  --text-muted: #8A93A6;
-  --text-faint: #4a5568;
+  --text-muted: #9CA3AF;
+  --text-faint: #4B5563;
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.16);
-  --shadow: none;
-  --card-shadow: none;
-}
-
-/* ─── Light mode ─── */
-[data-theme="light"] {
-  --bg: #FAFAFC;
-  --surface: #FFFFFF;
-  --surface-hover: #F3F4F8;
-  --brand: #4338CA;
-  --brand-dim: rgba(67, 56, 202, 0.08);
-  --data: #0E7C9E;
-  --data-dim: rgba(14, 124, 158, 0.08);
-  --warning: #B5720A;
-  --warning-dim: rgba(181, 114, 10, 0.08);
-  --critical: #C23B3F;
-  --critical-dim: rgba(194, 59, 63, 0.08);
-  --success: #047857;
-  --success-dim: rgba(4, 120, 87, 0.08);
-  --text: #1A1F2E;
-  --text-muted: #6B7280;
-  --text-faint: #9ca3af;
-  --border: rgba(10, 14, 26, 0.08);
-  --border-strong: rgba(10, 14, 26, 0.16);
-  --shadow: 0 1px 3px rgba(10, 14, 26, 0.06), 0 4px 16px rgba(10, 14, 26, 0.04);
-  --card-shadow: 0 2px 8px rgba(10, 14, 26, 0.06), 0 8px 24px rgba(10, 14, 26, 0.04);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --pill-bg: #1A1B22;
 }
 
 /* ─── Base reset & globals ─── */
@@ -78,14 +90,14 @@ body {
 
 /* ─── Typography ─── */
 .font-display {
-  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-family: 'Urbanist', 'Inter', sans-serif;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 
 .font-display-md {
-  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-family: 'Urbanist', 'Inter', sans-serif;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
