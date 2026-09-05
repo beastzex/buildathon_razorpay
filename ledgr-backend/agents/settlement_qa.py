@@ -193,47 +193,39 @@ class SettlementQAAgent:
         retrieved = self.retrieve(query, batch_id, top_k=6)
         retrieved_ids = [r.get("id") for r in retrieved if r.get("id")]
 
-        groq_api_key = os.getenv("GROQ_API_KEY", "").strip()
-        if not groq_api_key or groq_api_key == "your_groq_api_key_here":
-            # Deterministic fallback answer based on retrieved records
+        from agents.groq_client import call_groq_chat_completion, is_groq_circuit_open
+
+        if is_groq_circuit_open():
             return self._build_deterministic_response(query, retrieved, retrieved_ids)
 
-        try:
-            from groq import Groq
-            client = Groq(api_key=groq_api_key, timeout=GROQ_TIMEOUT_SECONDS)
+        context_str = json.dumps(retrieved, indent=2)
+        user_content = (
+            f"Question: {query}\n\n"
+            f"Retrieved Batch Context (Batch {batch_id}):\n{context_str}\n\n"
+            f"Provide a grounded, professional response with transaction citations."
+        )
 
-            context_str = json.dumps(retrieved, indent=2)
-            user_content = (
-                f"Question: {query}\n\n"
-                f"Retrieved Batch Context (Batch {batch_id}):\n{context_str}\n\n"
-                f"Provide a grounded, professional response with transaction citations."
-            )
+        data = call_groq_chat_completion(
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT_QA},
+                {"role": "user", "content": user_content}
+            ],
+            model=GROQ_MODEL,
+            json_mode=True,
+            temperature=0.1,
+            max_tokens=1500,
+            timeout=GROQ_TIMEOUT_SECONDS
+        )
 
-            response = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT_QA},
-                    {"role": "user", "content": user_content}
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.1,
-                max_tokens=1500
-            )
-
-            data = json.loads(response.choices[0].message.content)
-            answer_text = data.get("answer", "")
-            citations = data.get("citations", retrieved_ids[:3])
-
+        if data and isinstance(data, dict) and data.get("answer"):
             return QAResponse(
-                answer=answer_text,
-                citations=citations,
+                answer=data.get("answer", ""),
+                citations=data.get("citations", retrieved_ids[:3]),
                 retrieved_record_ids=retrieved_ids,
                 status="ok"
             )
 
-        except Exception as e:
-            logger.error(f"Groq Q&A call failed: {e}. Falling back to grounded retrieval summary.")
-            return self._build_deterministic_response(query, retrieved, retrieved_ids)
+        return self._build_deterministic_response(query, retrieved, retrieved_ids)
 
     def _build_deterministic_response(
         self,

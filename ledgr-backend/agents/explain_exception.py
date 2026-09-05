@@ -127,11 +127,11 @@ def explain_exception(
     Escalates an ambiguous/mismatched record pair to Groq openai/gpt-oss-120b.
     Implements 8s timeout, circuit-breaker retry cap (max 1), and structured output validation.
     """
-    groq_api_key = os.getenv("GROQ_API_KEY", "").strip()
-    if not groq_api_key or groq_api_key == "your_groq_api_key_here":
-        logger.warning("GROQ_API_KEY not set. Using structured deterministic fallback.")
+    from agents.groq_client import call_groq_chat_completion, is_groq_circuit_open
+
+    if is_groq_circuit_open():
         return generate_fallback_explanation(
-            record_a, record_b, match_details, error_msg="GROQ_API_KEY not configured"
+            record_a, record_b, match_details, error_msg="Groq rate limit circuit breaker active"
         )
 
     user_payload = {
@@ -153,30 +153,24 @@ def explain_exception(
         "rule_verification": match_details.get("rule_breakdown")
     }
 
-    try:
-        from groq import Groq
-        client = Groq(api_key=groq_api_key, timeout=GROQ_TIMEOUT_SECONDS)
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {
+            "role": "user",
+            "content": f"Analyze this reconciliation discrepancy and explain it:\n{json.dumps(user_payload, indent=2)}"
+        }
+    ]
 
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {
-                "role": "user",
-                "content": f"Analyze this reconciliation discrepancy and explain it:\n{json.dumps(user_payload, indent=2)}"
-            }
-        ]
+    data = call_groq_chat_completion(
+        messages=messages,
+        model=GROQ_MODEL,
+        json_mode=True,
+        temperature=0.1,
+        max_tokens=1500,
+        timeout=GROQ_TIMEOUT_SECONDS
+    )
 
-        logger.info(f"Calling Groq ({GROQ_MODEL}) with 8s timeout...")
-        response = client.chat.completions.create(
-            model=GROQ_MODEL,
-            messages=messages,
-            response_format={"type": "json_object"},
-            temperature=0.1,
-            max_tokens=1500
-        )
-
-        content = response.choices[0].message.content
-        data = json.loads(content)
-
+    if data and isinstance(data, dict) and data.get("explanation"):
         return ExceptionExplanation(
             explanation=data.get("explanation", ""),
             suggested_resolution=data.get("suggested_resolution", ""),
@@ -184,12 +178,10 @@ def explain_exception(
             explanation_status="ok"
         )
 
-    except Exception as e:
-        logger.error(f"Groq exception explanation call failed or timed out: {e}")
-        # Demonstrable fallback behavior: mark unavailable and route to manual review
-        return generate_fallback_explanation(
-            record_a, record_b, match_details, error_msg=str(e)
-        )
+    # Demonstrable fallback behavior: mark unavailable and route to manual review
+    return generate_fallback_explanation(
+        record_a, record_b, match_details, error_msg="Groq unreachable or rate limited"
+    )
 
 
 if __name__ == "__main__":

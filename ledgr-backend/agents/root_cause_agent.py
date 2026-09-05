@@ -184,24 +184,15 @@ class RootCauseAgent:
         self.name = "Root-Cause Chain Agent"
 
     def _call_groq_json(self, messages: List[Dict[str, str]]) -> Optional[Dict[str, Any]]:
-        api_key = os.getenv("GROQ_API_KEY", "").strip()
-        if not api_key or api_key == "your_groq_api_key_here":
-            return None
-
-        try:
-            from groq import Groq
-            client = Groq(api_key=api_key, timeout=GROQ_TIMEOUT)
-            resp = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=messages,
-                response_format={"type": "json_object"},
-                temperature=0.1,
-                max_tokens=900
-            )
-            return json.loads(resp.choices[0].message.content)
-        except Exception as e:
-            logger.warning(f"RootCauseAgent Groq call failed or timed out: {e}")
-            return None
+        from agents.groq_client import call_groq_chat_completion
+        return call_groq_chat_completion(
+            messages=messages,
+            model=GROQ_MODEL,
+            json_mode=True,
+            temperature=0.1,
+            max_tokens=900,
+            timeout=GROQ_TIMEOUT
+        )
 
     def should_investigate(self, seed_record: Dict[str, Any], batch_exceptions: List[Dict[str, Any]]) -> Tuple[bool, str, List[Dict[str, Any]]]:
         """

@@ -248,24 +248,18 @@ def query_wealth_advisor(req: WealthAdvisorQuery) -> WealthAdvisorResponse:
     ]
     buffer_rec = 3_200_000.0
 
-    if groq_key and groq_key != "mock_key_for_ci_skip":
-        try:
-            from groq import Groq
-            client = Groq(api_key=groq_key)
-            resp = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": context_summary}
-                ],
-                temperature=0.2,
-                max_tokens=600
-            )
-            raw_answer = resp.choices[0].message.content
-            if raw_answer:
-                answer_text = raw_answer
-        except Exception as e:
-            logger.warning(f"Groq API call in Wealth Advisor failed: {e}")
+    from agents.groq_client import call_groq_chat_completion
+    groq_resp = call_groq_chat_completion(
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": context_summary}
+        ],
+        json_mode=False,
+        temperature=0.2,
+        max_tokens=600
+    )
+    if groq_resp and groq_resp.get("content"):
+        answer_text = groq_resp["content"]
 
     if not answer_text:
         q_lower = req.query.lower()

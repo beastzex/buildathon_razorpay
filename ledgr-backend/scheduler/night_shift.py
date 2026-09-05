@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, desc
+from sqlalchemy import select, desc, delete
 
 from api.models import Batch, Record, Match, ExceptionRecord, AuditLogEntry, NightShiftRun
 from agents.pipeline.orchestrator import PipelineOrchestrator
@@ -56,6 +56,12 @@ async def run_autonomous_cycle(batch_id: str, db: AsyncSession) -> NightShiftDig
     # 2. Fetch records and build pairs
     rec_res = await db.execute(select(Record).where(Record.batch_id == batch_id))
     all_records = rec_res.scalars().all()
+
+    # Clear prior matches & exceptions for this batch to ensure idempotent execution
+    await db.execute(delete(ExceptionRecord).where(ExceptionRecord.batch_id == batch_id))
+    await db.execute(delete(Match).where(Match.batch_id == batch_id))
+    await db.commit()
+
     pairs_map: Dict[str, Dict[str, Record]] = {}
     batch_records_pool = []
     

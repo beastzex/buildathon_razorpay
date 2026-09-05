@@ -43,27 +43,18 @@ class DebateAgent:
         self.name = "Debate Agent"
 
     def _call_groq_json(self, system_prompt: str, user_prompt: str) -> Optional[Dict[str, Any]]:
-        api_key = os.getenv("GROQ_API_KEY", "").strip()
-        if not api_key or api_key == "your_groq_api_key_here":
-            return None
-
-        try:
-            from groq import Groq
-            client = Groq(api_key=api_key, timeout=GROQ_TIMEOUT)
-            resp = client.chat.completions.create(
-                model=GROQ_MODEL,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.2,
-                max_tokens=800
-            )
-            return json.loads(resp.choices[0].message.content)
-        except Exception as e:
-            logger.warning(f"DebateAgent Groq call failed or timed out: {e}")
-            return None
+        from agents.groq_client import call_groq_chat_completion
+        return call_groq_chat_completion(
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            model=GROQ_MODEL,
+            json_mode=True,
+            temperature=0.2,
+            max_tokens=800,
+            timeout=GROQ_TIMEOUT
+        )
 
     def _deterministic_fallback(
         self,
