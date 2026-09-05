@@ -21,6 +21,7 @@
 | | Tabular ML | **XGBoost & Scikit-learn** | 2.0+ / 1.4+ | High-accuracy gradient boosted trees and Isolation Forest for tabular anomaly and fee pattern detection. |
 | | String Distance | **RapidFuzz** | 3.9+ | C++ accelerated Levenshtein and token-sort similarity for high-throughput string comparison. |
 | | LLM Reasoning | **Groq Cloud API** | `openai/gpt-oss-120b` | Ultra-low latency LLM inference (sub-1.5s TTFT) for real-time natural language exception reasoning. |
+| | Forecasting Engine | **Meta Prophet** | 1.4.0 | Robust additive time-series forecasting with automated day-of-week and monthly seasonality and 90% confidence bands. |
 | **Infra & DevOps**| Containerization | **Docker & Compose** | 29.4 / v5.1 | Multi-stage production container builds with health checks and zero manual state setup. |
 | | CI / CD | **GitHub Actions** | Ubuntu-latest | Automated unit, integration, and non-regression threshold assertion suites. |
 
@@ -44,3 +45,12 @@
 ### ADR 4: Why Dual Database Strategy (PostgreSQL + pgvector in Docker, SQLite async for local testing)?
 - **Frictionless Developer Experience**: Contributors can clone the repo and run `python -m pytest eval/` immediately without setting up a live PostgreSQL instance.
 - **Production Parity**: In Docker Compose, the system automatically uses PostgreSQL 16 with the native `pgvector` extension for production-grade transactional integrity and vector indexing.
+
+### ADR 5: Why Meta Prophet for Cash-Flow Forecasting?
+- **Interpretability & Seasonality**: Daily cash flow in Indian e-commerce exhibits strong day-of-week effects (weekend dips, Tuesday gateway settlements) and calendar-based recurring outflows (1st/15th hosting, 28th contractor payroll). Prophet natively models these additive components without requiring complex deep sequential architectures (LSTM/DeepAR) that are prone to overfitting short historical windows.
+- **Native Uncertainty Bounds**: Prophet directly outputs empirical 90% confidence bands $[\hat{y}_{\text{lower}}, \hat{y}_{\text{upper}}]$, providing risk controllers with explicit downside volatility bounds for working capital reserves.
+
+### ADR 6: Why the 4-Component Weighted Financial Health Score?
+- **Auditability**: Many financial dashboards display opaque "AI health ratings." Ledgr uses a transparent linear combination ($w_m=0.35, w_a=0.30, w_r=0.20, w_f=0.15$) directly tied to GAAP reconciler obligations: Match Coverage, Balance Sheet Integrity, Exception Resolution SLA (<24h), and Fee Schedule Compliance.
+- **Actionable Breakdown**: Every score change can be precisely attributed to the offending component via the interactive breakdown drawer.
+

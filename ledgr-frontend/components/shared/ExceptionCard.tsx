@@ -7,11 +7,13 @@ import { StatusDot } from './StatusDot';
 
 interface ExceptionCardProps {
   record: TransactionRecord;
+  pattern?: import('@/lib/api').RootCausePattern;
   onConfirm: (id: string) => void;
   onMismatch: (id: string) => void;
+  onOpenPatternModal?: (pattern: import('@/lib/api').RootCausePattern) => void;
 }
 
-export function ExceptionCard({ record, onConfirm, onMismatch }: ExceptionCardProps) {
+export function ExceptionCard({ record, pattern, onConfirm, onMismatch, onOpenPatternModal }: ExceptionCardProps) {
   const [leaving, setLeaving] = useState(false);
   const [showDebate, setShowDebate] = useState(false);
 
@@ -39,11 +41,32 @@ export function ExceptionCard({ record, onConfirm, onMismatch }: ExceptionCardPr
     >
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, gap: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <StatusDot status={record.status} showLabel={true} />
           <span className="font-mono-id" style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
             {record.id}
           </span>
+          {pattern && (
+            <button
+              onClick={() => onOpenPatternModal && onOpenPatternModal(pattern)}
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                padding: '3px 9px',
+                borderRadius: 4,
+                background: 'rgba(56, 189, 248, 0.12)',
+                color: '#38bdf8',
+                border: '1px solid rgba(56, 189, 248, 0.35)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+              }}
+            >
+              <span>✦</span>
+              <span>Part of a pattern — {pattern.affected_count} similar cases</span>
+            </button>
+          )}
           {dt && (
             <span
               style={{

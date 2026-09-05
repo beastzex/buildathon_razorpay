@@ -1,0 +1,182 @@
+[
+  {
+    "merchant_id": "m_swiggy_01",
+    "merchant_name": "Swiggy Bundl Technologies",
+    "industry": "Food Delivery & Quick Commerce",
+    "monthly_volume": 420000,
+    "daily_gmv_inr": 85000000.0,
+    "match_rate": 0.9428,
+    "anomaly_rate": 0.0253,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.923,
+      0.928,
+      0.933,
+      0.938,
+      0.943
+    ]
+  },
+  {
+    "merchant_id": "m_zomato_02",
+    "merchant_name": "Zomato Media Ltd",
+    "industry": "Food Delivery & Dining Out",
+    "monthly_volume": 380000,
+    "daily_gmv_inr": 79000000.0,
+    "match_rate": 0.9255,
+    "anomaly_rate": 0.0372,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.905,
+      0.91,
+      0.915,
+      0.92,
+      0.925
+    ]
+  },
+  {
+    "merchant_id": "m_nykaa_03",
+    "merchant_name": "Nykaa FSN E-Commerce",
+    "industry": "Beauty & Personal Care Retail",
+    "monthly_volume": 125000,
+    "daily_gmv_inr": 28000000.0,
+    "match_rate": 0.9147,
+    "anomaly_rate": 0.0518,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.895,
+      0.9,
+      0.905,
+      0.91,
+      0.915
+    ]
+  },
+  {
+    "merchant_id": "m_zepto_04",
+    "merchant_name": "Zepto KiranaCart Ltd",
+    "industry": "10-Minute Grocery Delivery",
+    "monthly_volume": 210000,
+    "daily_gmv_inr": 41000000.0,
+    "match_rate": 0.8978,
+    "anomaly_rate": 0.0559,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.878,
+      0.883,
+      0.888,
+      0.893,
+      0.898
+    ]
+  },
+  {
+    "merchant_id": "m_bookmyshow_05",
+    "merchant_name": "BookMyShow Bigtree Ent.",
+    "industry": "Entertainment & Live Ticketing",
+    "monthly_volume": 95000,
+    "daily_gmv_inr": 19000000.0,
+    "match_rate": 0.9184,
+    "anomaly_rate": 0.0353,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.898,
+      0.903,
+      0.908,
+      0.913,
+      0.918
+    ]
+  },
+  {
+    "merchant_id": "m_urbancompany_06",
+    "merchant_name": "Urban Company Home Services",
+    "industry": "On-Demand Home Services",
+    "monthly_volume": 75000,
+    "daily_gmv_inr": 14500000.0,
+    "match_rate": 0.8944,
+    "anomaly_rate": 0.0501,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.874,
+      0.879,
+      0.884,
+      0.889,
+      0.894
+    ]
+  },
+  {
+    "merchant_id": "m_licious_07",
+    "merchant_name": "Licious Delightful Gourmet",
+    "industry": "Fresh Meat & Gourmet Food",
+    "monthly_volume": 62000,
+    "daily_gmv_inr": 11000000.0,
+    "match_rate": 0.9005,
+    "anomaly_rate": 0.037,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.88,
+      0.885,
+      0.89,
+      0.895,
+      0.9
+    ]
+  },
+  {
+    "merchant_id": "m_bigbasket_08",
+    "merchant_name": "BigBasket Supermarket Groc.",
+    "industry": "Supermarket E-Commerce",
+    "monthly_volume": 180000,
+    "daily_gmv_inr": 36000000.0,
+    "match_rate": 0.923,
+    "anomaly_rate": 0.0404,
+    "is_outlier": false,
+    "outlier_reason": null,
+    "historical_match_rates": [
+      0.903,
+      0.908,
+      0.913,
+      0.918,
+      0.923
+    ]
+  },
+  {
+    "merchant_id": "m_dunzo_09_outlier",
+    "merchant_name": "Dunzo Daily Logistics",
+    "industry": "Hyperlocal Express Courier",
+    "monthly_volume": 110000,
+    "daily_gmv_inr": 16000000.0,
+    "match_rate": 0.6344,
+    "anomaly_rate": 0.3409,
+    "is_outlier": true,
+    "outlier_reason": "Severe Gateway Timeout Spike: 34% anomaly rate in ICICI NetBanking settlement batch.",
+    "historical_match_rates": [
+      0.614,
+      0.619,
+      0.624,
+      0.629,
+      0.634
+    ]
+  },
+  {
+    "merchant_id": "m_cleartrip_10_outlier",
+    "merchant_name": "Cleartrip Travel Services",
+    "industry": "Online Travel & Flight Booking",
+    "monthly_volume": 85000,
+    "daily_gmv_inr": 54000000.0,
+    "match_rate": 0.6262,
+    "anomaly_rate": 0.2951,
+    "is_outlier": true,
+    "outlier_reason": "High Airline Refund Lag: 30% discrepancy rate from airline API cancellation rollbacks.",
+    "historical_match_rates": [
+      0.606,
+      0.611,
+      0.616,
+      0.621,
+      0.626
+    ]
+  }
+]

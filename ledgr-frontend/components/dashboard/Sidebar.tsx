@@ -47,6 +47,16 @@ const NAV_ITEMS = [
     ),
   },
   {
+    href: '/dashboard/portfolio',
+    label: 'Platform View',
+    icon: (active: boolean) => (
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="6.5" stroke={active ? 'var(--brand)' : 'currentColor'} strokeWidth="1.5" />
+        <path d="M1.5 8h13M8 1.5c2 2 3 4.5 3 6.5s-1 4.5-3 6.5c-2-2-3-4.5-3-6.5s1-4.5 3-6.5z" stroke={active ? 'var(--brand)' : 'currentColor'} strokeWidth="1.2" />
+      </svg>
+    ),
+  },
+  {
     href: '/dashboard/audit',
     label: 'Audit Trail',
     icon: (active: boolean) => (

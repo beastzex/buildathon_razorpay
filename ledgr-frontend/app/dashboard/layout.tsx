@@ -6,6 +6,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/dashboard/reconciliation': 'Reconciliation',
   '/dashboard/exceptions': 'Exceptions',
   '/dashboard/settlement': 'Settlement Q&A',
+  '/dashboard/portfolio': 'Platform Portfolio View',
   '/dashboard/audit': 'Audit Trail',
   '/dashboard/settings': 'Settings',
 };

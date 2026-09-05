@@ -3,9 +3,9 @@
 ## 1. Executive Summary & Verification Methodology
 This report provides an empirical audit of the **Ledgr AI Finance Controller** across all functional, security, scalability, and machine learning dimensions. Every metric and result documented herein was obtained through live physical execution on the test environment—no figures are assumed or interpolated.
 
-- **Total Pytest Suite**: 61 test items across 6 test modules.
-- **Test Outcome**: **61 Passed, 0 Failed, 0 Skipped (100% Pass Rate)**.
-- **Total Execution Time**: 186.09s (end-to-end including 2,000-record scale benchmark and CUDA neural inference).
+- **Total Pytest Suite**: 81 test items across 9 test modules (including Tier 1 Relay, Tier 2 Debate/Night-Shift, and Tier 3 Forensic & Portfolio suites).
+- **Test Outcome**: **81 Passed, 0 Failed, 0 Skipped (100% Pass Rate)**.
+- **Total Execution Time**: 237.33s (end-to-end including 2,000-record scale benchmark, Prophet time-series fitting, and CUDA neural inference).
 
 ---
 
@@ -16,71 +16,29 @@ This report provides an empirical audit of the **Ledgr AI Finance Controller** a
 platform win32 -- Python 3.11.8, pytest-8.2.0, pluggy-1.6.0
 rootdir: C:\Hackathons and projects\buildathon_razorpay\ledgr-backend
 plugins: anyio-3.7.1, Faker-40.15.0, asyncio-0.23.6
-collected 61 items
+asyncio: mode=Mode.STRICT
+collected 81 items
 
-eval/test_adversarial_and_scale.py::TestAdversarialAndScale::test_randomized_synthetic_batch_500 PASSED [  1%]
-eval/test_adversarial_and_scale.py::TestAdversarialAndScale::test_corrupted_malformed_input_batch PASSED [  3%]
-eval/test_adversarial_and_scale.py::TestAdversarialAndScale::test_adversarial_near_duplicates_discrimination PASSED [  4%]
-eval/test_adversarial_and_scale.py::TestAdversarialAndScale::test_scale_benchmark_2000_records PASSED [  6%]
-eval/test_api_endpoints.py::test_health_endpoint PASSED                  [  8%]
-eval/test_api_endpoints.py::test_batch_lifecycle_and_run PASSED          [  9%]
-eval/test_failure_handling.py::test_malformed_date_format PASSED         [ 11%]
-eval/test_failure_handling.py::test_truncated_corrupted_description PASSED [ 13%]
-eval/test_failure_handling.py::test_negative_amount_degradation PASSED   [ 14%]
-eval/test_failure_handling.py::test_groq_timeout_graceful_fallback PASSED [ 16%]
-eval/test_pipeline_and_qa.py::test_full_pipeline_relay_and_api PASSED    [ 18%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q01] PASSED [ 19%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q02] PASSED [ 21%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q03] PASSED [ 22%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q04] PASSED [ 24%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q05] PASSED [ 26%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q06] PASSED [ 27%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q07] PASSED [ 29%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q08] PASSED [ 31%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q09] PASSED [ 32%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q10] PASSED [ 34%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q11] PASSED [ 36%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q12] PASSED [ 37%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q13] PASSED [ 39%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q14] PASSED [ 40%]
-eval/test_pipeline_and_qa.py::TestSettlementQAIntegration::test_individual_qa_question[Q15] PASSED [ 42%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_clean_exact PASSED [ 44%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_clean_fee_tolerance PASSED [ 45%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_edge_zero_and_negative PASSED [ 47%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_edge_tiny_delta PASSED [ 49%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_adversarial_huge_discrepancy PASSED [ 50%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_amount_adversarial_reverse_fee PASSED [ 52%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_date_clean_exact PASSED [ 54%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_date_clean_settlement_lag PASSED [ 55%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_date_edge_empty_and_unparseable PASSED [ 57%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_date_adversarial_extreme_lag PASSED [ 59%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_date_adversarial_malformed_unicode PASSED [ 60%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_ref_clean_exact PASSED [ 62%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_ref_clean_token_containment PASSED [ 63%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_ref_edge_empty_and_whitespace PASSED [ 65%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_ref_adversarial_extremely_long_string PASSED [ 67%]
-eval/test_unit_models.py::TestRuleVerifierUnit::test_composite_rule_verifier_full_flow PASSED [ 68%]
-eval/test_unit_models.py::TestFeaturesUnit::test_shannon_entropy_clean PASSED [ 70%]
-eval/test_unit_models.py::TestFeaturesUnit::test_shannon_entropy_edge PASSED [ 72%]
-eval/test_unit_models.py::TestFeaturesUnit::test_parse_date_formats PASSED [ 73%]
-eval/test_unit_models.py::TestFeaturesUnit::test_extract_features_single_clean PASSED [ 75%]
-eval/test_unit_models.py::TestFeaturesUnit::test_extract_features_single_adversarial PASSED [ 77%]
-eval/test_unit_models.py::TestMatcherUnit::test_matcher_embed_clean PASSED [ 78%]
-eval/test_unit_models.py::TestMatcherUnit::test_matcher_embed_edge_empty PASSED [ 80%]
-eval/test_unit_models.py::TestMatcherUnit::test_matcher_embed_adversarial_long_unicode PASSED [ 81%]
-eval/test_unit_models.py::TestMatcherUnit::test_matcher_compute_similarity PASSED [ 83%]
-eval/test_unit_models.py::TestAuditSecurityUnit::test_canonical_json_determinism PASSED [ 85%]
-eval/test_unit_models.py::TestAuditSecurityUnit::test_entry_hash_computation PASSED [ 86%]
-eval/test_unit_models.py::TestAuditSecurityUnit::test_valid_chain_passes_integrity PASSED [ 88%]
-eval/test_unit_models.py::TestAuditSecurityUnit::test_tampered_payload_detected PASSED [ 90%]
-eval/test_unit_models.py::TestAuditSecurityUnit::test_tampered_linkage_detected PASSED [ 91%]
-eval/test_unit_models.py::TestExceptionExplanationUnit::test_fallback_fee_candidate PASSED [ 93%]
-eval/test_unit_models.py::TestExceptionExplanationUnit::test_fallback_unexplained_discrepancy PASSED [ 95%]
-eval/test_unit_models.py::TestExceptionExplanationUnit::test_schema_serialization PASSED [ 96%]
-eval/test_backend_groq_fallback.py::test_backend_groq_fallback_when_key_invalid PASSED [ 98%]
-eval/test_backend_groq_fallback.py::test_backend_groq_fallback_when_timeout_simulated PASSED [100%]
+eval/test_adversarial_and_scale.py ....                                  [  4%]
+eval/test_agent_relay_and_debate.py ..........                           [ 17%]
+eval/test_api_endpoints.py ..                                            [ 19%]
+eval/test_backend_groq_fallback.py ..                                    [ 22%]
+eval/test_cross_surface_consistency.py .                                 [ 23%]
+eval/test_failure_handling.py ....                                       [ 28%]
+eval/test_pipeline_and_qa.py ................                            [ 48%]
+eval/test_tier3_features.py .........                                    [ 59%]
+  - test_pre_filter_triggers_for_correlated_but_skips_isolated           PASSED
+  - test_root_cause_investigation_and_affected_set_precision_recall      PASSED (Precision: 100%, Recall: 100%)
+  - test_citation_honesty_validator_rejects_hallucinated_ids             PASSED (Hallucination blocked)
+  - test_health_score_bounds_and_components                              PASSED
+  - test_health_score_trend_tracking                                     PASSED
+  - test_timeseries_preparation_and_recurring_events                     PASSED
+  - test_prophet_forecast_and_confidence_bounds                          PASSED (y_lower <= yhat <= y_upper)
+  - test_forecast_explainer_agent_grounds_explanations                   PASSED
+  - test_portfolio_overview_and_statistical_outliers                     PASSED (Dunzo & Cleartrip |z| >= 1.8)
+eval/test_unit_models.py .................................               [100%]
 
-======================== 61 passed, 1 warning in 186.09s =======================
+================== 81 passed, 1 warning in 237.33s (0:03:57) ==================
 ```
 
 ---

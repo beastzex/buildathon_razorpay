@@ -242,3 +242,96 @@ Financial controllers require overnight reconciliation cycles that run unattende
 - **Four-Surface Consistency Guarantee**:
   - All four operational surfaces—(1) Morning Digest, (2) Database Records, (3) Cryptographic Audit Trail, and (4) Historical Run Logs—maintain exact, zero-discrepancy 1-to-1 consistency.
 
+---
+
+## Tier 3A: Root-Cause Chain Agent (Multi-Hop Forensic Reasoning)
+
+When discrepancies occur, investigating them individually wastes human controller time. The **Root-Cause Chain Agent** diagnoses systemic root causes across batches through bounded multi-hop tool calling:
+
+```mermaid
+flowchart TD
+    SEED[Seed Exception] --> PRE{Pre-Filter Gate\n>= 2 similar exceptions?}
+    PRE -->|No| ISO[Isolated Exception\nSingle Record Explanation]
+    PRE -->|Yes| LOOP[Bounded Multi-Hop Tool Loop\nMax 4 Iterations]
+    
+    subgraph Tool Workspace
+        T1[search_by_amount_pattern\nTarget Delta +- 1.5]
+        T2[get_fee_schedule_history\nRegulatory Rate Revisions]
+        T3[search_by_account\nCounterparty Cluster]
+        T4[search_by_reference_pattern\nToken/Prefix Matching]
+    end
+    
+    LOOP --> T1
+    LOOP --> T2
+    LOOP --> T3
+    LOOP --> T4
+    
+    T1 & T2 & T3 & T4 --> LLM[Groq Forensic Auditor\nopenai/gpt-oss-120b]
+    LLM --> HONESTY{Strict Citation\nHonesty Validator}
+    HONESTY -->|Hallucinated IDs Found| STRIP[Intercept & Filter to\nTool-Revealed IDs]
+    HONESTY -->|All IDs Tool-Revealed| SYNTH[Systemic Diagnosis Emit]
+    STRIP --> SYNTH
+    SYNTH --> BULK[Bulk Resolution Action\nPOST /batches/:id/root-causes/:pattern_id/resolve-all]
+```
+
+### Pre-Filter Gate
+The agent checks whether the seed exception shares a matching delta ($|\Delta_a - \Delta_b| \le ₹1.00$), counterparty token, or reference code prefix with $\ge 2$ other exceptions in the batch. If isolated, multi-hop investigation is skipped to save LLM tokens and execution latency.
+
+### Citation Honesty Invariant
+The agent enforces a strict citation integrity check: every record ID cited in the output payload must exist in the investigator's `revealed_record_ids` set. If an LLM attempts to hallucinate record identifiers, the validator intercepts them, logs a warning, and filters citations strictly to verified records discovered by tools.
+
+---
+
+## Tier 3B: Cash-Flow Forecasting & Recurring Calendar Grounding
+
+To assist controllers with forward-looking liquidity risk, Ledgr features a **Meta Prophet** cash-flow forecasting pipeline:
+
+- **Model Specification**: Additive time-series model with daily and weekly seasonality, fitted over 90 days of net settlement data.
+- **Uncertainty Bounds**: Generates a 90% confidence interval $[\hat{y}_{\text{lower}}, \hat{y}_{\text{upper}}]$ around point estimates $\hat{y}$.
+- **Recurring Calendar Grounding**: Detects and accounts for deterministic liquidity events:
+  - Tuesday Weekly Gateway Settlement Batches (payouts of ₹45,000–₹65,000).
+  - 1st & 15th Cloud Infrastructure & SaaS Debits (₹28,500).
+  - 28th Monthly Contractor Payroll Batches (₹75,000).
+- **Forecast Explainer Agent**: Groq LLM synthesizes natural-language explanations for upcoming dips and peaks, strictly referencing the calendar notes.
+- **Honesty Disclosure**: Clearly marked across UI and API as fitted on synthetic multi-merchant data; never claimed as live-production validated.
+
+---
+
+## Tier 3C: Financial Health Score Composite Metric
+
+Replaces arbitrary "health percentages" with a transparent, mathematically grounded composite score $H \in [0, 100]$:
+
+$$H = \text{round}\left(100 \times \left(w_m \cdot S_{\text{match}} + w_a \cdot S_{\text{amount}} + w_r \cdot S_{\text{aging}} + w_f \cdot S_{\text{fee}}\right)\right)$$
+
+### Component Weights & Formulations
+1. **Match Rate ($w_m = 0.35$)**:
+   $$S_{\text{match}} = \frac{N_{\text{matched}}}{N_{\text{total}}}$$
+2. **Amount Discrepancy Ratio ($w_a = 0.30$)**:
+   $$S_{\text{amount}} = \max\left(0, 1 - \frac{\sum |\Delta_{\text{unmatched}}|}{\sum A_{\text{expected}}}\right)$$
+3. **Aging / Resolution Velocity ($w_r = 0.20$)**:
+   $$S_{\text{aging}} = \max\left(0, 1 - \frac{\text{Unresolved Exceptions } > 24\text{h}}{N_{\text{total}}}\right)$$
+4. **Fee Predictability ($w_f = 0.15$)**:
+   $$S_{\text{fee}} = \max\left(0, 1 - \frac{|\text{Observed Fee Pct} - \text{Expected Fee Pct}|}{\text{Expected Fee Pct}}\right)$$
+
+### Grading Scale & Historical Tracking
+- **A+ (90–100)**: Pristine operational ledger.
+- **A (80–89)**: Highly automated; nominal fee drift.
+- **B (70–79)**: Moderate discrepancy volume; human review required.
+- **C (60–69)**: Elevated aging exceptions or fee leakage.
+- **D (<60)**: Severe reconciliation failure requiring immediate intervention.
+- **Historical Trends**: Persisted in table `batch_health_scores` with 7-point sparkline tracking.
+
+---
+
+## Tier 3D: Portfolio-Level View & Statistical Outlier Detection
+
+For platforms managing multiple merchant accounts (such as Razorpay), the **Platform View** aggregates fleet-level reconciliation metrics:
+
+- **Fleet Aggregation**: Ingests and monitors 10 enterprise merchant accounts (e.g. Swiggy, Zomato, Dunzo, Nykaa, Zepto, Meesho, BigBasket, Cleartrip, BookMyShow, Licious).
+- **Z-Score Statistical Outlier Detection**:
+  Calculates fleet-wide mean $\mu$ and standard deviation $\sigma$ for match rates and anomaly rates:
+  $$z_i = \frac{x_i - \mu}{\sigma}$$
+  Merchants with $|z_i| \ge 1.8$ are automatically flagged as statistical outliers with severity badges (`"critical"` or `"warning"`).
+- **Controller Navigation**: Allows one-click drill-down from the multi-merchant portfolio dashboard directly into the affected merchant's exceptions queue.
+
+
