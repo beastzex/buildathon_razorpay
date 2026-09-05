@@ -1,6 +1,6 @@
 # Ledgr Evaluation Report (Part 5)
 *Automated, reproducible evaluation of the Ledgr AI Reconciliation Pipeline.*
-*Run completed at: 2026-09-04T00:58:30Z*
+*Run completed at: 2026-09-05T03:02:38Z*
 
 ---
 
@@ -42,10 +42,10 @@ Measured on device: **CUDA** across 520 sequential reconciliation decisions.
 
 | Percentile | Latency (ms) | Target SLA |
 |---|---|---|
-| **Average (Mean)** | **39.51 ms** | < 25.0 ms |
-| **Median (p50)** | **32.02 ms** | < 15.0 ms |
-| **p95 Latency** | **54.63 ms** | < 50.0 ms |
-| **p99 Latency** | **57.97 ms** | < 100.0 ms |
+| **Average (Mean)** | **39.29 ms** | < 25.0 ms |
+| **Median (p50)** | **32.98 ms** | < 15.0 ms |
+| **p95 Latency** | **52.24 ms** | < 50.0 ms |
+| **p99 Latency** | **54.29 ms** | < 100.0 ms |
 
 ---
 

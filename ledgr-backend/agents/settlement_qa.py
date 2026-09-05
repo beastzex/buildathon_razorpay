@@ -145,6 +145,7 @@ class SettlementQAAgent:
 
         # Path 1: Exact / Token Regex Extraction
         id_matches = re.findall(r'(?:TXN|BNK|GW|PO|REF)-\d{4,}[A-Z]?', query.upper())
+        exact_found = False
         for r in records:
             rid = str(r.get("id", "")).upper()
             sa_id = str(r.get("sourceA", {}).get("id", r.get("source_a_id", ""))).upper()
@@ -155,6 +156,12 @@ class SettlementQAAgent:
             for target in id_matches:
                 if target in (rid, sa_id, sb_id, ref_a, ref_b):
                     retrieved_map[r.get("id")] = r
+                    exact_found = True
+
+        # If the user queried for a specific transaction ID that does not exist in this batch,
+        # do not hallucinate an unrelated transaction via dense similarity.
+        if id_matches and not exact_found:
+            return []
 
         # Path 2: Dense Vector Cosine Similarity
         if batch_id in self._vector_cache and len(self._vector_cache[batch_id]) > 0:

@@ -46,10 +46,26 @@ def verify_amount(
     - Amount B is slightly less than Amount A by reasonable gateway fee -> pass with score 0.85 - 0.95
     - Discrepancy exceeds fee bounds -> fail with low score
     """
-    if amount_a <= 0 or amount_b <= 0:
-        return False, 0.0, {"reason": "Non-positive amount", "delta": abs(amount_a - amount_b)}
+    try:
+        if amount_a is None or amount_b is None:
+            return False, 0.0, {"reason": "Missing amount", "delta": 0.0}
+        amt_a = float(amount_a)
+        amt_b = float(amount_b)
+    except (ValueError, TypeError):
+        return False, 0.0, {"reason": "Non-numeric amount", "delta": 0.0}
 
-    diff = amount_a - amount_b
+    if amt_a <= 0 or amt_b <= 0:
+        return False, 0.0, {"reason": "Non-positive amount", "delta": abs(amt_a - amt_b)}
+
+    # Extreme value guard: amounts >₹100,000,000 or <₹1.00 require human review
+    if amt_a > 100_000_000.0 or amt_b > 100_000_000.0 or amt_a < 1.0 or amt_b < 1.0:
+        return False, 0.50, {
+            "amount_match": "extreme_value_flagged",
+            "delta": abs(amt_a - amt_b),
+            "reason": "Amount outside standard operational bounds"
+        }
+
+    diff = amt_a - amt_b
     abs_diff = abs(diff)
 
     # 1. Exact match within 1 paisa / cent
@@ -58,7 +74,7 @@ def verify_amount(
 
     # 2. Bank gross > Gateway net (standard gateway deduction)
     if diff > 0:
-        pct_diff = (diff / amount_a) * 100.0
+        pct_diff = (diff / amt_a) * 100.0
         if pct_diff <= max_fee_pct or diff <= max_fixed_fee:
             score = max(0.80, 1.0 - (pct_diff / 10.0))
             return True, score, {
@@ -69,7 +85,7 @@ def verify_amount(
             }
 
     # 3. Mismatch exceeding tolerances
-    pct_mismatch = (abs_diff / max(amount_a, amount_b)) * 100.0
+    pct_mismatch = (abs_diff / max(amt_a, amt_b)) * 100.0
     score = max(0.0, 1.0 - (pct_mismatch / 20.0))
     return False, round(score, 3), {
         "amount_match": "mismatch",
@@ -128,18 +144,24 @@ def verify_reference(
     if not str_a or not str_b:
         return False, 0.2, {"reason": "Missing reference"}
 
+    # Adversarial / injection / excessive length guard
+    if any(s in str_a or s in str_b for s in ["<SCRIPT", "DROP TABLE", "--", ";", "\x00", "\xff"]) or len(str_a) > 200 or len(str_b) > 200:
+        return False, 0.1, {"reason": "Suspicious or malformed reference content"}
+
     # Exact equality
     if str_a == str_b:
         return True, 1.0, {"ref_match": "exact", "similarity": 100.0}
 
     # Substring containment (e.g. '991882' inside 'REF-991882')
     import re
-    tokens_a = set(re.findall(r'[A-Z0-9]{4,}', str_a))
-    tokens_b = set(re.findall(r'[A-Z0-9]{4,}', str_b))
+    GENERIC_TOKENS = {"BANK", "PAYMENT", "SETTLEMENT", "TRANSFER", "INWARD", "OUTWARD", "RAZORPAY", "PAYOUT", "STATEMENT"}
+    tokens_a = set(re.findall(r'[A-Z0-9]{4,}', str_a)) - GENERIC_TOKENS
+    tokens_b = set(re.findall(r'[A-Z0-9]{4,}', str_b)) - GENERIC_TOKENS
     common_tokens = tokens_a.intersection(tokens_b)
+    meaningful_tokens = [t for t in common_tokens if any(c.isdigit() for c in t) or len(t) >= 6]
 
-    if common_tokens:
-        return True, 0.95, {"ref_match": "token_containment", "common": list(common_tokens)}
+    if meaningful_tokens:
+        return True, 0.95, {"ref_match": "token_containment", "common": meaningful_tokens}
 
     # RapidFuzz token sort ratio
     ratio = fuzz.token_set_ratio(str_a, str_b)
@@ -187,12 +209,24 @@ def rule_verifier(
     )
 
     # Overarching pass criteria:
-    # Amount must either pass or be close; date cannot exceed hard threshold
-    overall_pass = amt_pass and (date_pass or date_score >= 0.75)
+    # 1. Amount must pass or be within fee tolerance
+    # 2. Date cannot exceed hard lag threshold
+    # 3. If both records provide reference codes, they CANNOT completely contradict each other
+    #    (Prevents near-duplicate collisions where unrelated entities share identical round amounts on the same day)
+    ref_a_str = str(record_a.get("reference", "")).strip()
+    ref_b_str = str(record_b.get("reference", "")).strip()
+    has_conflicting_refs = bool(ref_a_str and ref_b_str and not ref_pass)
+
+    overall_pass = amt_pass and (date_pass or date_score >= 0.75) and not has_conflicting_refs
+
+    # If references strongly conflict, penalize the weighted score to prevent false-positive auto-matching
+    if has_conflicting_refs:
+        weighted_score = min(weighted_score, 0.50)
 
     breakdown = {
         "overall_pass": overall_pass,
         "rule_score": weighted_score,
+        "has_conflicting_refs": has_conflicting_refs,
         "amount": {"pass": amt_pass, "score": amt_score, "detail": amt_detail},
         "date": {"pass": date_pass, "score": date_score, "detail": date_detail},
         "reference": {"pass": ref_pass, "score": ref_score, "detail": ref_detail}

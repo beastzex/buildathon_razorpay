@@ -1,9 +1,9 @@
 {
   "evaluation_metadata": {
-    "timestamp": "2026-09-04T00:58:30Z",
+    "timestamp": "2026-09-05T03:02:38Z",
     "total_records_evaluated": 520,
     "held_out_dataset": "synthetic_batch_v1.csv",
-    "execution_time_seconds": 20.64,
+    "execution_time_seconds": 20.53,
     "hardware_device": "cuda"
   },
   "performance_metrics": {
@@ -24,10 +24,10 @@
     "mismatched_count": 36
   },
   "latency_profile_ms": {
-    "avg_ms": 39.51,
-    "p50_ms": 32.02,
-    "p95_ms": 54.63,
-    "p99_ms": 57.97
+    "avg_ms": 39.29,
+    "p50_ms": 32.98,
+    "p95_ms": 52.24,
+    "p99_ms": 54.29
   },
   "financial_cost_impact": {
     "unit_manual_review_cost_inr": 25.0,

@@ -40,6 +40,17 @@ def parse_date(date_str: str) -> datetime:
     return datetime(2026, 9, 1)
 
 
+def safe_float(val: Any, default: float = 0.0) -> float:
+    """Safely converts arbitrary values to float, defaulting on None or non-numeric strings."""
+    if val is None:
+        return default
+    try:
+        f = float(val)
+        return default if math.isnan(f) or math.isinf(f) else f
+    except (ValueError, TypeError):
+        return default
+
+
 def extract_features_single(
     record_a: Dict[str, Any],
     record_b: Dict[str, Any],
@@ -48,8 +59,8 @@ def extract_features_single(
     """
     Extract a flat feature vector from a paired transaction view.
     """
-    amt_a = float(record_a.get("amount", 0.0))
-    amt_b = float(record_b.get("amount", 0.0))
+    amt_a = safe_float(record_a.get("amount", 0.0))
+    amt_b = safe_float(record_b.get("amount", 0.0))
     
     # Amounts
     avg_amt = max((amt_a + amt_b) / 2.0, 1.0)
