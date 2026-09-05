@@ -8,6 +8,8 @@
 [![Groq LPU](https://img.shields.io/badge/Groq-openai%2Fgpt--oss--120b-purple.svg)](#)
 [![Audit Chain](https://img.shields.io/badge/Audit-SHA--256%20Cryptographic-success.svg)](#)
 
+### youtube demo video link : https://youtu.be/3XBH0VS-Zlw?si=9AC5HiEEPJCtHFzw
+
 > **Ledgr** is an autonomous, self-healing **AI Financial Controller** engineered for high-throughput digital commerce, payment aggregators, and enterprise payment rails (e.g. Razorpay, UPI, IMPS, Cards, Netbanking). It automates multi-source ledger reconciliation, detects subtle fee drift and settlement lag, conducts adversarial multi-agent debate on disputed transactions via **GPT-OSS-120B**, forecasts forward-looking cash flow with **Prophet**, offers tactical treasury intelligence through an institutional **Wealth Advisor**, verifies physical paperwork with a **Multi-Modal Slip OCR Scanner**, and seals every event in a **tamper-evident SHA-256 audit trail**.
 
 ---
