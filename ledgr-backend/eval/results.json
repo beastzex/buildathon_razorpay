@@ -1,0 +1,38 @@
+{
+  "evaluation_metadata": {
+    "timestamp": "2026-09-04T00:58:30Z",
+    "total_records_evaluated": 520,
+    "held_out_dataset": "synthetic_batch_v1.csv",
+    "execution_time_seconds": 20.64,
+    "hardware_device": "cuda"
+  },
+  "performance_metrics": {
+    "overall_accuracy": 0.9173,
+    "auto_match_precision": 0.9353,
+    "auto_match_recall": 1.0,
+    "auto_match_f1": 0.9665,
+    "false_positive_rate": 0.2077,
+    "false_positive_auto_matches": 27,
+    "false_negative_escalations": 0
+  },
+  "two_stage_gate_breakdown": {
+    "auto_matched_count": 417,
+    "auto_matched_pct": 80.19,
+    "escalated_for_review_count": 103,
+    "escalated_for_review_pct": 19.81,
+    "flagged_count": 67,
+    "mismatched_count": 36
+  },
+  "latency_profile_ms": {
+    "avg_ms": 39.51,
+    "p50_ms": 32.02,
+    "p95_ms": 54.63,
+    "p99_ms": 57.97
+  },
+  "financial_cost_impact": {
+    "unit_manual_review_cost_inr": 25.0,
+    "unnecessary_manual_review_cost_inr": 0.0,
+    "missed_mismatch_leakage_risk_inr": 5400.0,
+    "total_risk_cost_inr": 5400.0
+  }
+}

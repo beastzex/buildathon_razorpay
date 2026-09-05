@@ -1,0 +1,36 @@
+{
+  "dataset_count": 5,
+  "datasets": {
+    "benchrec": {
+      "ref": "benchmarkteam/benchrec-real-world-cash-reconciliation-dataset",
+      "description": "Real-World Cash Reconciliation Dataset (ICAIF 2023)",
+      "role": "Primary matching model fine-tuning and validation",
+      "target_dir": "benchrec"
+    },
+    "paysim": {
+      "ref": "ealaxi/paysim1",
+      "description": "Synthetic Financial Dataset for Fraud Detection",
+      "role": "Realistic transaction distribution, timing, amounts for synthetic batch generator",
+      "target_dir": "paysim"
+    },
+    "creditcardfraud": {
+      "ref": "mlg-ulb/creditcardfraud",
+      "description": "Credit Card Fraud Detection Dataset (ULB)",
+      "role": "Anomaly-scorer feature engineering and class-imbalance validation",
+      "target_dir": "creditcardfraud"
+    },
+    "bank_transactions": {
+      "ref": "apoorvwatsky/bank-transaction-data",
+      "description": "Bank Transaction Data",
+      "role": "Real-world schema reference for date/description/balance normalization",
+      "target_dir": "bank_transactions"
+    },
+    "payment_date_prediction": {
+      "ref": "pradumn203/payment-date-prediction-for-invoices-dataset",
+      "description": "Payment Date Prediction for Invoices",
+      "role": "Receivables and settlement-delay reasoning reference",
+      "target_dir": "payment_date_prediction"
+    }
+  },
+  "kaggle_authenticated": false
+}

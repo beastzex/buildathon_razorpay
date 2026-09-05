@@ -1,0 +1,5738 @@
+{
+  "metadata": {
+    "total_records": 520,
+    "generated_at": "2026-09-04T00:50:04.236071Z",
+    "mismatch_target_ratio": 0.1,
+    "random_seed": 42,
+    "counts": {
+      "matched": 390,
+      "flagged": 78,
+      "mismatched": 52
+    },
+    "actual_mismatch_pct": 10.0,
+    "actual_flagged_pct": 15.0,
+    "actual_matched_pct": 75.0
+  },
+  "records": {
+    "TXN-5001": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1001",
+      "source_b_id": "PAY-RZP-2001",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5002": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1002",
+      "source_b_id": "GW-RZP-2002",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5003": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1003",
+      "source_b_id": "PO-RZP-2003",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5004": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1004",
+      "source_b_id": "PO-RZP-2004",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5005": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1005",
+      "source_b_id": "PAY-RZP-2005",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5006": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1006",
+      "source_b_id": "PAY-RZP-2006",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 653.31
+    },
+    "TXN-5007": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1007",
+      "source_b_id": "PAY-RZP-2007",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5008": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1008",
+      "source_b_id": "PO-RZP-2008",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 1191.83
+    },
+    "TXN-5009": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1009",
+      "source_b_id": "GW-RZP-2009",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5010": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1010",
+      "source_b_id": "PAY-RZP-2010",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5011": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1011",
+      "source_b_id": "PO-RZP-2011",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5012": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1012",
+      "source_b_id": "PO-RZP-2012",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5013": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-ICICI-1013",
+      "source_b_id": "GW-RZP-2013",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5014": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-HDFC-1014",
+      "source_b_id": "GW-RZP-2014",
+      "expected_confidence_range": [
+        74,
+        84
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5015": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1015",
+      "source_b_id": "PO-RZP-2015",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5016": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1016",
+      "source_b_id": "PO-RZP-2016",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5017": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1017",
+      "source_b_id": "GW-RZP-2017",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5018": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1018",
+      "source_b_id": "PO-RZP-2018",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5019": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1019",
+      "source_b_id": "PO-RZP-2019",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5020": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1020",
+      "source_b_id": "PAY-RZP-2020",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5021": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1021",
+      "source_b_id": "GW-RZP-2021",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5022": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1022",
+      "source_b_id": "PAY-RZP-2022",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5023": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1023",
+      "source_b_id": "PAY-RZP-2023",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5024": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1024",
+      "source_b_id": "PAY-RZP-2024",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5025": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1025",
+      "source_b_id": "GW-RZP-2025",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5026": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-ICICI-1026",
+      "source_b_id": "PO-RZP-2026",
+      "expected_confidence_range": [
+        71,
+        81
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5027": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1027",
+      "source_b_id": "GW-RZP-2027",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5028": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1028",
+      "source_b_id": "GW-RZP-2028",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5029": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1029",
+      "source_b_id": "PAY-RZP-2029",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5030": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1030",
+      "source_b_id": "GW-RZP-2030",
+      "expected_confidence_range": [
+        35,
+        45
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5031": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1031",
+      "source_b_id": "PAY-RZP-2031",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5032": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1032",
+      "source_b_id": "PAY-RZP-2032",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5033": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1033",
+      "source_b_id": "PAY-RZP-2033",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5034": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1034",
+      "source_b_id": "GW-RZP-2034",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5035": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1035",
+      "source_b_id": "GW-RZP-2035",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5036": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1036",
+      "source_b_id": "PO-RZP-2036",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5037": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1037",
+      "source_b_id": "PO-RZP-2037",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5038": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1038",
+      "source_b_id": "GW-RZP-2038",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5039": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1039",
+      "source_b_id": "PO-RZP-2039",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5040": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-ICICI-1040",
+      "source_b_id": "PAY-RZP-2040",
+      "expected_confidence_range": [
+        50,
+        60
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5041": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1041",
+      "source_b_id": "GW-RZP-2041",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5042": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1042",
+      "source_b_id": "PAY-RZP-2042",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5043": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1043",
+      "source_b_id": "GW-RZP-2043",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5044": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1044",
+      "source_b_id": "PO-RZP-2044",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5045": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-AXIS-1045",
+      "source_b_id": "PAY-RZP-2045",
+      "expected_confidence_range": [
+        71,
+        81
+      ],
+      "fee_amount": 132.66
+    },
+    "TXN-5046": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1046",
+      "source_b_id": "GW-RZP-2046",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5047": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1047",
+      "source_b_id": "PO-RZP-2047",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5048": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1048",
+      "source_b_id": "PO-RZP-2048",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5049": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-HDFC-1049",
+      "source_b_id": "PO-RZP-2049",
+      "expected_confidence_range": [
+        51,
+        61
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5050": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1050",
+      "source_b_id": "GW-RZP-2050",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5051": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1051",
+      "source_b_id": "PAY-RZP-2051",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5052": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1052",
+      "source_b_id": "PO-RZP-2052",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5053": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1053",
+      "source_b_id": "PO-RZP-2053",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5054": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1054",
+      "source_b_id": "PO-RZP-2054",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5055": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1055",
+      "source_b_id": "PAY-RZP-2055",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5056": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1056",
+      "source_b_id": "PO-RZP-2056",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5057": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1057",
+      "source_b_id": "PAY-RZP-2057",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5058": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1058",
+      "source_b_id": "PAY-RZP-2058",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5059": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1059",
+      "source_b_id": "PO-RZP-2059",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5060": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-HDFC-1060",
+      "source_b_id": "PO-RZP-2060",
+      "expected_confidence_range": [
+        35,
+        45
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5061": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-SBI-1061",
+      "source_b_id": "GW-RZP-2061",
+      "expected_confidence_range": [
+        40,
+        50
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5062": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1062",
+      "source_b_id": "PO-RZP-2062",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 147.65
+    },
+    "TXN-5063": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1063",
+      "source_b_id": "PO-RZP-2063",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5064": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1064",
+      "source_b_id": "PAY-RZP-2064",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5065": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-AXIS-1065",
+      "source_b_id": "PO-RZP-2065",
+      "expected_confidence_range": [
+        66,
+        76
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5066": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1066",
+      "source_b_id": "PO-RZP-2066",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5067": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1067",
+      "source_b_id": "PAY-RZP-2067",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5068": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1068",
+      "source_b_id": "PO-RZP-2068",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5069": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-HDFC-1069",
+      "source_b_id": "PAY-RZP-2069",
+      "expected_confidence_range": [
+        46,
+        56
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5070": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1070",
+      "source_b_id": "GW-RZP-2070",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5071": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1071",
+      "source_b_id": "PO-RZP-2071",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5072": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1072",
+      "source_b_id": "PO-RZP-2072",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5073": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1073",
+      "source_b_id": "PO-RZP-2073",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5074": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1074",
+      "source_b_id": "GW-RZP-2074",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5075": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1075",
+      "source_b_id": "GW-RZP-2075",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5076": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-SBI-1076",
+      "source_b_id": "PAY-RZP-2076",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 734.42
+    },
+    "TXN-5077": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-SBI-1077",
+      "source_b_id": "GW-RZP-2077",
+      "expected_confidence_range": [
+        45,
+        55
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5078": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1078",
+      "source_b_id": "GW-RZP-2078",
+      "expected_confidence_range": [
+        41,
+        51
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5079": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1079",
+      "source_b_id": "GW-RZP-2079",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5080": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1080",
+      "source_b_id": "PAY-RZP-2080",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5081": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1081",
+      "source_b_id": "GW-RZP-2081",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5082": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1082",
+      "source_b_id": "GW-RZP-2082",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5083": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1083",
+      "source_b_id": "PAY-RZP-2083",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5084": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1084",
+      "source_b_id": "GW-RZP-2084",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5085": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1085",
+      "source_b_id": "PAY-RZP-2085",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5086": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1086",
+      "source_b_id": "PAY-RZP-2086",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5087": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1087",
+      "source_b_id": "PO-RZP-2087",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5088": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1088",
+      "source_b_id": "PAY-RZP-2088",
+      "expected_confidence_range": [
+        43,
+        53
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5089": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1089",
+      "source_b_id": "PAY-RZP-2089",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5090": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1090",
+      "source_b_id": "PAY-RZP-2090",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5091": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1091",
+      "source_b_id": "PAY-RZP-2091",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5092": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1092",
+      "source_b_id": "GW-RZP-2092",
+      "expected_confidence_range": [
+        63,
+        73
+      ],
+      "fee_amount": 1019.21
+    },
+    "TXN-5093": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1093",
+      "source_b_id": "PO-RZP-2093",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5094": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1094",
+      "source_b_id": "GW-RZP-2094",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5095": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1095",
+      "source_b_id": "PO-RZP-2095",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5096": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1096",
+      "source_b_id": "GW-RZP-2096",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5097": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1097",
+      "source_b_id": "GW-RZP-2097",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5098": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1098",
+      "source_b_id": "GW-RZP-2098",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5099": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-SBI-1099",
+      "source_b_id": "PO-RZP-2099",
+      "expected_confidence_range": [
+        42,
+        52
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5100": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-HDFC-1100",
+      "source_b_id": "PO-RZP-2100",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 398.02
+    },
+    "TXN-5101": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1101",
+      "source_b_id": "PO-RZP-2101",
+      "expected_confidence_range": [
+        66,
+        76
+      ],
+      "fee_amount": 131.03
+    },
+    "TXN-5102": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-ICICI-1102",
+      "source_b_id": "PO-RZP-2102",
+      "expected_confidence_range": [
+        68,
+        78
+      ],
+      "fee_amount": 195.58
+    },
+    "TXN-5103": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1103",
+      "source_b_id": "PAY-RZP-2103",
+      "expected_confidence_range": [
+        67,
+        77
+      ],
+      "fee_amount": 508.85
+    },
+    "TXN-5104": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1104",
+      "source_b_id": "GW-RZP-2104",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5105": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1105",
+      "source_b_id": "PAY-RZP-2105",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5106": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-ICICI-1106",
+      "source_b_id": "PO-RZP-2106",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5107": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1107",
+      "source_b_id": "PO-RZP-2107",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5108": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1108",
+      "source_b_id": "PAY-RZP-2108",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5109": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1109",
+      "source_b_id": "PAY-RZP-2109",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5110": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1110",
+      "source_b_id": "PAY-RZP-2110",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5111": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1111",
+      "source_b_id": "PO-RZP-2111",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5112": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-HDFC-1112",
+      "source_b_id": "PO-RZP-2112",
+      "expected_confidence_range": [
+        29,
+        39
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5113": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1113",
+      "source_b_id": "PO-RZP-2113",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5114": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1114",
+      "source_b_id": "GW-RZP-2114",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5115": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1115",
+      "source_b_id": "PO-RZP-2115",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5116": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-ICICI-1116",
+      "source_b_id": "GW-RZP-2116",
+      "expected_confidence_range": [
+        28,
+        38
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5117": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1117",
+      "source_b_id": "PO-RZP-2117",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5118": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1118",
+      "source_b_id": "PO-RZP-2118",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5119": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1119",
+      "source_b_id": "GW-RZP-2119",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5120": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1120",
+      "source_b_id": "PO-RZP-2120",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5121": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1121",
+      "source_b_id": "PAY-RZP-2121",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5122": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1122",
+      "source_b_id": "GW-RZP-2122",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5123": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1123",
+      "source_b_id": "GW-RZP-2123",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5124": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-HDFC-1124",
+      "source_b_id": "PO-RZP-2124",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5125": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1125",
+      "source_b_id": "PAY-RZP-2125",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5126": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1126",
+      "source_b_id": "PO-RZP-2126",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 44.91
+    },
+    "TXN-5127": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-KOTAK-1127",
+      "source_b_id": "PAY-RZP-2127",
+      "expected_confidence_range": [
+        35,
+        45
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5128": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1128",
+      "source_b_id": "PO-RZP-2128",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5129": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-AXIS-1129",
+      "source_b_id": "PO-RZP-2129",
+      "expected_confidence_range": [
+        66,
+        76
+      ],
+      "fee_amount": 147.27
+    },
+    "TXN-5130": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1130",
+      "source_b_id": "PAY-RZP-2130",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5131": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1131",
+      "source_b_id": "PAY-RZP-2131",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5132": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1132",
+      "source_b_id": "GW-RZP-2132",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5133": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1133",
+      "source_b_id": "PO-RZP-2133",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5134": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1134",
+      "source_b_id": "PO-RZP-2134",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5135": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-HDFC-1135",
+      "source_b_id": "PAY-RZP-2135",
+      "expected_confidence_range": [
+        38,
+        48
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5136": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1136",
+      "source_b_id": "PO-RZP-2136",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5137": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1137",
+      "source_b_id": "PAY-RZP-2137",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5138": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1138",
+      "source_b_id": "GW-RZP-2138",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5139": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1139",
+      "source_b_id": "PAY-RZP-2139",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5140": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1140",
+      "source_b_id": "PO-RZP-2140",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5141": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1141",
+      "source_b_id": "PO-RZP-2141",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5142": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1142",
+      "source_b_id": "GW-RZP-2142",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5143": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1143",
+      "source_b_id": "PAY-RZP-2143",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5144": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1144",
+      "source_b_id": "PAY-RZP-2144",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5145": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1145",
+      "source_b_id": "PAY-RZP-2145",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5146": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1146",
+      "source_b_id": "PAY-RZP-2146",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5147": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1147",
+      "source_b_id": "PO-RZP-2147",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5148": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1148",
+      "source_b_id": "PAY-RZP-2148",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5149": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1149",
+      "source_b_id": "PAY-RZP-2149",
+      "expected_confidence_range": [
+        79,
+        89
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5150": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1150",
+      "source_b_id": "PAY-RZP-2150",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5151": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1151",
+      "source_b_id": "GW-RZP-2151",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5152": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1152",
+      "source_b_id": "PAY-RZP-2152",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5153": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1153",
+      "source_b_id": "GW-RZP-2153",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5154": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-SBI-1154",
+      "source_b_id": "PAY-RZP-2154",
+      "expected_confidence_range": [
+        27,
+        37
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5155": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1155",
+      "source_b_id": "PO-RZP-2155",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5156": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1156",
+      "source_b_id": "PAY-RZP-2156",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5157": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1157",
+      "source_b_id": "PO-RZP-2157",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5158": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1158",
+      "source_b_id": "PAY-RZP-2158",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5159": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-SBI-1159",
+      "source_b_id": "PAY-RZP-2159",
+      "expected_confidence_range": [
+        44,
+        54
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5160": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1160",
+      "source_b_id": "PO-RZP-2160",
+      "expected_confidence_range": [
+        73,
+        83
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5161": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1161",
+      "source_b_id": "PO-RZP-2161",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5162": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1162",
+      "source_b_id": "PAY-RZP-2162",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5163": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1163",
+      "source_b_id": "PAY-RZP-2163",
+      "expected_confidence_range": [
+        74,
+        84
+      ],
+      "fee_amount": 650.55
+    },
+    "TXN-5164": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1164",
+      "source_b_id": "PAY-RZP-2164",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5165": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1165",
+      "source_b_id": "PO-RZP-2165",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5166": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1166",
+      "source_b_id": "PO-RZP-2166",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5167": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1167",
+      "source_b_id": "PAY-RZP-2167",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5168": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-AXIS-1168",
+      "source_b_id": "PAY-RZP-2168",
+      "expected_confidence_range": [
+        53,
+        63
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5169": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-AXIS-1169",
+      "source_b_id": "PO-RZP-2169",
+      "expected_confidence_range": [
+        35,
+        45
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5170": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-SBI-1170",
+      "source_b_id": "PAY-RZP-2170",
+      "expected_confidence_range": [
+        50,
+        60
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5171": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1171",
+      "source_b_id": "PAY-RZP-2171",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5172": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1172",
+      "source_b_id": "GW-RZP-2172",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5173": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1173",
+      "source_b_id": "GW-RZP-2173",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5174": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-KOTAK-1174",
+      "source_b_id": "PAY-RZP-2174",
+      "expected_confidence_range": [
+        41,
+        51
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5175": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1175",
+      "source_b_id": "GW-RZP-2175",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5176": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1176",
+      "source_b_id": "PO-RZP-2176",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5177": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1177",
+      "source_b_id": "PAY-RZP-2177",
+      "expected_confidence_range": [
+        68,
+        78
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5178": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1178",
+      "source_b_id": "GW-RZP-2178",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5179": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1179",
+      "source_b_id": "PAY-RZP-2179",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5180": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1180",
+      "source_b_id": "GW-RZP-2180",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5181": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-AXIS-1181",
+      "source_b_id": "PAY-RZP-2181",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 124.41
+    },
+    "TXN-5182": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1182",
+      "source_b_id": "PO-RZP-2182",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5183": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1183",
+      "source_b_id": "GW-RZP-2183",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5184": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1184",
+      "source_b_id": "PO-RZP-2184",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5185": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1185",
+      "source_b_id": "PO-RZP-2185",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 1160.83
+    },
+    "TXN-5186": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1186",
+      "source_b_id": "GW-RZP-2186",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5187": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1187",
+      "source_b_id": "PAY-RZP-2187",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5188": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-HDFC-1188",
+      "source_b_id": "PO-RZP-2188",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5189": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1189",
+      "source_b_id": "GW-RZP-2189",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5190": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1190",
+      "source_b_id": "GW-RZP-2190",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5191": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1191",
+      "source_b_id": "PO-RZP-2191",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5192": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1192",
+      "source_b_id": "GW-RZP-2192",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5193": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1193",
+      "source_b_id": "PO-RZP-2193",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5194": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1194",
+      "source_b_id": "GW-RZP-2194",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5195": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-ICICI-1195",
+      "source_b_id": "GW-RZP-2195",
+      "expected_confidence_range": [
+        34,
+        44
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5196": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1196",
+      "source_b_id": "GW-RZP-2196",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5197": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1197",
+      "source_b_id": "PAY-RZP-2197",
+      "expected_confidence_range": [
+        71,
+        81
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5198": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1198",
+      "source_b_id": "PAY-RZP-2198",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5199": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1199",
+      "source_b_id": "PAY-RZP-2199",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5200": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1200",
+      "source_b_id": "PO-RZP-2200",
+      "expected_confidence_range": [
+        79,
+        89
+      ],
+      "fee_amount": 92.13
+    },
+    "TXN-5201": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-ICICI-1201",
+      "source_b_id": "PO-RZP-2201",
+      "expected_confidence_range": [
+        22,
+        32
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5202": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1202",
+      "source_b_id": "GW-RZP-2202",
+      "expected_confidence_range": [
+        69,
+        79
+      ],
+      "fee_amount": 894.07
+    },
+    "TXN-5203": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1203",
+      "source_b_id": "PAY-RZP-2203",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5204": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1204",
+      "source_b_id": "PO-RZP-2204",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5205": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1205",
+      "source_b_id": "PAY-RZP-2205",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5206": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1206",
+      "source_b_id": "GW-RZP-2206",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5207": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1207",
+      "source_b_id": "PO-RZP-2207",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5208": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-SBI-1208",
+      "source_b_id": "PO-RZP-2208",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 966.92
+    },
+    "TXN-5209": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1209",
+      "source_b_id": "PAY-RZP-2209",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5210": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1210",
+      "source_b_id": "GW-RZP-2210",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5211": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1211",
+      "source_b_id": "PAY-RZP-2211",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5212": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1212",
+      "source_b_id": "GW-RZP-2212",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5213": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1213",
+      "source_b_id": "GW-RZP-2213",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5214": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1214",
+      "source_b_id": "PO-RZP-2214",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5215": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-HDFC-1215",
+      "source_b_id": "PO-RZP-2215",
+      "expected_confidence_range": [
+        47,
+        57
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5216": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1216",
+      "source_b_id": "PAY-RZP-2216",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5217": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1217",
+      "source_b_id": "GW-RZP-2217",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5218": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1218",
+      "source_b_id": "GW-RZP-2218",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5219": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-KOTAK-1219",
+      "source_b_id": "GW-RZP-2219",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 390.51
+    },
+    "TXN-5220": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1220",
+      "source_b_id": "PAY-RZP-2220",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5221": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-SBI-1221",
+      "source_b_id": "GW-RZP-2221",
+      "expected_confidence_range": [
+        25,
+        35
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5222": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1222",
+      "source_b_id": "PO-RZP-2222",
+      "expected_confidence_range": [
+        43,
+        53
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5223": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1223",
+      "source_b_id": "GW-RZP-2223",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 108.7
+    },
+    "TXN-5224": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1224",
+      "source_b_id": "PAY-RZP-2224",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5225": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1225",
+      "source_b_id": "GW-RZP-2225",
+      "expected_confidence_range": [
+        68,
+        78
+      ],
+      "fee_amount": 133.58
+    },
+    "TXN-5226": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1226",
+      "source_b_id": "PO-RZP-2226",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5227": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1227",
+      "source_b_id": "GW-RZP-2227",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5228": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1228",
+      "source_b_id": "GW-RZP-2228",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5229": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1229",
+      "source_b_id": "PO-RZP-2229",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5230": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1230",
+      "source_b_id": "PO-RZP-2230",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5231": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1231",
+      "source_b_id": "GW-RZP-2231",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5232": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1232",
+      "source_b_id": "PAY-RZP-2232",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5233": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1233",
+      "source_b_id": "PAY-RZP-2233",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5234": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1234",
+      "source_b_id": "PO-RZP-2234",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5235": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1235",
+      "source_b_id": "PAY-RZP-2235",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5236": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1236",
+      "source_b_id": "GW-RZP-2236",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5237": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1237",
+      "source_b_id": "PO-RZP-2237",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5238": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-AXIS-1238",
+      "source_b_id": "PO-RZP-2238",
+      "expected_confidence_range": [
+        38,
+        48
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5239": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-AXIS-1239",
+      "source_b_id": "GW-RZP-2239",
+      "expected_confidence_range": [
+        26,
+        36
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5240": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1240",
+      "source_b_id": "PAY-RZP-2240",
+      "expected_confidence_range": [
+        70,
+        80
+      ],
+      "fee_amount": 553.82
+    },
+    "TXN-5241": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1241",
+      "source_b_id": "GW-RZP-2241",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5242": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1242",
+      "source_b_id": "PAY-RZP-2242",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5243": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-HDFC-1243",
+      "source_b_id": "PAY-RZP-2243",
+      "expected_confidence_range": [
+        68,
+        78
+      ],
+      "fee_amount": 134.65
+    },
+    "TXN-5244": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1244",
+      "source_b_id": "PO-RZP-2244",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5245": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1245",
+      "source_b_id": "GW-RZP-2245",
+      "expected_confidence_range": [
+        67,
+        77
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5246": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1246",
+      "source_b_id": "GW-RZP-2246",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5247": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1247",
+      "source_b_id": "GW-RZP-2247",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5248": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-SBI-1248",
+      "source_b_id": "GW-RZP-2248",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 286.53
+    },
+    "TXN-5249": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1249",
+      "source_b_id": "PAY-RZP-2249",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5250": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1250",
+      "source_b_id": "GW-RZP-2250",
+      "expected_confidence_range": [
+        52,
+        62
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5251": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-HDFC-1251",
+      "source_b_id": "PAY-RZP-2251",
+      "expected_confidence_range": [
+        33,
+        43
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5252": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1252",
+      "source_b_id": "GW-RZP-2252",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5253": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1253",
+      "source_b_id": "GW-RZP-2253",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5254": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1254",
+      "source_b_id": "PAY-RZP-2254",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5255": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-KOTAK-1255",
+      "source_b_id": "PAY-RZP-2255",
+      "expected_confidence_range": [
+        46,
+        56
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5256": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1256",
+      "source_b_id": "PO-RZP-2256",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5257": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1257",
+      "source_b_id": "GW-RZP-2257",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5258": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1258",
+      "source_b_id": "PAY-RZP-2258",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5259": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1259",
+      "source_b_id": "PAY-RZP-2259",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5260": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-SBI-1260",
+      "source_b_id": "PO-RZP-2260",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 738.05
+    },
+    "TXN-5261": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1261",
+      "source_b_id": "GW-RZP-2261",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5262": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-ICICI-1262",
+      "source_b_id": "PO-RZP-2262",
+      "expected_confidence_range": [
+        39,
+        49
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5263": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1263",
+      "source_b_id": "PO-RZP-2263",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5264": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1264",
+      "source_b_id": "GW-RZP-2264",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5265": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1265",
+      "source_b_id": "GW-RZP-2265",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5266": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1266",
+      "source_b_id": "PAY-RZP-2266",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5267": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1267",
+      "source_b_id": "PAY-RZP-2267",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5268": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1268",
+      "source_b_id": "PO-RZP-2268",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5269": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1269",
+      "source_b_id": "PAY-RZP-2269",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5270": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1270",
+      "source_b_id": "PO-RZP-2270",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5271": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1271",
+      "source_b_id": "GW-RZP-2271",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5272": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-HDFC-1272",
+      "source_b_id": "GW-RZP-2272",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5273": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1273",
+      "source_b_id": "GW-RZP-2273",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5274": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1274",
+      "source_b_id": "PO-RZP-2274",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5275": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1275",
+      "source_b_id": "PAY-RZP-2275",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5276": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1276",
+      "source_b_id": "PAY-RZP-2276",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5277": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1277",
+      "source_b_id": "PAY-RZP-2277",
+      "expected_confidence_range": [
+        63,
+        73
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5278": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1278",
+      "source_b_id": "PO-RZP-2278",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5279": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1279",
+      "source_b_id": "PO-RZP-2279",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5280": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1280",
+      "source_b_id": "PAY-RZP-2280",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5281": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1281",
+      "source_b_id": "GW-RZP-2281",
+      "expected_confidence_range": [
+        70,
+        80
+      ],
+      "fee_amount": 368.95
+    },
+    "TXN-5282": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-AXIS-1282",
+      "source_b_id": "PAY-RZP-2282",
+      "expected_confidence_range": [
+        53,
+        63
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5283": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1283",
+      "source_b_id": "PO-RZP-2283",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5284": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-KOTAK-1284",
+      "source_b_id": "PO-RZP-2284",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 85.1
+    },
+    "TXN-5285": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1285",
+      "source_b_id": "PAY-RZP-2285",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5286": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1286",
+      "source_b_id": "PO-RZP-2286",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5287": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1287",
+      "source_b_id": "GW-RZP-2287",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5288": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1288",
+      "source_b_id": "PO-RZP-2288",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5289": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1289",
+      "source_b_id": "PAY-RZP-2289",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5290": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1290",
+      "source_b_id": "PO-RZP-2290",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5291": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1291",
+      "source_b_id": "GW-RZP-2291",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5292": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1292",
+      "source_b_id": "PO-RZP-2292",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5293": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1293",
+      "source_b_id": "PO-RZP-2293",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5294": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1294",
+      "source_b_id": "GW-RZP-2294",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5295": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1295",
+      "source_b_id": "GW-RZP-2295",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5296": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1296",
+      "source_b_id": "PAY-RZP-2296",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5297": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1297",
+      "source_b_id": "GW-RZP-2297",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5298": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1298",
+      "source_b_id": "PAY-RZP-2298",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5299": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1299",
+      "source_b_id": "GW-RZP-2299",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5300": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1300",
+      "source_b_id": "PO-RZP-2300",
+      "expected_confidence_range": [
+        79,
+        89
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5301": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1301",
+      "source_b_id": "PAY-RZP-2301",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5302": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1302",
+      "source_b_id": "PAY-RZP-2302",
+      "expected_confidence_range": [
+        37,
+        47
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5303": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1303",
+      "source_b_id": "PO-RZP-2303",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5304": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1304",
+      "source_b_id": "PAY-RZP-2304",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5305": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-ICICI-1305",
+      "source_b_id": "GW-RZP-2305",
+      "expected_confidence_range": [
+        32,
+        42
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5306": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1306",
+      "source_b_id": "PAY-RZP-2306",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5307": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1307",
+      "source_b_id": "PO-RZP-2307",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5308": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1308",
+      "source_b_id": "GW-RZP-2308",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5309": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1309",
+      "source_b_id": "PO-RZP-2309",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5310": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1310",
+      "source_b_id": "PAY-RZP-2310",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 297.9
+    },
+    "TXN-5311": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1311",
+      "source_b_id": "PAY-RZP-2311",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5312": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1312",
+      "source_b_id": "PO-RZP-2312",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5313": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-ICICI-1313",
+      "source_b_id": "PO-RZP-2313",
+      "expected_confidence_range": [
+        63,
+        73
+      ],
+      "fee_amount": 1491.55
+    },
+    "TXN-5314": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-SBI-1314",
+      "source_b_id": "GW-RZP-2314",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 32.6
+    },
+    "TXN-5315": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1315",
+      "source_b_id": "PO-RZP-2315",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5316": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1316",
+      "source_b_id": "PO-RZP-2316",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5317": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1317",
+      "source_b_id": "GW-RZP-2317",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5318": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1318",
+      "source_b_id": "PO-RZP-2318",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5319": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1319",
+      "source_b_id": "PAY-RZP-2319",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5320": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1320",
+      "source_b_id": "GW-RZP-2320",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5321": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1321",
+      "source_b_id": "PO-RZP-2321",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5322": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-HDFC-1322",
+      "source_b_id": "PO-RZP-2322",
+      "expected_confidence_range": [
+        43,
+        53
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5323": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1323",
+      "source_b_id": "PO-RZP-2323",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5324": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1324",
+      "source_b_id": "PAY-RZP-2324",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5325": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1325",
+      "source_b_id": "PAY-RZP-2325",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5326": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1326",
+      "source_b_id": "PO-RZP-2326",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5327": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1327",
+      "source_b_id": "PO-RZP-2327",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5328": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1328",
+      "source_b_id": "PAY-RZP-2328",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5329": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1329",
+      "source_b_id": "GW-RZP-2329",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5330": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1330",
+      "source_b_id": "PAY-RZP-2330",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5331": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-HDFC-1331",
+      "source_b_id": "PAY-RZP-2331",
+      "expected_confidence_range": [
+        50,
+        60
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5332": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-HDFC-1332",
+      "source_b_id": "GW-RZP-2332",
+      "expected_confidence_range": [
+        70,
+        80
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5333": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1333",
+      "source_b_id": "PAY-RZP-2333",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5334": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-AXIS-1334",
+      "source_b_id": "PAY-RZP-2334",
+      "expected_confidence_range": [
+        25,
+        35
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5335": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1335",
+      "source_b_id": "PO-RZP-2335",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5336": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1336",
+      "source_b_id": "GW-RZP-2336",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5337": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1337",
+      "source_b_id": "GW-RZP-2337",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5338": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1338",
+      "source_b_id": "PO-RZP-2338",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5339": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1339",
+      "source_b_id": "PO-RZP-2339",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5340": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1340",
+      "source_b_id": "PO-RZP-2340",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5341": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1341",
+      "source_b_id": "PO-RZP-2341",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5342": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1342",
+      "source_b_id": "GW-RZP-2342",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5343": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1343",
+      "source_b_id": "PO-RZP-2343",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 74.94
+    },
+    "TXN-5344": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1344",
+      "source_b_id": "PAY-RZP-2344",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5345": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1345",
+      "source_b_id": "GW-RZP-2345",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5346": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-ICICI-1346",
+      "source_b_id": "PAY-RZP-2346",
+      "expected_confidence_range": [
+        73,
+        83
+      ],
+      "fee_amount": 155.81
+    },
+    "TXN-5347": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1347",
+      "source_b_id": "PAY-RZP-2347",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5348": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-KOTAK-1348",
+      "source_b_id": "GW-RZP-2348",
+      "expected_confidence_range": [
+        42,
+        52
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5349": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1349",
+      "source_b_id": "PAY-RZP-2349",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5350": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1350",
+      "source_b_id": "GW-RZP-2350",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 1229.23
+    },
+    "TXN-5351": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-HDFC-1351",
+      "source_b_id": "GW-RZP-2351",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 72.69
+    },
+    "TXN-5352": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-SBI-1352",
+      "source_b_id": "PAY-RZP-2352",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 453.32
+    },
+    "TXN-5353": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1353",
+      "source_b_id": "PAY-RZP-2353",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5354": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1354",
+      "source_b_id": "GW-RZP-2354",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5355": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1355",
+      "source_b_id": "PAY-RZP-2355",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5356": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1356",
+      "source_b_id": "PO-RZP-2356",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5357": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1357",
+      "source_b_id": "PO-RZP-2357",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5358": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1358",
+      "source_b_id": "PAY-RZP-2358",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5359": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1359",
+      "source_b_id": "PAY-RZP-2359",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5360": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1360",
+      "source_b_id": "PO-RZP-2360",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5361": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1361",
+      "source_b_id": "PO-RZP-2361",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5362": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1362",
+      "source_b_id": "GW-RZP-2362",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5363": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1363",
+      "source_b_id": "PO-RZP-2363",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5364": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1364",
+      "source_b_id": "GW-RZP-2364",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5365": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-HDFC-1365",
+      "source_b_id": "PO-RZP-2365",
+      "expected_confidence_range": [
+        43,
+        53
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5366": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1366",
+      "source_b_id": "PO-RZP-2366",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5367": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1367",
+      "source_b_id": "PO-RZP-2367",
+      "expected_confidence_range": [
+        49,
+        59
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5368": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-SBI-1368",
+      "source_b_id": "PO-RZP-2368",
+      "expected_confidence_range": [
+        66,
+        76
+      ],
+      "fee_amount": 895.99
+    },
+    "TXN-5369": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1369",
+      "source_b_id": "PAY-RZP-2369",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5370": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1370",
+      "source_b_id": "PO-RZP-2370",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5371": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1371",
+      "source_b_id": "PAY-RZP-2371",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5372": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1372",
+      "source_b_id": "PAY-RZP-2372",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5373": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1373",
+      "source_b_id": "PAY-RZP-2373",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5374": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1374",
+      "source_b_id": "PO-RZP-2374",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5375": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1375",
+      "source_b_id": "PAY-RZP-2375",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5376": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-HDFC-1376",
+      "source_b_id": "PO-RZP-2376",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 204.28
+    },
+    "TXN-5377": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1377",
+      "source_b_id": "PO-RZP-2377",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5378": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1378",
+      "source_b_id": "GW-RZP-2378",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5379": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1379",
+      "source_b_id": "GW-RZP-2379",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5380": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1380",
+      "source_b_id": "GW-RZP-2380",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5381": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1381",
+      "source_b_id": "PAY-RZP-2381",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5382": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1382",
+      "source_b_id": "GW-RZP-2382",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5383": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1383",
+      "source_b_id": "GW-RZP-2383",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5384": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1384",
+      "source_b_id": "PAY-RZP-2384",
+      "expected_confidence_range": [
+        52,
+        62
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5385": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1385",
+      "source_b_id": "PAY-RZP-2385",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5386": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1386",
+      "source_b_id": "PAY-RZP-2386",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5387": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1387",
+      "source_b_id": "PO-RZP-2387",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5388": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-AXIS-1388",
+      "source_b_id": "GW-RZP-2388",
+      "expected_confidence_range": [
+        36,
+        46
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5389": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1389",
+      "source_b_id": "GW-RZP-2389",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5390": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1390",
+      "source_b_id": "PO-RZP-2390",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5391": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1391",
+      "source_b_id": "PO-RZP-2391",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5392": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1392",
+      "source_b_id": "PAY-RZP-2392",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5393": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1393",
+      "source_b_id": "PAY-RZP-2393",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5394": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1394",
+      "source_b_id": "GW-RZP-2394",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5395": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-HDFC-1395",
+      "source_b_id": "PO-RZP-2395",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 397.2
+    },
+    "TXN-5396": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-KOTAK-1396",
+      "source_b_id": "PAY-RZP-2396",
+      "expected_confidence_range": [
+        68,
+        78
+      ],
+      "fee_amount": 360.47
+    },
+    "TXN-5397": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1397",
+      "source_b_id": "PAY-RZP-2397",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5398": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1398",
+      "source_b_id": "GW-RZP-2398",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5399": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1399",
+      "source_b_id": "PO-RZP-2399",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5400": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1400",
+      "source_b_id": "GW-RZP-2400",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5401": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1401",
+      "source_b_id": "GW-RZP-2401",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5402": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1402",
+      "source_b_id": "GW-RZP-2402",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5403": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1403",
+      "source_b_id": "PAY-RZP-2403",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5404": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1404",
+      "source_b_id": "GW-RZP-2404",
+      "expected_confidence_range": [
+        40,
+        50
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5405": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1405",
+      "source_b_id": "PO-RZP-2405",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5406": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1406",
+      "source_b_id": "PO-RZP-2406",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5407": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-AXIS-1407",
+      "source_b_id": "PAY-RZP-2407",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5408": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1408",
+      "source_b_id": "GW-RZP-2408",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5409": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1409",
+      "source_b_id": "PAY-RZP-2409",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5410": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1410",
+      "source_b_id": "GW-RZP-2410",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5411": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-KOTAK-1411",
+      "source_b_id": "GW-RZP-2411",
+      "expected_confidence_range": [
+        35,
+        45
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5412": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1412",
+      "source_b_id": "PO-RZP-2412",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5413": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1413",
+      "source_b_id": "PAY-RZP-2413",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5414": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1414",
+      "source_b_id": "PO-RZP-2414",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5415": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1415",
+      "source_b_id": "PAY-RZP-2415",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5416": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-SBI-1416",
+      "source_b_id": "PAY-RZP-2416",
+      "expected_confidence_range": [
+        64,
+        74
+      ],
+      "fee_amount": 491.02
+    },
+    "TXN-5417": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1417",
+      "source_b_id": "PO-RZP-2417",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5418": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-ICICI-1418",
+      "source_b_id": "PAY-RZP-2418",
+      "expected_confidence_range": [
+        30,
+        40
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5419": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1419",
+      "source_b_id": "GW-RZP-2419",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5420": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-SBI-1420",
+      "source_b_id": "GW-RZP-2420",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 169.96
+    },
+    "TXN-5421": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1421",
+      "source_b_id": "PO-RZP-2421",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5422": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1422",
+      "source_b_id": "PAY-RZP-2422",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5423": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-AXIS-1423",
+      "source_b_id": "GW-RZP-2423",
+      "expected_confidence_range": [
+        67,
+        77
+      ],
+      "fee_amount": 146.47
+    },
+    "TXN-5424": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1424",
+      "source_b_id": "GW-RZP-2424",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5425": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1425",
+      "source_b_id": "PAY-RZP-2425",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5426": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1426",
+      "source_b_id": "GW-RZP-2426",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5427": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1427",
+      "source_b_id": "PAY-RZP-2427",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5428": {
+      "expected_status": "mismatched",
+      "anomaly_type": "severe_mismatch",
+      "source_a_id": "BNK-KOTAK-1428",
+      "source_b_id": "PAY-RZP-2428",
+      "expected_confidence_range": [
+        30,
+        40
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5429": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1429",
+      "source_b_id": "PO-RZP-2429",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5430": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1430",
+      "source_b_id": "PO-RZP-2430",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5431": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1431",
+      "source_b_id": "PAY-RZP-2431",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5432": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1432",
+      "source_b_id": "PO-RZP-2432",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5433": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1433",
+      "source_b_id": "GW-RZP-2433",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5434": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1434",
+      "source_b_id": "GW-RZP-2434",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5435": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1435",
+      "source_b_id": "GW-RZP-2435",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5436": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-AXIS-1436",
+      "source_b_id": "PAY-RZP-2436",
+      "expected_confidence_range": [
+        76,
+        86
+      ],
+      "fee_amount": 337.08
+    },
+    "TXN-5437": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1437",
+      "source_b_id": "PO-RZP-2437",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5438": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1438",
+      "source_b_id": "PAY-RZP-2438",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5439": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_gateway_record",
+      "source_a_id": "BNK-HDFC-1439",
+      "source_b_id": "PAY-RZP-2439",
+      "expected_confidence_range": [
+        44,
+        54
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5440": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-HDFC-1440",
+      "source_b_id": "GW-RZP-2440",
+      "expected_confidence_range": [
+        44,
+        54
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5441": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1441",
+      "source_b_id": "PAY-RZP-2441",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5442": {
+      "expected_status": "mismatched",
+      "anomaly_type": "orphaned_bank_record",
+      "source_a_id": "BNK-AXIS-1442",
+      "source_b_id": "GW-RZP-2442",
+      "expected_confidence_range": [
+        43,
+        53
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5443": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-ICICI-1443",
+      "source_b_id": "PAY-RZP-2443",
+      "expected_confidence_range": [
+        69,
+        79
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5444": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1444",
+      "source_b_id": "GW-RZP-2444",
+      "expected_confidence_range": [
+        71,
+        81
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5445": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1445",
+      "source_b_id": "PAY-RZP-2445",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5446": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1446",
+      "source_b_id": "GW-RZP-2446",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 123.62
+    },
+    "TXN-5447": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1447",
+      "source_b_id": "PO-RZP-2447",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5448": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1448",
+      "source_b_id": "PO-RZP-2448",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5449": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1449",
+      "source_b_id": "PAY-RZP-2449",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5450": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1450",
+      "source_b_id": "PAY-RZP-2450",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5451": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1451",
+      "source_b_id": "PAY-RZP-2451",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5452": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1452",
+      "source_b_id": "PO-RZP-2452",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5453": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1453",
+      "source_b_id": "GW-RZP-2453",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5454": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1454",
+      "source_b_id": "GW-RZP-2454",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5455": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-AXIS-1455",
+      "source_b_id": "PAY-RZP-2455",
+      "expected_confidence_range": [
+        75,
+        85
+      ],
+      "fee_amount": 560.43
+    },
+    "TXN-5456": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-KOTAK-1456",
+      "source_b_id": "GW-RZP-2456",
+      "expected_confidence_range": [
+        73,
+        83
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5457": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1457",
+      "source_b_id": "GW-RZP-2457",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5458": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1458",
+      "source_b_id": "GW-RZP-2458",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5459": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-ICICI-1459",
+      "source_b_id": "PAY-RZP-2459",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 131.87
+    },
+    "TXN-5460": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1460",
+      "source_b_id": "PAY-RZP-2460",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5461": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1461",
+      "source_b_id": "GW-RZP-2461",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5462": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1462",
+      "source_b_id": "PO-RZP-2462",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5463": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1463",
+      "source_b_id": "PAY-RZP-2463",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5464": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1464",
+      "source_b_id": "PO-RZP-2464",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5465": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1465",
+      "source_b_id": "PO-RZP-2465",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5466": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1466",
+      "source_b_id": "PAY-RZP-2466",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5467": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1467",
+      "source_b_id": "GW-RZP-2467",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5468": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1468",
+      "source_b_id": "GW-RZP-2468",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5469": {
+      "expected_status": "flagged",
+      "anomaly_type": "gateway_fee_deduction",
+      "source_a_id": "BNK-KOTAK-1469",
+      "source_b_id": "GW-RZP-2469",
+      "expected_confidence_range": [
+        77,
+        87
+      ],
+      "fee_amount": 280.03
+    },
+    "TXN-5470": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1470",
+      "source_b_id": "GW-RZP-2470",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5471": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1471",
+      "source_b_id": "PO-RZP-2471",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5472": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1472",
+      "source_b_id": "PO-RZP-2472",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5473": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-AXIS-1473",
+      "source_b_id": "PO-RZP-2473",
+      "expected_confidence_range": [
+        78,
+        88
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5474": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1474",
+      "source_b_id": "GW-RZP-2474",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5475": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1475",
+      "source_b_id": "PAY-RZP-2475",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5476": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1476",
+      "source_b_id": "GW-RZP-2476",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5477": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1477",
+      "source_b_id": "PAY-RZP-2477",
+      "expected_confidence_range": [
+        48,
+        58
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5478": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1478",
+      "source_b_id": "PAY-RZP-2478",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5479": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1479",
+      "source_b_id": "GW-RZP-2479",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5480": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1480",
+      "source_b_id": "PO-RZP-2480",
+      "expected_confidence_range": [
+        65,
+        75
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5481": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1481",
+      "source_b_id": "PO-RZP-2481",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5482": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1482",
+      "source_b_id": "PO-RZP-2482",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5483": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-AXIS-1483",
+      "source_b_id": "PO-RZP-2483",
+      "expected_confidence_range": [
+        39,
+        49
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5484": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1484",
+      "source_b_id": "PO-RZP-2484",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5485": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1485",
+      "source_b_id": "PO-RZP-2485",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5486": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1486",
+      "source_b_id": "GW-RZP-2486",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5487": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1487",
+      "source_b_id": "GW-RZP-2487",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5488": {
+      "expected_status": "flagged",
+      "anomaly_type": "settlement_date_drift",
+      "source_a_id": "BNK-SBI-1488",
+      "source_b_id": "PAY-RZP-2488",
+      "expected_confidence_range": [
+        67,
+        77
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5489": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1489",
+      "source_b_id": "GW-RZP-2489",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5490": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1490",
+      "source_b_id": "PO-RZP-2490",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5491": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1491",
+      "source_b_id": "GW-RZP-2491",
+      "expected_confidence_range": [
+        63,
+        73
+      ],
+      "fee_amount": 309.3
+    },
+    "TXN-5492": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-KOTAK-1492",
+      "source_b_id": "PO-RZP-2492",
+      "expected_confidence_range": [
+        72,
+        82
+      ],
+      "fee_amount": 1192.22
+    },
+    "TXN-5493": {
+      "expected_status": "mismatched",
+      "anomaly_type": "unexplained_amount_delta",
+      "source_a_id": "BNK-SBI-1493",
+      "source_b_id": "PO-RZP-2493",
+      "expected_confidence_range": [
+        51,
+        61
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5494": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1494",
+      "source_b_id": "GW-RZP-2494",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5495": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1495",
+      "source_b_id": "PO-RZP-2495",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5496": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1496",
+      "source_b_id": "PO-RZP-2496",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5497": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1497",
+      "source_b_id": "GW-RZP-2497",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5498": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1498",
+      "source_b_id": "PO-RZP-2498",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5499": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1499",
+      "source_b_id": "PAY-RZP-2499",
+      "expected_confidence_range": [
+        89,
+        99
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5500": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1500",
+      "source_b_id": "PO-RZP-2500",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5501": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1501",
+      "source_b_id": "PO-RZP-2501",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5502": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1502",
+      "source_b_id": "PAY-RZP-2502",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5503": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1503",
+      "source_b_id": "GW-RZP-2503",
+      "expected_confidence_range": [
+        92,
+        102
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5504": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1504",
+      "source_b_id": "PAY-RZP-2504",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5505": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1505",
+      "source_b_id": "GW-RZP-2505",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5506": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1506",
+      "source_b_id": "PO-RZP-2506",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5507": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1507",
+      "source_b_id": "GW-RZP-2507",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5508": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1508",
+      "source_b_id": "PO-RZP-2508",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5509": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1509",
+      "source_b_id": "GW-RZP-2509",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5510": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1510",
+      "source_b_id": "GW-RZP-2510",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5511": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-AXIS-1511",
+      "source_b_id": "PO-RZP-2511",
+      "expected_confidence_range": [
+        93,
+        103
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5512": {
+      "expected_status": "flagged",
+      "anomaly_type": "fee_and_date_drift",
+      "source_a_id": "BNK-SBI-1512",
+      "source_b_id": "GW-RZP-2512",
+      "expected_confidence_range": [
+        69,
+        79
+      ],
+      "fee_amount": 151.4
+    },
+    "TXN-5513": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1513",
+      "source_b_id": "PAY-RZP-2513",
+      "expected_confidence_range": [
+        88,
+        98
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5514": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1514",
+      "source_b_id": "PAY-RZP-2514",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5515": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-SBI-1515",
+      "source_b_id": "GW-RZP-2515",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5516": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1516",
+      "source_b_id": "PAY-RZP-2516",
+      "expected_confidence_range": [
+        90,
+        100
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5517": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1517",
+      "source_b_id": "GW-RZP-2517",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5518": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-HDFC-1518",
+      "source_b_id": "PO-RZP-2518",
+      "expected_confidence_range": [
+        94,
+        104
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5519": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-KOTAK-1519",
+      "source_b_id": "PAY-RZP-2519",
+      "expected_confidence_range": [
+        91,
+        101
+      ],
+      "fee_amount": 0.0
+    },
+    "TXN-5520": {
+      "expected_status": "matched",
+      "anomaly_type": "none",
+      "source_a_id": "BNK-ICICI-1520",
+      "source_b_id": "GW-RZP-2520",
+      "expected_confidence_range": [
+        87,
+        97
+      ],
+      "fee_amount": 0.0
+    }
+  }
+}

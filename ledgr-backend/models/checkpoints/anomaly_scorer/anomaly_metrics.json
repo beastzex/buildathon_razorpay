@@ -1,0 +1,23 @@
+{
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "false_positive_rate": 0.0,
+  "confusion_matrix": {
+    "true_negatives": 690,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "true_positives": 60
+  },
+  "financial_cost_analysis": {
+    "false_positive_count": 0,
+    "unit_fp_cost_inr": 25.0,
+    "false_positive_total_cost_inr": 0.0,
+    "false_negative_count": 0,
+    "unit_fn_cost_inr": 200.0,
+    "false_negative_total_cost_inr": 0.0,
+    "total_operational_risk_cost_inr": 0.0,
+    "baseline_unreviewed_cost_inr": 12000.0,
+    "net_operational_savings_inr": 12000.0
+  }
+}

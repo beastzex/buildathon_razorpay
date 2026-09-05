@@ -1,0 +1,25 @@
+{
+  "base_model": "BAAI/bge-small-en-v1.5",
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 0.0002,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "training_time_seconds": 4.75,
+  "loss_history": [
+    {
+      "epoch": 1,
+      "loss": 0.29759
+    },
+    {
+      "epoch": 2,
+      "loss": 0.27624
+    },
+    {
+      "epoch": 3,
+      "loss": 0.26368
+    }
+  ]
+}
