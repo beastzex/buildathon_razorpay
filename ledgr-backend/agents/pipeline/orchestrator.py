@@ -37,6 +37,10 @@ class PipelineOrchestrator:
     async def _emit(self, batch_id: str, result: AgentResult):
         try:
             await self.event_bus.publish(batch_id, result)
+            # If a live web client is listening via in-process queue, pace emissions slightly (60ms)
+            # so the browser ticker animates vividly across stages
+            if self.event_bus._in_process_subscribers.get(batch_id):
+                await asyncio.sleep(0.06)
         except Exception as e:
             logger.warning(f"Failed to publish event to bus: {e}")
 

@@ -263,6 +263,8 @@ class SettlementQAAgent:
         sb_amt = top_rec.get("sourceB", {}).get("amount", top_rec.get("source_b_amount", 0.0))
         delta = round(abs(sa_amt - sb_amt), 2)
 
+        all_ids = [r.get("id") for r in retrieved if r.get("id")]
+
         if is_hinglish:
             if status == "flagged":
                 ans = (
@@ -278,8 +280,18 @@ class SettlementQAAgent:
                 )
             else:
                 ans = f"{rec_id} fully matched hai. Bank aur gateway dono records ₹{sa_amt:,.2f} par agree karte hain."
+
+            if len(retrieved) > 1:
+                records_summary = ", ".join(all_ids[:4])
+                ans = f"Batch mein {len(retrieved)} relevant records mile ({records_summary}). " + ans
         else:
-            if expl:
+            if len(retrieved) > 1:
+                records_summary = ", ".join([f"{r.get('id')} ({r.get('status', 'flagged')})" for r in retrieved[:8]])
+                ans = (
+                    f"Found {len(retrieved)} relevant record(s) matching your inquiry ({records_summary}). "
+                    f"Record {rec_id} status is '{status}': {expl or f'Discrepancy of ₹{delta:,.2f}.'}"
+                )
+            elif expl:
                 ans = f"Transaction {rec_id} status is '{status}': {expl}"
             elif delta > 0.01:
                 ans = (
@@ -289,9 +301,10 @@ class SettlementQAAgent:
             else:
                 ans = f"Transaction {rec_id} is verified and matched at ₹{sa_amt:,.2f} across all sources."
 
+        citations = list(dict.fromkeys(retrieved_ids + all_ids))
         return QAResponse(
             answer=ans,
-            citations=[rec_id],
+            citations=citations[:5],
             retrieved_record_ids=retrieved_ids,
             status="fallback"
         )

@@ -27,7 +27,7 @@ async def get_audit_trail(
     res = await db.execute(
         select(AuditLogEntry)
         .where(AuditLogEntry.batch_id == batch_id)
-        .order_by(AuditLogEntry.created_at.asc())
+        .order_by(AuditLogEntry.created_at.asc(), AuditLogEntry.id.asc())
     )
     entries = res.scalars().all()
 
@@ -59,7 +59,7 @@ async def verify_audit_trail(
     res = await db.execute(
         select(AuditLogEntry)
         .where(AuditLogEntry.batch_id == batch_id)
-        .order_by(AuditLogEntry.created_at.asc())
+        .order_by(AuditLogEntry.created_at.asc(), AuditLogEntry.id.asc())
     )
     entries = res.scalars().all()
 
