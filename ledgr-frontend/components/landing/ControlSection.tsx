@@ -30,8 +30,11 @@ export function ControlSection() {
             maxWidth: 720
           }}
         >
-          We give you full control over your data
+          Institutional Architecture & Cryptographic Control
         </h2>
+        <p style={{ fontSize: '1.05rem', color: '#6B7280', maxWidth: 620, margin: '0 auto' }}>
+          End-to-end reconciliation across 10,000 real-time records with sub-second neural matching and zero financial leakage.
+        </p>
       </div>
 
       {/* Dual Bento Cards (from Ramos video 00:39 & 00:48) */}
@@ -60,36 +63,36 @@ export function ControlSection() {
             }}
           >
             <div>
-              {/* Yellow Pill: Conversion rate 2,3% */}
+              {/* Yellow Pill: 0 Paisa Tolerance */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <div style={{ background: '#FFD028', color: '#0D0D11', padding: '6px 14px', borderRadius: 999, fontSize: '0.86rem', fontWeight: 800 }}>
-                  2,3%
+                  0 Paisa
                 </div>
                 <div style={{ fontSize: '0.78rem', color: '#6B7280', fontWeight: 600 }}>
-                  Percentage of reconciliation certainty
+                  Zero Tolerance for Unauthorized Leakage
                 </div>
               </div>
 
               <div>
-                <div style={{ fontSize: '0.78rem', color: '#6B7280' }}>Sales revenue</div>
+                <div style={{ fontSize: '0.78rem', color: '#6B7280' }}>Reconciled Pipeline Volume</div>
                 <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", letterSpacing: '-0.03em', margin: '4px 0 20px' }}>
-                  $ 131.2K
+                  ₹14.28 Cr
                 </div>
               </div>
 
-              {/* Price bars */}
+              {/* Rails breakdown bars */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, background: '#F6F6F9', borderRadius: 18, padding: 18 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem' }}>
-                  <span style={{ color: '#6B7280' }}>Min. price</span>
-                  <span style={{ fontWeight: 800, color: '#0D0D11' }}>1.200 $</span>
+                  <span style={{ color: '#6B7280' }}>Razorpay MDR Drift</span>
+                  <span style={{ fontWeight: 800, color: '#0D0D11' }}>0.00% (Flags {'>'}0.4%)</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem' }}>
-                  <span style={{ color: '#6B7280' }}>Max. price</span>
-                  <span style={{ fontWeight: 800, color: '#0D0D11' }}>2.320 $</span>
+                  <span style={{ color: '#6B7280' }}>Settlement Lag Window</span>
+                  <span style={{ fontWeight: 800, color: '#0D0D11' }}>T+0 to T+2 Days</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', paddingTop: 8, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                  <span style={{ color: '#6B7280' }}>Engagement rate</span>
-                  <span style={{ fontWeight: 800, color: '#10B981' }}>47.84%</span>
+                  <span style={{ color: '#6B7280' }}>Cryptographic Hash Chain</span>
+                  <span style={{ fontWeight: 800, color: '#10B981' }}>SHA-256 Verified</span>
                 </div>
               </div>
             </div>
@@ -98,15 +101,15 @@ export function ControlSection() {
           {/* Subtext below Card 1 */}
           <div style={{ padding: '0 8px' }}>
             <h4 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.2rem', fontWeight: 800, color: '#0D0D11', margin: '0 0 6px' }}>
-              Improved customer service
+              Two-Stage Hybrid Machine Learning Gate
             </h4>
             <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5, margin: 0 }}>
-              Analytics helps optimize service processes by providing information on how to interact with external banking statements and payout records.
+              Stage 1 executes fine-tuned BGE-small LoRA embeddings on CUDA GPU. Stage 2 enforces deterministic mathematical rules for date lag, reference token containment, and gateway fees.
             </p>
           </div>
         </div>
 
-        {/* Card 2: Layered Cards Sliding Out with Yellow Bar Chart */}
+        {/* Card 2: Multi-Agent Consensus & RAG */}
         <div>
           <div
             style={{
@@ -136,7 +139,7 @@ export function ControlSection() {
                 zIndex: 1
               }}
             >
-              <span>📊 Finance reports</span>
+              <span>⚡ Multi-Agent Consensus Relay</span>
             </div>
 
             {/* Main Foreground Card */}
@@ -160,30 +163,30 @@ export function ControlSection() {
                   <div>
                     <div style={{ fontSize: '0.78rem', color: '#6B7280', display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FE4A23' }} />
-                      Insights
+                      Consensus Mesh
                     </div>
-                    <div style={{ fontSize: '0.74rem', color: '#6B7280', marginTop: 8 }}>Total profit</div>
+                    <div style={{ fontSize: '0.74rem', color: '#6B7280', marginTop: 8 }}>Agreement Rate</div>
                     <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", letterSpacing: '-0.03em' }}>
-                      $ 264.2K
+                      96.8%
                     </div>
                   </div>
 
-                  {/* Yellow pill: Data visualization */}
+                  {/* Yellow pill: GPT-OSS-120B */}
                   <span style={{ background: '#FFD028', color: '#0D0D11', padding: '6px 14px', borderRadius: 999, fontSize: '0.76rem', fontWeight: 800 }}>
-                    Data visualization
+                    GPT-OSS-120B
                   </span>
                 </div>
 
-                {/* Golden Yellow Bar Chart with 5 Years (from Ramos video 00:40) */}
+                {/* Rail agreement bars */}
                 <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', height: 110, padding: '0 12px 10px' }}>
                   {[
-                    { year: '2018', h: 45 },
-                    { year: '2019', h: 65 },
-                    { year: '2020', h: 80 },
-                    { year: '2021', h: 60 },
-                    { year: '2022', h: 95 }
+                    { rail: 'UPI', h: 98 },
+                    { rail: 'Cards', h: 94 },
+                    { rail: 'Netbank', h: 96 },
+                    { rail: 'IMPS', h: 99 },
+                    { rail: 'RTGS', h: 100 }
                   ].map((bar) => (
-                    <div key={bar.year} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1 }}>
+                    <div key={bar.rail} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1 }}>
                       <div
                         style={{
                           width: 28,
@@ -192,7 +195,7 @@ export function ControlSection() {
                           borderRadius: 6
                         }}
                       />
-                      <span style={{ fontSize: '0.68rem', color: '#9CA3AF' }}>{bar.year}</span>
+                      <span style={{ fontSize: '0.68rem', color: '#9CA3AF' }}>{bar.rail}</span>
                     </div>
                   ))}
                 </div>
@@ -203,10 +206,10 @@ export function ControlSection() {
           {/* Subtext below Card 2 */}
           <div style={{ padding: '0 8px' }}>
             <h4 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.2rem', fontWeight: 800, color: '#0D0D11', margin: '0 0 6px' }}>
-              Monitoring key indicators
+              Adversarial Consensus & Root-Cause Investigator
             </h4>
             <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5, margin: 0 }}>
-              Analytics platforms allow businesses to track KPIs, an important tool for measuring success and achieving strategic financial targets.
+              Advocate FOR and Advocate AGAINST debate ambiguous discrepancies before an Arbiter issues a legally grounded verdict with citation honesty validation.
             </p>
           </div>
         </div>

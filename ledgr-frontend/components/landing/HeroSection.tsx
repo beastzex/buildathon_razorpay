@@ -35,19 +35,27 @@ export function HeroSection() {
           alignItems: 'center'
         }}
       >
-        {/* Left: EXACT Ramos Headline */}
+        {/* Left: EXACT Ramos Headline tailored for Razorpay Track 4 */}
         <div>
+          {/* Track 4 Badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#FFEBE7', border: '1.5px solid #FE4A23', padding: '6px 14px', borderRadius: 999, marginBottom: 18 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#FE4A23', boxShadow: '0 0 8px #FE4A23' }} />
+            <span style={{ fontSize: '0.76rem', fontWeight: 800, color: '#FE4A23', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              Razorpay Buildathon • Track 4: AI Financial Controller
+            </span>
+          </div>
+
           <div
             style={{
               fontFamily: "'Urbanist', sans-serif",
-              fontSize: 'clamp(3.2rem, 5.8vw, 5.4rem)',
+              fontSize: 'clamp(3.0rem, 5.4vw, 5.0rem)',
               fontWeight: 800,
               lineHeight: 1.04,
               letterSpacing: '-0.04em',
               color: '#0D0D11'
             }}
           >
-            {/* Line 1: [⚡ in coral circle] [📈 in red circle overlapping] Analytics */}
+            {/* Line 1: [⚡ in coral circle] [📈 in red circle overlapping] AI Finance */}
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'nowrap', gap: 0, marginBottom: '0.04em' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', position: 'relative', marginRight: '0.2em' }}>
                 <span
@@ -89,10 +97,10 @@ export function HeroSection() {
                 </span>
               </div>
 
-              <span>Analytics</span>
+              <span>AI Finance</span>
             </div>
 
-            {/* Line 2: that [helps in soft elegant light gray] you */}
+            {/* Line 2: that [reconciles in soft elegant light gray] all */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.24em', marginBottom: '0.04em' }}>
               <span>that</span>
               <span
@@ -102,14 +110,14 @@ export function HeroSection() {
                   padding: '0 0.04em'
                 }}
               >
-                helps
+                reconciles
               </span>
-              <span>you</span>
+              <span>all</span>
             </div>
 
-            {/* Line 3: shape [🟡 yellow circle with 3 equalizer bars] the future */}
+            {/* Line 3: ledgers [🟡 yellow circle with 3 equalizer bars] autonomously */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.24em' }}>
-              <span>shape</span>
+              <span>ledgers</span>
               <span
                 style={{
                   display: 'inline-flex',
@@ -129,7 +137,7 @@ export function HeroSection() {
                 <span style={{ width: 3, height: 16, background: '#0D0D11', borderRadius: 999 }} />
                 <span style={{ width: 3, height: 12, background: '#0D0D11', borderRadius: 999 }} />
               </span>
-              <span>the future</span>
+              <span>autonomously</span>
             </div>
           </div>
 
@@ -248,16 +256,16 @@ export function HeroSection() {
                   <div>
                     <div style={{ fontSize: '0.78rem', color: '#6B7280', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FE4A23' }} />
-                      Transactions
+                      Reconciled Volume (10k Dataset)
                     </div>
-                    <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", letterSpacing: '-0.03em', marginTop: 2 }}>
-                      $1 317.571
+                    <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", letterSpacing: '-0.03em', marginTop: 2 }}>
+                      ₹14,28,95,480
                     </div>
                   </div>
 
                   <div style={{ textAlign: 'right', fontSize: '0.78rem', color: '#9CA3AF' }}>
-                    <div style={{ color: '#0D0D11', fontWeight: 700 }}>12 895.48</div>
-                    <div style={{ color: '#FE4A23', fontWeight: 700 }}>1 272.14</div>
+                    <div style={{ color: '#0D0D11', fontWeight: 700 }}>10,000 txs</div>
+                    <div style={{ color: '#10B981', fontWeight: 700 }}>96.8% matched</div>
                   </div>
                 </div>
 
@@ -279,25 +287,25 @@ export function HeroSection() {
               </div>
             )}
 
-            {/* View 1: Ramos Sales Report with Bar Chart (from video 00:16) */}
+            {/* View 1: Ramos Ingestion Telemetry */}
             {activeCardView === 1 && (
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Sales statistic</span>
-                  <span style={{ fontSize: '0.74rem', background: '#F6F6F9', padding: '3px 8px', borderRadius: 6, color: '#6B7280' }}>Weekly report</span>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Pipeline Ingestion Telemetry</span>
+                  <span style={{ fontSize: '0.74rem', background: '#F6F6F9', padding: '3px 8px', borderRadius: 6, color: '#6B7280' }}>Real-time Stream</span>
                 </div>
 
                 <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginBottom: 16 }}>
                   <div>
-                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Total profit</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>$ 264.2K</div>
+                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Throughput</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>1,250 rps</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Visitors</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>56K</div>
+                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>p50 Latency</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>32.3ms</div>
                   </div>
-                  <div style={{ marginLeft: 'auto', background: '#FE4A23', color: '#FFFFFF', fontSize: '0.72rem', fontWeight: 800, padding: '4px 10px', borderRadius: 999 }}>
-                    Rate +58%
+                  <div style={{ marginLeft: 'auto', background: '#10B981', color: '#FFFFFF', fontSize: '0.72rem', fontWeight: 800, padding: '4px 10px', borderRadius: 999 }}>
+                    Zero Leakage
                   </div>
                 </div>
 
@@ -318,20 +326,20 @@ export function HeroSection() {
               </div>
             )}
 
-            {/* View 2: Ramos Share of Sales 48% (from video 00:14) */}
+            {/* View 2: Multi-Agent Consensus Rate */}
             {activeCardView === 2 && (
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Share of sales</span>
-                  <span style={{ fontSize: '0.75rem', color: '#10B981', fontWeight: 700 }}>+14.2% YoY</span>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>AI Consensus Agreement</span>
+                  <span style={{ fontSize: '0.75rem', color: '#10B981', fontWeight: 700 }}>+96.8% Auto-Gate</span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 16 }}>
                   <div style={{ fontSize: '3rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif" }}>
-                    53<span style={{ fontSize: '0.6em', color: '#FE4A23' }}>%</span>
+                    96<span style={{ fontSize: '0.6em', color: '#FE4A23' }}>.8%</span>
                   </div>
                   <div style={{ fontSize: '0.78rem', color: '#6B7280', lineHeight: 1.4 }}>
-                    Clear status indicators with sub-millisecond AI consensus verification
+                    Dual-stage verification: BGE-small LoRA embeddings + deterministic paisa balance rules.
                   </div>
                 </div>
 

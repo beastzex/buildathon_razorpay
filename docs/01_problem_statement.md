@@ -1,4 +1,6 @@
 # 01. Problem Statement: Financial Drift in Multi-Source Settlement Systems
+> **Hackathon Track**: Razorpay Buildathon 2026 — Track 4: AI Financial Controller  
+> **Repository**: [beastzex/buildathon_razorpay](https://github.com/beastzex/buildathon_razorpay)
 
 ## Executive Summary
 In high-throughput fintech platforms and digital commerce ecosystems, transactions traverse distributed, asynchronous payment rails. A single consumer transaction originates in an application database (internal order book), routes through a payment aggregator/gateway (e.g., Razorpay, Stripe), and settles across intermediate partner banks before reaching final merchant accounts. 

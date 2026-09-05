@@ -62,11 +62,11 @@ export function CtaFooter() {
             lineHeight: 1.02
           }}
         >
-          Get Started
+          Deploy Ledgr Today
         </h2>
 
-        <p style={{ fontSize: '1.1rem', color: '#6B7280', maxWidth: 540, margin: '0 auto 36px', lineHeight: 1.5 }}>
-          Turn information into advantage! Start using Ledgr today. Sign up for a free trial.
+        <p style={{ fontSize: '1.1rem', color: '#6B7280', maxWidth: 640, margin: '0 auto 36px', lineHeight: 1.5 }}>
+          Autonomous reconciliation, real-time 10k data streaming, multi-agent AI debate, and predictive cash flow intelligence for Razorpay and modern enterprise finance.
         </p>
 
         {/* Dual buttons (from video 00:42) */}

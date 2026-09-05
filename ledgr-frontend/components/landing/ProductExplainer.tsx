@@ -31,7 +31,7 @@ export function ProductExplainer() {
             margin: 0
           }}
         >
-          Maximize efficiency
+          Eliminate discrepancies
         </h2>
         <h2
           style={{
@@ -44,7 +44,7 @@ export function ProductExplainer() {
             margin: 0
           }}
         >
-          with our intuitive
+          with our autonomous
         </h2>
       </div>
 
@@ -58,7 +58,7 @@ export function ProductExplainer() {
           marginBottom: 60
         }}
       >
-        {/* Left: Yellow Circular Badge with +30% */}
+        {/* Left: Yellow Circular Badge with +96.8% */}
         <div
           style={{
             display: 'flex',
@@ -87,10 +87,10 @@ export function ProductExplainer() {
           </div>
           <div>
             <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", lineHeight: 1 }}>
-              +30%
+              96.8%
             </div>
             <div style={{ fontSize: '0.78rem', color: '#6B7280', marginTop: 2 }}>
-              Speed up your productivity
+              Autonomous Match Accuracy
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@ export function ProductExplainer() {
               gap: 12
             }}
           >
-            <span>service and</span>
+            <span>two-stage &</span>
           </div>
 
           {/* Yellow Half */}
@@ -143,7 +143,7 @@ export function ProductExplainer() {
               gap: 12
             }}
           >
-            <span>AI analytics</span>
+            <span>AI debate mesh</span>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@ export function ProductExplainer() {
         }}
       >
         <p style={{ fontSize: '1.05rem', color: '#6B7280', maxWidth: 620, margin: 0, lineHeight: 1.55 }}>
-          Explore multi-source statements, gateway fees, settlement lag, and root causes to gain deep financial certainty. With Ledgr, your treasury doesn&apos;t just adapt — it evolves.
+          Reconcile fragmented narrations across Razorpay, UPI Autopay, IMPS, Cards, and Netbanking. Fine-tuned BGE LoRA embeddings on CUDA and GPT-OSS-120B debate consensus eliminate silent fee leakage and manual controller fatigue.
         </p>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>

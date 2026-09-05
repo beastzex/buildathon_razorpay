@@ -37,7 +37,7 @@ export function StatCardsSection() {
               margin: '0 0 20px'
             }}
           >
-            Your key to strategic success through analytics
+            Your key to autonomous ledger integrity & zero leakage
           </h2>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -53,17 +53,17 @@ export function StatCardsSection() {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
               }}
             >
-              Setting up reports
+              Autonomous Night-Shift
             </span>
             <p style={{ fontSize: '0.92rem', color: '#6B7280', margin: 0, lineHeight: 1.5, maxWidth: 360 }}>
-              Fast and easy access to reconciliation. One unified system of autonomous AI agents.
+              Continuous unattended reconciliation across Razorpay, UPI, IMPS, Cards, and Netbanking rails.
             </p>
           </div>
         </div>
 
         <div style={{ paddingTop: 12 }}>
           <p style={{ fontSize: '1.2rem', fontWeight: 600, color: '#0D0D11', lineHeight: 1.45, letterSpacing: '-0.02em' }}>
-            Ready for exciting, instantaneous, all-accessible insights in real time?
+            Zero manual spreadsheets. Instant two-stage neural verification in real time.
           </p>
         </div>
       </div>
@@ -77,7 +77,7 @@ export function StatCardsSection() {
           alignItems: 'stretch'
         }}
       >
-        {/* Card A: White Card with Sales statistic & Visit statistics */}
+        {/* Card A: White Card with Reconciled Volume & Health Score */}
         <div
           style={{
             background: '#FFFFFF',
@@ -92,34 +92,34 @@ export function StatCardsSection() {
         >
           <div>
             <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0D0D11', marginBottom: 20 }}>
-              Sales statistic
+              Reconciliation Efficiency & Health
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28 }}>
-              {/* Total profit */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28, flexWrap: 'wrap' }}>
+              {/* Reconciled Volume */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#FE4A23', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontWeight: 800, fontSize: '0.9rem' }}>
-                  $
+                  ₹
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Total profit</div>
+                  <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Reconciled Volume</div>
                   <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#0D0D11', letterSpacing: '-0.03em' }}>
-                    $ 264.2K
+                    ₹14.28 Cr
                   </div>
                 </div>
               </div>
 
-              {/* Visitors */}
+              {/* Match Rate */}
               <div style={{ background: '#F6F6F9', borderRadius: 16, padding: '8px 18px' }}>
-                <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Visitors</div>
+                <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Auto-Matched</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>56K</span>
-                  <span style={{ fontSize: '0.72rem', color: '#10B981', fontWeight: 700 }}>+3.2%</span>
+                  <span style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>96.8%</span>
+                  <span style={{ fontSize: '0.72rem', color: '#10B981', fontWeight: 700 }}>+28.4%</span>
                 </div>
               </div>
             </div>
 
-            {/* Visit statistics sub-card with yellow line graph */}
+            {/* Health Score sub-card with yellow line graph */}
             <div
               style={{
                 background: '#F6F6F9',
@@ -129,9 +129,9 @@ export function StatCardsSection() {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0D0D11' }}>Visit statistics</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0D0D11' }}>Treasury Fleet Health Score</span>
                 <span style={{ background: '#FE4A23', color: '#FFFFFF', fontSize: '0.74rem', fontWeight: 800, padding: '4px 12px', borderRadius: 999 }}>
-                  Rate +58%
+                  94 / 100
                 </span>
               </div>
 
@@ -152,7 +152,7 @@ export function StatCardsSection() {
           </div>
 
           <div style={{ marginTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-            <span style={{ fontSize: '0.82rem', color: '#6B7280' }}>Autonomous ledger verification</span>
+            <span style={{ fontSize: '0.82rem', color: '#6B7280' }}>CUDA-Accelerated LoRA Embedding Verification</span>
             <Link
               href="/dashboard/reconciliation"
               style={{
@@ -165,13 +165,13 @@ export function StatCardsSection() {
                 gap: 4
               }}
             >
-              <span>Explore Analytics</span>
+              <span>Explore Engine</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
         </div>
 
-        {/* Card B: Deep Black #0D0D11 Card with 43K Transactions */}
+        {/* Card B: Deep Black #0D0D11 Card with 10K Stream Pipeline */}
         <div
           style={{
             background: '#0D0D11',
@@ -187,7 +187,7 @@ export function StatCardsSection() {
           }}
         >
           <div>
-            {/* Top gold icon + 43K */}
+            {/* Top gold icon + 10K */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 28 }}>
               {/* Overlapping gold squares icon */}
               <div style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -200,9 +200,9 @@ export function StatCardsSection() {
 
               <div style={{ textAlign: 'right' }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: 'rgba(16, 185, 129, 0.15)', color: '#10B981', padding: '2px 8px', borderRadius: 999, fontSize: '0.72rem', fontWeight: 800, marginBottom: 4 }}>
-                  <span>+14%</span>
+                  <span>1,250 rps</span>
                 </div>
-                <div style={{ fontSize: '0.76rem', color: '#9CA3AF' }}>Transactions</div>
+                <div style={{ fontSize: '0.76rem', color: '#9CA3AF' }}>Pipeline Stream</div>
               </div>
             </div>
 
@@ -217,16 +217,16 @@ export function StatCardsSection() {
                 marginBottom: 24
               }}
             >
-              43K
+              10K+
             </div>
           </div>
 
           <div style={{ paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             <div style={{ fontSize: '0.94rem', fontWeight: 800, color: '#FFFFFF', marginBottom: 6 }}>
-              Widget control
+              Zero Paisa Tolerance
             </div>
             <p style={{ fontSize: '0.86rem', color: '#9CA3AF', lineHeight: 1.45, margin: 0 }}>
-              Reports provide a comprehensive overview of important aspects of multi-source ledger reconciliation.
+              Deterministic MDR fee gates and cryptographic SHA-256 hash chaining prevent silent fee drift and unauthorized leakage.
             </p>
           </div>
         </div>

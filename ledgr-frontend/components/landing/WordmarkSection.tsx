@@ -9,16 +9,20 @@ export function WordmarkSection() {
 
   const accordions = [
     {
-      title: 'A/B Testing & Neural Matcher',
-      detail: 'Dual-phase embedding distance with fine-tuned LoRA adapter and Shannon entropy feature extraction for sub-second reconciliation.'
+      title: 'BGE-small LoRA Neural Matcher & Rules',
+      detail: 'Dual-phase embedding distance with fine-tuned LoRA adapter accelerated on CUDA, coupled with exact paisa balance verifiers and token containment.'
     },
     {
-      title: 'Trend Analysis & Prophet Forecasting',
-      detail: 'Additive daily cash-flow forecasting with 90% confidence uncertainty intervals and seasonal trend decomposition.'
+      title: 'Multi-Agent Consensus Debate (GPT-OSS-120B)',
+      detail: 'Adversarial Advocate FOR vs Advocate AGAINST debate with an automated Consensus Arbiter resolving ambiguous fee drifts and settlement variances.'
     },
     {
-      title: 'User Segmentation & Multi-Merchant Fleet',
-      detail: 'Fleet-wide Z-score outlier detection identifying merchant fee drift and settlement lag beyond |z| >= 1.8.'
+      title: 'Real-Time Cash Flow Prophet Forecasting',
+      detail: 'Additive daily cash-flow forecasting with 90% confidence uncertainty intervals, weekend liquidity dip prediction, and Monte Carlo stress testing for 10k–100k records.'
+    },
+    {
+      title: 'Multi-Modal Slip OCR & Cryptographic Audit',
+      detail: 'Cross-references physical deposit slips, invoices, and bank statements with SHA-256 genesis-to-leaf tamper-evident cryptographic chaining.'
     }
   ];
 
@@ -48,7 +52,7 @@ export function WordmarkSection() {
               margin: 0
             }}
           >
-            Turning data into real actions and ideas
+            Architected for enterprise payment rails & zero-leakage treasury
           </h2>
         </div>
 

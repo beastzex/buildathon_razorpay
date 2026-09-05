@@ -1,4 +1,6 @@
 # 02. System Overview: Capabilities & Boundaries
+> **Hackathon Track**: Razorpay Buildathon 2026 — Track 4: AI Financial Controller  
+> **Repository**: [beastzex/buildathon_razorpay](https://github.com/beastzex/buildathon_razorpay)
 
 ## Executive Overview
 **Ledgr** is an autonomous AI Finance Controller architected to resolve multi-source financial discrepancies between banking ledgers, gateway settlements, and internal enterprise databases. It replaces brittle, static reconciliation scripts with a multi-stage ML/LLM pipeline that pairs high-throughput deterministic verification with fine-tuned semantic embeddings, anomaly detection, plain-language exception reasoning, and natural language settlement search.
