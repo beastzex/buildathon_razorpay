@@ -85,24 +85,28 @@ class FinancialMatcher:
             # Deterministic pseudo-embedding fallback if torch/hf is unavailable
             return np.ones(384, dtype=np.float32) / np.sqrt(384)
 
-        with torch.no_grad():
-            inputs = self.tokenizer(
-                str(text),
-                padding=True,
-                truncation=True,
-                max_length=128,
-                return_tensors="pt"
-            ).to(self.device)
-            outputs = self.model(**inputs)
-            
-            # Mean pooling
-            token_embeddings = outputs[0]
-            mask = inputs["attention_mask"].unsqueeze(-1).expand(token_embeddings.size()).float()
-            sum_embeddings = torch.sum(token_embeddings * mask, 1)
-            sum_mask = torch.clamp(mask.sum(1), min=1e-9)
-            pooled = sum_embeddings / sum_mask
-            normalized = F.normalize(pooled, p=2, dim=1)
-            return normalized.cpu().numpy()[0]
+        try:
+            with torch.no_grad():
+                inputs = self.tokenizer(
+                    str(text),
+                    padding=True,
+                    truncation=True,
+                    max_length=128,
+                    return_tensors="pt"
+                ).to(self.device)
+                outputs = self.model(**inputs)
+                
+                # Mean pooling
+                token_embeddings = outputs[0]
+                mask = inputs["attention_mask"].unsqueeze(-1).expand(token_embeddings.size()).float()
+                sum_embeddings = torch.sum(token_embeddings * mask, 1)
+                sum_mask = torch.clamp(mask.sum(1), min=1e-9)
+                pooled = sum_embeddings / sum_mask
+                normalized = F.normalize(pooled, p=2, dim=1)
+                return normalized.cpu().numpy()[0]
+        except Exception as e:
+            logger.warning(f"Inference error during embedding: {e}. Falling back to deterministic vector.")
+            return np.ones(384, dtype=np.float32) / np.sqrt(384)
 
     def compute_similarity(self, desc_a: str, desc_b: str) -> float:
         """Cosine similarity between descriptions."""

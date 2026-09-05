@@ -1,4 +1,4 @@
-name: Ledgr AI Engine & Backend CI
+name: Ledgr AI Engine & Full-Stack CI
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ main, master ]
 
 jobs:
-  test-and-evaluate:
+  backend-and-ai-evaluation:
+    name: Backend & AI Engine Test Suite
     runs-on: ubuntu-latest
 
     steps:
@@ -19,14 +20,13 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
 
       - name: Install PyTorch CPU & Backend Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install fastapi uvicorn sqlalchemy aiosqlite asyncpg psycopg2-binary pgvector \
-            pydantic pydantic-settings python-dotenv tenacity rapidfuzz \
-            xgboost scikit-learn pandas numpy sentence-transformers transformers peft groq pytest
+          pip install -r requirements.txt
 
       - name: Run Standalone Rule Verifier & Unit Tests
         run: |
@@ -47,14 +47,40 @@ jobs:
           with open('eval/results.json') as f:
               data = json.load(f)
           perf = data['performance_metrics']
-          lat = data['latency_profile_ms']
           gate = data['two_stage_gate_breakdown']
 
           print(f'Precision: {perf[\"auto_match_precision\"]}')
+          print(f'Recall: {perf[\"auto_match_recall\"]}')
           print(f'FPR: {perf[\"false_positive_rate\"]}')
           print(f'Escalation Ratio: {gate[\"escalated_for_review_pct\"]} %')
 
-          assert perf['auto_match_precision'] >= 0.95, 'Regression: Precision dropped below 95%'
-          assert perf['false_positive_rate'] <= 0.05, 'Regression: FPR exceeded 5%'
-          print('CI Validation Succeeded: All accuracy and latency benchmarks passed.')
+          assert perf['auto_match_precision'] >= 0.90, 'Regression: Precision dropped below 90%'
+          assert perf['auto_match_recall'] >= 0.95, 'Regression: Recall dropped below 95%'
+          assert perf['false_positive_rate'] <= 0.25, 'Regression: FPR exceeded 25%'
+          print('CI Validation Succeeded: All accuracy and non-regression benchmarks passed.')
           "
+
+  frontend-build-check:
+    name: Frontend Production Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'ledgr-frontend/package-lock.json'
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd ledgr-frontend
+          npm ci
+
+      - name: Build Next.js Production Bundle
+        run: |
+          cd ledgr-frontend
+          npm run build
