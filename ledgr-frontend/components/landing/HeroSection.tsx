@@ -2,102 +2,102 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {
-  Zap,
-  ArrowUpRight,
-  Sparkles,
-  TrendingUp,
-  ShieldCheck,
-  Play,
-  Layers,
-  Activity,
-  CheckCircle2
-} from 'lucide-react';
+import { Play, Pause, ArrowUpRight } from 'lucide-react';
 
 export function HeroSection() {
+  const [activeCardView, setActiveCardView] = useState<0 | 1 | 2>(0);
   const [isPlaying, setIsPlaying] = useState(true);
+
+  // Auto cycle card views when playing
+  React.useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setActiveCardView((prev) => ((prev + 1) % 3) as 0 | 1 | 2);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, [isPlaying]);
 
   return (
     <section
       style={{
-        padding: '120px 24px 70px',
+        padding: '130px 24px 80px',
         maxWidth: 1240,
         margin: '0 auto',
         position: 'relative'
       }}
       aria-label="Hero Section"
     >
-      {/* Top Headline Block with Embedded Badges & Right Live Chart Preview */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1.4fr 0.9fr',
+          gridTemplateColumns: '1.25fr 0.95fr',
           gap: 40,
-          alignItems: 'center',
-          marginBottom: 60
+          alignItems: 'center'
         }}
       >
-        {/* Left: Punchy Ramos-style embedded headline */}
+        {/* Left: EXACT Ramos Headline */}
         <div>
           <div
             style={{
               fontFamily: "'Urbanist', sans-serif",
-              fontSize: 'clamp(2.8rem, 5.2vw, 4.8rem)',
+              fontSize: 'clamp(3.2rem, 5.8vw, 5.4rem)',
               fontWeight: 800,
               lineHeight: 1.04,
               letterSpacing: '-0.04em',
               color: '#0D0D11'
             }}
           >
-            {/* Headline Row 1 */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.25em' }}>
+            {/* Line 1: [⚡ in coral circle] [📈 in red circle] Analytics */}
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.22em' }}>
               <span
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '0.85em',
-                  height: '0.85em',
-                  borderRadius: '0.35em',
-                  background: '#FE4A23',
-                  boxShadow: '0 4px 14px rgba(254,74,35,0.4)',
-                  verticalAlign: 'middle'
-                }}
-              >
-                <Zap size={22} color="#FFFFFF" fill="#FFFFFF" />
-              </span>
-
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '0.85em',
-                  height: '0.85em',
-                  borderRadius: '999px',
-                  background: '#FFD028',
-                  boxShadow: '0 4px 12px rgba(255,208,40,0.4)',
+                  width: '0.82em',
+                  height: '0.82em',
+                  borderRadius: '50%',
+                  background: '#FFEBE7',
                   verticalAlign: 'middle',
-                  fontSize: '0.5em',
-                  fontWeight: 900,
-                  color: '#0D0D11'
+                  boxShadow: '0 2px 10px rgba(254,74,35,0.2)'
                 }}
               >
-                AI
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FE4A23" />
+                </svg>
               </span>
 
-              <span>Analytics</span>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '0.82em',
+                  height: '0.82em',
+                  borderRadius: '50%',
+                  background: '#FE4A23',
+                  verticalAlign: 'middle',
+                  boxShadow: '0 4px 14px rgba(254,74,35,0.35)'
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 17L9 11L13 15L21 7" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="21" cy="7" r="2.5" fill="#FFFFFF" />
+                </svg>
+              </span>
+
+              <span style={{ marginLeft: '0.08em' }}>Analytics</span>
             </div>
 
-            {/* Headline Row 2 */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.25em' }}>
+            {/* Line 2: that [helps in soft italic gray] you */}
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.24em' }}>
               <span>that</span>
               <span
                 style={{
                   fontStyle: 'italic',
                   fontWeight: 400,
-                  color: '#6B7280',
-                  padding: '0 0.1em'
+                  color: '#9CA3AF',
+                  padding: '0 0.08em'
                 }}
               >
                 helps
@@ -105,323 +105,220 @@ export function HeroSection() {
               <span>you</span>
             </div>
 
-            {/* Headline Row 3 */}
-            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.25em' }}>
+            {/* Line 3: shape [🟡 yellow circle with two black vertical bars] the future */}
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.24em' }}>
               <span>shape</span>
               <span
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '0.8em',
-                  height: '0.8em',
-                  borderRadius: '999px',
-                  background: '#FFD028',
-                  boxShadow: '0 4px 14px rgba(255,208,40,0.4)',
-                  verticalAlign: 'middle'
-                }}
-              >
-                <Sparkles size={18} color="#0D0D11" />
-              </span>
-              <span>the future</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Floating live preview card with waveform & play button */}
-        <div
-          style={{
-            background: '#FFFFFF',
-            borderRadius: 24,
-            padding: 24,
-            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0,0,0,0.02)',
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
+                  width: '0.78em',
+                  height: '0.78em',
                   borderRadius: '50%',
-                  background: '#FE4A23',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 12px rgba(254,74,35,0.4)'
-                }}
-                onClick={() => setIsPlaying(!isPlaying)}
-              >
-                <Play size={14} color="#FFFFFF" fill="#FFFFFF" style={{ marginLeft: 2 }} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Live Reconciliation Telemetry</div>
-                <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>8-Agent Relay • Active Stream</div>
-              </div>
-            </div>
-
-            <span
-              style={{
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                color: '#10B981',
-                background: 'rgba(16, 185, 129, 0.1)',
-                padding: '3px 9px',
-                borderRadius: 999,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 5
-              }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981' }} />
-              99.8% ACCURACY
-            </span>
-          </div>
-
-          {/* SVG waveform */}
-          <div style={{ height: 110, position: 'relative', margin: '10px 0' }}>
-            <svg width="100%" height="100%" viewBox="0 0 320 100" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="heroWave" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#FE4A23" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#FE4A23" stopOpacity="0.0" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 0,70 Q 40,25 80,65 T 160,30 T 240,55 T 320,15 L 320,100 L 0,100 Z"
-                fill="url(#heroWave)"
-              />
-              <path
-                d="M 0,70 Q 40,25 80,65 T 160,30 T 240,55 T 320,15"
-                fill="none"
-                stroke="#FE4A23"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-            <div>
-              <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Settlement Throughput</div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0D0D11' }}>2,450 records/sec</div>
-            </div>
-            <Link
-              href="/portal"
-              style={{
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                color: '#FE4A23',
-                textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 4
-              }}
-            >
-              <span>10K Partner Feed</span>
-              <ArrowUpRight size={13} />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Dual Signature Bento Cards */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1.3fr 1fr',
-          gap: 24,
-          alignItems: 'stretch'
-        }}
-      >
-        {/* Card 1: Warm off-white card */}
-        <div
-          style={{
-            background: '#FFFFFF',
-            borderRadius: 28,
-            padding: '36px 36px 32px',
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.04)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-        >
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-              <span
-                style={{
-                  fontSize: '0.74rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: '#FE4A23',
-                  background: 'rgba(254,74,35,0.1)',
-                  padding: '3px 10px',
-                  borderRadius: 999
+                  background: '#FFD028',
+                  verticalAlign: 'middle',
+                  boxShadow: '0 4px 12px rgba(255,208,40,0.4)',
+                  gap: 3
                 }}
               >
-                AUTONOMOUS MATCHING
+                <span style={{ width: 2.5, height: 12, background: '#0D0D11', borderRadius: 999 }} />
+                <span style={{ width: 2.5, height: 12, background: '#0D0D11', borderRadius: 999 }} />
               </span>
+              <span style={{ marginLeft: '0.06em' }}>the future</span>
             </div>
-            <h3
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                fontSize: '1.75rem',
-                fontWeight: 800,
-                letterSpacing: '-0.03em',
-                color: '#0D0D11',
-                lineHeight: 1.15,
-                marginBottom: 10
-              }}
-            >
-              Your key to strategic financial control
-            </h3>
-            <p style={{ fontSize: '0.92rem', color: '#6B7280', lineHeight: 1.5, maxWidth: 440 }}>
-              Ledgr normalizes bank statements, gateway payouts, and ERP records into unified cryptographic ledger blocks with sub-second resolution.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: '#F6F6F9',
-              borderRadius: 20,
-              padding: '20px 24px',
-              marginTop: 24,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}
-          >
-            <div>
-              <div style={{ fontSize: '0.74rem', color: '#6B7280', fontWeight: 600 }}>Total Reconciled Volume</div>
-              <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0D0D11', marginTop: 2 }}>
-                ₹1,31,424.00
-              </div>
-              <span style={{ fontSize: '0.75rem', color: '#10B981', fontWeight: 700 }}>+131.2% vs previous period</span>
-            </div>
-
-            <Link
-              href="/dashboard/reconciliation"
-              style={{
-                textDecoration: 'none',
-                background: '#FE4A23',
-                color: '#FFFFFF',
-                padding: '10px 22px',
-                borderRadius: 999,
-                fontSize: '0.86rem',
-                fontWeight: 700,
-                boxShadow: '0 4px 14px rgba(254,74,35,0.3)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 6
-              }}
-            >
-              <span>Analyze</span>
-              <ArrowUpRight size={15} />
-            </Link>
           </div>
         </div>
 
-        {/* Card 2: Deep black #0D0D11 card */}
-        <div
-          style={{
-            background: '#0D0D11',
-            color: '#FFFFFF',
-            borderRadius: 28,
-            padding: '36px 32px 32px',
-            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.25)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
-          {/* Subtle amber gradient glow */}
-          <div
+        {/* Right: EXACT Ramos Floating Interactive Preview Card */}
+        <div style={{ position: 'relative' }}>
+          {/* Floating red Play/Pause button on top-left of card */}
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
             style={{
               position: 'absolute',
-              top: '-20%',
-              right: '-20%',
-              width: 250,
-              height: 250,
+              top: -18,
+              left: 20,
+              width: 44,
+              height: 44,
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(254,74,35,0.25) 0%, transparent 70%)',
-              pointerEvents: 'none'
-            }}
-          />
-
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-              {/* Dual Avatars */}
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #FE4A23, #FF8C00)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '2px solid #0D0D11',
-                    fontSize: '0.8rem',
-                    fontWeight: 800
-                  }}
-                >
-                  AI
-                </div>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #3B82F6, #10B981)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '2px solid #0D0D11',
-                    marginLeft: -14,
-                    fontSize: '0.8rem',
-                    fontWeight: 800
-                  }}
-                >
-                  SEC
-                </div>
-              </div>
-
-              <div>
-                <div style={{ fontSize: '2.4rem', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}>
-                  43K<span style={{ color: '#FE4A23', fontSize: '0.8em' }}>+</span>
-                </div>
-                <div style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 600 }}>Transactions cleared</div>
-              </div>
-            </div>
-
-            <p style={{ fontSize: '0.94rem', color: '#D1D5DB', lineHeight: 1.5, margin: '0 0 24px' }}>
-              Transactions cleared automatically with 100% cryptographic ledger sealing and real-time SHA-256 audit trails.
-            </p>
-          </div>
-
-          <div
-            style={{
-              paddingTop: 20,
-              borderTop: '1px solid rgba(255,255,255,0.08)',
+              background: '#FE4A23',
+              border: '3px solid #FFFFFF',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 6px 18px rgba(254,74,35,0.45)',
+              zIndex: 20
+            }}
+            aria-label="Toggle preview animation"
+          >
+            {isPlaying ? (
+              <Pause size={16} color="#FFFFFF" fill="#FFFFFF" />
+            ) : (
+              <Play size={16} color="#FFFFFF" fill="#FFFFFF" style={{ marginLeft: 2 }} />
+            )}
+          </button>
+
+          {/* Main Card */}
+          <div
+            style={{
+              background: '#FFFFFF',
+              borderRadius: 28,
+              padding: '30px 28px 24px',
+              boxShadow: '0 16px 45px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03)',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: 280,
+              display: 'flex',
+              flexDirection: 'column',
               justifyContent: 'space-between'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <ShieldCheck size={18} color="#10B981" />
-              <span style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>Zero-Knowledge Ledger Proofs</span>
+            {/* View 0: Ramos Red Mountain Wave View */}
+            {activeCardView === 0 && (
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                  <div>
+                    <div style={{ fontSize: '0.78rem', color: '#6B7280', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FE4A23' }} />
+                      Transactions
+                    </div>
+                    <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", letterSpacing: '-0.03em', marginTop: 2 }}>
+                      $1 317.571
+                    </div>
+                  </div>
+
+                  <div style={{ textAlign: 'right', fontSize: '0.78rem', color: '#9CA3AF' }}>
+                    <div style={{ color: '#0D0D11', fontWeight: 700 }}>12 895.48</div>
+                    <div style={{ color: '#FE4A23', fontWeight: 700 }}>1 272.14</div>
+                  </div>
+                </div>
+
+                {/* Fiery Red Mountain Area Graph with Jagged Peaks (from Ramos video) */}
+                <div style={{ height: 130, position: 'relative', margin: '14px 0 6px' }}>
+                  <svg width="100%" height="100%" viewBox="0 0 320 120" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="ramosMountain" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#FE4A23" stopOpacity="0.95" />
+                        <stop offset="100%" stopColor="#FE4A23" stopOpacity="0.8" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M 0,95 L 20,80 L 40,90 L 60,65 L 80,75 L 100,50 L 120,68 L 140,40 L 160,55 L 180,30 L 200,45 L 220,20 L 240,35 L 260,15 L 280,30 L 300,10 L 320,25 L 320,120 L 0,120 Z"
+                      fill="url(#ramosMountain)"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {/* View 1: Ramos Sales Report with Bar Chart (from video 00:16) */}
+            {activeCardView === 1 && (
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Sales statistic</span>
+                  <span style={{ fontSize: '0.74rem', background: '#F6F6F9', padding: '3px 8px', borderRadius: 6, color: '#6B7280' }}>Weekly report</span>
+                </div>
+
+                <div style={{ display: 'flex', gap: 18, alignItems: 'center', marginBottom: 16 }}>
+                  <div>
+                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Total profit</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>$ 264.2K</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.72rem', color: '#6B7280' }}>Visitors</div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11' }}>56K</div>
+                  </div>
+                  <div style={{ marginLeft: 'auto', background: '#FE4A23', color: '#FFFFFF', fontSize: '0.72rem', fontWeight: 800, padding: '4px 10px', borderRadius: 999 }}>
+                    Rate +58%
+                  </div>
+                </div>
+
+                {/* Staggered colorful bar chart */}
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, height: 90, padding: '0 10px' }}>
+                  {[40, 75, 55, 95, 60, 85, 45, 90].map((h, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        flex: 1,
+                        height: `${h}%`,
+                        borderRadius: 4,
+                        background: idx % 2 === 0 ? '#FE4A23' : '#FFD028'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* View 2: Ramos Share of Sales 48% (from video 00:14) */}
+            {activeCardView === 2 && (
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                  <span style={{ fontSize: '0.84rem', fontWeight: 800, color: '#0D0D11' }}>Share of sales</span>
+                  <span style={{ fontSize: '0.75rem', color: '#10B981', fontWeight: 700 }}>+14.2% YoY</span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 16 }}>
+                  <div style={{ fontSize: '3rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif" }}>
+                    53<span style={{ fontSize: '0.6em', color: '#FE4A23' }}>%</span>
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#6B7280', lineHeight: 1.4 }}>
+                    Clear status indicators with sub-millisecond AI consensus verification
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <div style={{ flex: 1, background: '#F6F6F9', padding: 10, borderRadius: 10, textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.7rem', color: '#6B7280' }}>Desktop</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0D0D11' }}>34,078</div>
+                  </div>
+                  <div style={{ flex: 1, background: '#F6F6F9', padding: 10, borderRadius: 10, textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.7rem', color: '#6B7280' }}>Mobile</div>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0D0D11' }}>28,412</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Card Navigation Dots */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(0,0,0,0.05)', marginTop: 8 }}>
+              <div style={{ display: 'flex', gap: 6 }}>
+                {[0, 1, 2].map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveCardView(i as 0 | 1 | 2)}
+                    style={{
+                      width: activeCardView === i ? 22 : 8,
+                      height: 8,
+                      borderRadius: 999,
+                      background: activeCardView === i ? '#FE4A23' : '#E5E7EB',
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease'
+                    }}
+                  />
+                ))}
+              </div>
+
+              <Link
+                href="/dashboard/reconciliation"
+                style={{
+                  fontSize: '0.76rem',
+                  fontWeight: 700,
+                  color: '#FE4A23',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4
+                }}
+              >
+                <span>Live Analytics</span>
+                <ArrowUpRight size={13} />
+              </Link>
             </div>
-            <span style={{ fontSize: '0.75rem', color: '#FFD028', fontWeight: 700 }}>TIER 1+2+3 ACTIVE</span>
           </div>
         </div>
       </div>

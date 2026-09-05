@@ -7,93 +7,144 @@ interface PreloaderProps {
 }
 
 export function Preloader({ onComplete }: PreloaderProps) {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(15);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const curtainRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [lineWidth, setLineWidth] = useState(0);
 
   useEffect(() => {
-    // Only run on first session load
-    const hasLoaded = sessionStorage.getItem('ledgr-loaded');
+    // Quick session check
+    const hasLoaded = sessionStorage.getItem('ledgr-preloaded');
     if (hasLoaded) {
       onComplete();
       return;
     }
 
-    const interval = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 95) {
-          clearInterval(interval);
-          return 100;
-        }
-        return p + 25;
-      });
-    }, 180);
+    // Step 1: Progress line expand
+    const lineTimer = setTimeout(() => {
+      setLineWidth(100);
+    }, 100);
 
-    const hold = setTimeout(async () => {
+    // Step 2: Animate curtain columns up staggered
+    const curtainTimer = setTimeout(async () => {
       const { gsap } = await import('gsap');
-      if (overlayRef.current) {
-        gsap.to(overlayRef.current, {
-          yPercent: -100,
-          duration: 0.75,
-          ease: 'expo.inOut',
+      if (curtainRefs.current.length > 0) {
+        gsap.to(curtainRefs.current, {
+          height: '0%',
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power4.inOut',
           onComplete: () => {
-            sessionStorage.setItem('ledgr-loaded', '1');
+            sessionStorage.setItem('ledgr-preloaded', '1');
             onComplete();
           }
         });
+      } else {
+        onComplete();
       }
-    }, 900);
+    }, 1100);
 
     return () => {
-      clearInterval(interval);
-      clearTimeout(hold);
+      clearTimeout(lineTimer);
+      clearTimeout(curtainTimer);
     };
   }, [onComplete]);
 
   return (
     <div
-      ref={overlayRef}
+      ref={containerRef}
       style={{
         position: 'fixed',
         inset: 0,
-        zIndex: 1000,
-        background: '#0D0D11',
+        zIndex: 9999,
+        pointerEvents: 'none',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#FFFFFF'
+        overflow: 'hidden'
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-        <div style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <rect x="2" y="2" width="9" height="9" rx="3" fill="#FE4A23" />
-            <rect x="13" y="2" width="9" height="9" rx="3" fill="#FFFFFF" />
-            <rect x="2" y="13" width="9" height="9" rx="3" fill="#FFFFFF" />
-            <rect x="13" y="13" width="9" height="9" rx="3" fill="#FFD028" />
-          </svg>
-        </div>
-        <div style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.04em' }}>
-          Ledgr<span style={{ color: '#FE4A23', fontSize: '0.6em' }}>®</span>
-        </div>
-      </div>
+      {/* 6 Stepped Red-Orange Curtain Columns */}
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <div
+          key={i}
+          ref={(el) => { curtainRefs.current[i] = el; }}
+          style={{
+            flex: 1,
+            height: '100%',
+            background: '#FE4A23',
+            transformOrigin: 'top'
+          }}
+        />
+      ))}
 
-      <div style={{ width: 220 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', color: '#9CA3AF', marginBottom: 6 }}>
-          <span>Data Ingestion Engine</span>
-          <span style={{ color: '#FE4A23', fontWeight: 700 }}>{progress}%</span>
+      {/* Center Content Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '48px 60px',
+          color: '#FFFFFF',
+          zIndex: 10
+        }}
+      >
+        {/* Top Left: Data Processing Label */}
+        <div style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '0.02em', opacity: 0.9 }}>
+          Data Processing
         </div>
-        <div style={{ width: '100%', height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
+
+        {/* Center: Massive Wordmark & Animated Line with Circular Badges */}
+        <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto' }}>
           <div
             style={{
-              width: `${progress}%`,
-              height: '100%',
-              background: '#FE4A23',
-              borderRadius: 999,
-              transition: 'width 0.25s ease'
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: 'clamp(4.5rem, 14vw, 11rem)',
+              fontWeight: 900,
+              letterSpacing: '-0.05em',
+              lineHeight: 0.9,
+              marginBottom: 40
             }}
-          />
+          >
+            Ledgr<span style={{ fontSize: '0.4em', verticalAlign: 'top', marginLeft: 8 }}>®</span>
+          </div>
+
+          {/* Animated Progress Line with 3 Floating White Circles */}
+          <div style={{ position: 'relative', width: '100%', height: 2, background: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center' }}>
+            <div
+              style={{
+                width: `${lineWidth}%`,
+                height: '100%',
+                background: '#FFFFFF',
+                transition: 'width 0.9s cubic-bezier(0.25, 1, 0.5, 1)'
+              }}
+            />
+
+            {/* 3 Circular Badges (Lightning, Line Chart, Bar Chart) */}
+            <div style={{ position: 'absolute', left: '25%', transform: 'translateX(-50%)', width: 44, height: 44, borderRadius: '50%', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.15)' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FE4A23" />
+              </svg>
+            </div>
+
+            <div style={{ position: 'absolute', left: '60%', transform: 'translateX(-50%)', width: 44, height: 44, borderRadius: '50%', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.15)' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3 17L9 11L13 15L21 7" stroke="#FE4A23" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="21" cy="7" r="2.5" fill="#FE4A23" />
+              </svg>
+            </div>
+
+            <div style={{ position: 'absolute', left: '90%', transform: 'translateX(-50%)', width: 44, height: 44, borderRadius: '50%', background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.15)' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="10" width="3" height="10" rx="1.5" fill="#FE4A23" />
+                <rect x="10" y="4" width="3" height="16" rx="1.5" fill="#FE4A23" />
+                <rect x="16" y="13" width="3" height="7" rx="1.5" fill="#FE4A23" />
+              </svg>
+            </div>
+          </div>
         </div>
+
+        {/* Bottom space */}
+        <div style={{ height: 20 }} />
       </div>
     </div>
   );

@@ -465,8 +465,8 @@ export function OverviewScreen() {
             <AreaChart data={forecastData?.forecast_points || []} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
               <defs>
                 <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.25} />
-                  <stop offset="100%" stopColor="#38bdf8" stopOpacity={0.03} />
+                  <stop offset="0%" stopColor="#FE4A23" stopOpacity={0.3} />
+                  <stop offset="100%" stopColor="#FE4A23" stopOpacity={0.04} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
@@ -488,7 +488,7 @@ export function OverviewScreen() {
               <Area
                 type="monotone"
                 dataKey="upper_bound_inr"
-                stroke="rgba(56, 189, 248, 0.4)"
+                stroke="rgba(254, 74, 35, 0.4)"
                 strokeDasharray="4 4"
                 strokeWidth={1}
                 fill="url(#bandGrad)"
@@ -497,17 +497,17 @@ export function OverviewScreen() {
               <Area
                 type="monotone"
                 dataKey="predicted_net_inr"
-                stroke="#38bdf8"
+                stroke="#FE4A23"
                 strokeWidth={2.5}
                 fill="none"
-                dot={{ r: 4, fill: '#38bdf8' }}
-                activeDot={{ r: 6, fill: '#38bdf8', stroke: '#ffffff', strokeWidth: 2 }}
+                dot={{ r: 4, fill: '#FE4A23' }}
+                activeDot={{ r: 6, fill: '#FE4A23', stroke: '#ffffff', strokeWidth: 2 }}
               />
               {/* Lower Bound */}
               <Area
                 type="monotone"
                 dataKey="lower_bound_inr"
-                stroke="rgba(56, 189, 248, 0.4)"
+                stroke="rgba(254, 74, 35, 0.4)"
                 strokeDasharray="4 4"
                 strokeWidth={1}
                 fill="none"

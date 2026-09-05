@@ -1,264 +1,211 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import {
-  Zap,
-  Sparkles,
-  ShieldCheck,
-  TrendingUp,
-  BrainCircuit,
-  MessageSquare,
-  Search,
-  Scale,
-  ArrowUpRight,
-  BarChart3,
-  CheckCircle2
-} from 'lucide-react';
+import { Activity, ArrowRight, CheckCircle2, Zap, ArrowUpRight } from 'lucide-react';
 
 export function ProductExplainer() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <section
-      id="features"
+      id="solutions"
       style={{
-        padding: '90px 24px 100px',
+        padding: '70px 24px 110px',
         maxWidth: 1240,
         margin: '0 auto',
         position: 'relative'
       }}
-      aria-label="Features & Capabilities"
+      aria-label="Maximize Efficiency"
     >
-      {/* Top Headline with Ramos-style circular badges */}
-      <div style={{ marginBottom: 50 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 32,
-              height: 32,
-              borderRadius: '50%',
-              background: '#FE4A23',
-              boxShadow: '0 4px 12px rgba(254,74,35,0.4)'
-            }}
-          >
-            <Zap size={16} color="#FFFFFF" fill="#FFFFFF" />
-          </span>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 32,
-              height: 32,
-              borderRadius: '50%',
-              background: '#FFD028',
-              boxShadow: '0 4px 12px rgba(255,208,40,0.4)'
-            }}
-          >
-            <Sparkles size={16} color="#0D0D11" />
-          </span>
-          <span
-            style={{
-              fontSize: '0.84rem',
-              fontWeight: 800,
-              color: '#FE4A23',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase'
-            }}
-          >
-            ACTIONABLE RECONCILIATION INTELLIGENCE
-          </span>
-        </div>
-
+      {/* Massive Ramos Headline (from video 00:27) */}
+      <div style={{ marginBottom: 40 }}>
         <h2
           style={{
             fontFamily: "'Urbanist', sans-serif",
-            fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+            fontSize: 'clamp(2.8rem, 6.2vw, 5.6rem)',
             fontWeight: 800,
             letterSpacing: '-0.04em',
             color: '#0D0D11',
-            lineHeight: 1.08,
-            maxWidth: 820
+            lineHeight: 1.02,
+            margin: 0
           }}
         >
-          Maximize efficiency with our autonomous AI relay
+          Maximize efficiency
+        </h2>
+        <h2
+          style={{
+            fontFamily: "'Urbanist', sans-serif",
+            fontSize: 'clamp(2.8rem, 6.2vw, 5.6rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.04em',
+            color: '#0D0D11',
+            lineHeight: 1.02,
+            margin: 0
+          }}
+        >
+          with our intuitive
         </h2>
       </div>
 
-      {/* 3-Card Bento Grid */}
+      {/* Signature Ramos Animated Badge Row (from video 00:28 - 00:30) */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 24
+          display: 'flex',
+          alignItems: 'center',
+          gap: 32,
+          flexWrap: 'wrap',
+          marginBottom: 60
         }}
       >
-        {/* Bento 1: 8-Agent Relay & Consensus */}
+        {/* Left: Yellow Circular Badge with +30% */}
         <div
           style={{
-            background: '#FFFFFF',
-            borderRadius: 24,
-            padding: 32,
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
+            alignItems: 'center',
+            gap: 16,
+            background: '#FFFFFF',
+            padding: '12px 24px 12px 14px',
+            borderRadius: 999,
+            border: '1px solid rgba(0,0,0,0.06)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.03)'
           }}
         >
-          <div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 14,
-                background: 'rgba(254, 74, 35, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 20
-              }}
-            >
-              <BrainCircuit size={22} color="#FE4A23" />
-            </div>
-            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
-              8-Agent Relay Pipeline
-            </h3>
-            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
-              Ingestion, Normalization, Neural Matcher, Rule Verifier, Detective, Debate, Explainer, and Auditor execute in visible synchronized sequence.
-            </p>
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: '50%',
+              background: '#FFEBE7',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 10px rgba(254,74,35,0.2)'
+            }}
+          >
+            <Activity size={26} color="#FE4A23" />
           </div>
-
-          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
-            <div style={{ fontSize: '0.74rem', color: '#9CA3AF', fontWeight: 700, marginBottom: 8 }}>RELAY STAGES</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {['Ingest', 'Normalize', 'Match', 'Verify', 'Detective', 'Debate', 'Explain', 'Audit'].map((agent, i) => (
-                <span
-                  key={agent}
-                  style={{
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
-                    padding: '3px 8px',
-                    borderRadius: 6,
-                    background: i < 4 ? '#0D0D11' : '#FE4A23',
-                    color: '#FFFFFF'
-                  }}
-                >
-                  {agent}
-                </span>
-              ))}
+          <div>
+            <div style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0D0D11', fontFamily: "'Urbanist', sans-serif", lineHeight: 1 }}>
+              +30%
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#6B7280', marginTop: 2 }}>
+              Speed up your productivity
             </div>
           </div>
         </div>
 
-        {/* Bento 2: 2-Round Multi-Agent Debate */}
+        {/* Center/Right: Giant Dual-Colored Oval Pill (Red/Yellow from video) */}
         <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           style={{
-            background: '#FFFFFF',
-            borderRadius: 24,
-            padding: 32,
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
+            display: 'inline-flex',
+            alignItems: 'center',
+            borderRadius: 999,
+            overflow: 'hidden',
+            boxShadow: '0 12px 36px rgba(254,74,35,0.25)',
+            transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+            transition: 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
+            cursor: 'pointer'
           }}
         >
-          <div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 14,
-                background: 'rgba(255, 208, 40, 0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 20
-              }}
-            >
-              <Scale size={22} color="#D97706" />
-            </div>
-            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
-              Debate & Consensus Engine
-            </h3>
-            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
-              When rule verifiers and vector matchers disagree, two specialized agents argue evidence over two rounds until reaching mathematical consensus.
-            </p>
+          {/* Red-Orange Half */}
+          <div
+            style={{
+              background: '#FE4A23',
+              color: '#FFFFFF',
+              padding: '24px 38px',
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.6rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12
+            }}
+          >
+            <span>service and</span>
           </div>
 
-          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-              <span style={{ fontSize: '0.74rem', color: '#6B7280' }}>Dispute Resolution Rate</span>
-              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#10B981' }}>94.2%</span>
-            </div>
-            <div style={{ width: '100%', height: 6, background: 'rgba(0,0,0,0.06)', borderRadius: 999, overflow: 'hidden' }}>
-              <div style={{ width: '94.2%', height: '100%', background: '#10B981', borderRadius: 999 }} />
-            </div>
+          {/* Yellow Half */}
+          <div
+            style={{
+              background: '#FFD028',
+              color: '#0D0D11',
+              padding: '24px 44px',
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.6rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12
+            }}
+          >
+            <span>AI analytics</span>
           </div>
         </div>
+      </div>
 
-        {/* Bento 3: Meta Prophet Forecasting */}
-        <div
-          style={{
-            background: '#FFFFFF',
-            borderRadius: 24,
-            padding: 32,
-            border: '1px solid rgba(0, 0, 0, 0.06)',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between'
-          }}
-        >
-          <div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 14,
-                background: 'rgba(16, 185, 129, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 20
-              }}
-            >
-              <TrendingUp size={22} color="#10B981" />
-            </div>
-            <h3 style={{ fontFamily: "'Urbanist', sans-serif", fontSize: '1.35rem', fontWeight: 800, color: '#0D0D11', marginBottom: 10 }}>
-              Prophet Cash-Flow Engine
-            </h3>
-            <p style={{ fontSize: '0.88rem', color: '#6B7280', lineHeight: 1.5 }}>
-              7/30-day forward projections with 90% confidence uncertainty bounds grounded in scheduled payrolls, tax sweeps, and settlement dips.
-            </p>
-          </div>
+      {/* Description & Dual Action Buttons (from video 00:30) */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 32,
+          paddingTop: 36,
+          borderTop: '1px solid rgba(0, 0, 0, 0.08)'
+        }}
+      >
+        <p style={{ fontSize: '1.05rem', color: '#6B7280', maxWidth: 620, margin: 0, lineHeight: 1.55 }}>
+          Explore multi-source statements, gateway fees, settlement lag, and root causes to gain deep financial certainty. With Ledgr, your treasury doesn&apos;t just adapt — it evolves.
+        </p>
 
-          <div style={{ marginTop: 24, padding: 16, background: '#F6F6F9', borderRadius: 16 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: '0.74rem', color: '#6B7280' }}>Horizon Confidence</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0D0D11' }}>90% Lower/Upper</div>
-              </div>
-              <Link
-                href="/dashboard/overview"
-                style={{
-                  textDecoration: 'none',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  color: '#FE4A23',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 3
-                }}
-              >
-                <span>Forecasts</span>
-                <ArrowUpRight size={13} />
-              </Link>
-            </div>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          {/* White Pill Button: Request a demo */}
+          <Link
+            href="/portal"
+            style={{
+              textDecoration: 'none',
+              background: '#FFFFFF',
+              color: '#0D0D11',
+              border: '1px solid rgba(0,0,0,0.12)',
+              borderRadius: 999,
+              padding: '14px 28px',
+              fontSize: '0.92rem',
+              fontWeight: 700,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+              transition: 'background 0.15s ease'
+            }}
+          >
+            Request a demo
+          </Link>
+
+          {/* Red-Orange Pill Button: Start for free */}
+          <Link
+            href="/dashboard/reconciliation"
+            style={{
+              textDecoration: 'none',
+              background: '#FE4A23',
+              color: '#FFFFFF',
+              border: 'none',
+              borderRadius: 999,
+              padding: '14px 34px',
+              fontSize: '0.92rem',
+              fontWeight: 700,
+              boxShadow: '0 6px 20px rgba(254,74,35,0.35)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              transition: 'transform 0.15s ease'
+            }}
+          >
+            <span>Start for free</span>
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </section>

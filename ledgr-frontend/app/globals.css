@@ -82,10 +82,29 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Urbanist', 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: #FE4A23;
+  color: #FFFFFF;
+}
+
+/* ─── Ramos Custom Red Dot Cursor ─── */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: #FE4A23;
+  border-radius: 50%;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(254, 74, 35, 0.6);
+  pointer-events: none;
 }
 
 /* ─── Typography ─── */
