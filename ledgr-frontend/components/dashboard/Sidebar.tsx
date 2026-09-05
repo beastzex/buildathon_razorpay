@@ -12,12 +12,14 @@ import {
   ShieldCheck,
   Settings,
   Database,
-  ArrowUpRight
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 
 const NAV_ITEMS = [
   { href: '/dashboard/overview', label: 'Overview', icon: LayoutDashboard },
   { href: '/dashboard/reconciliation', label: 'Reconciliation', icon: Layers },
+  { href: '/dashboard/simulation', label: 'Simulation & Wealth', icon: Sparkles, badge: 'AI' },
   { href: '/dashboard/exceptions', label: 'Exceptions', icon: AlertTriangle },
   { href: '/dashboard/settlement', label: 'Settlement Q&A', icon: MessageSquare },
   { href: '/dashboard/portfolio', label: 'Platform Portfolio', icon: Globe2 },

@@ -19,6 +19,6 @@ venv/
 .env
 .env.local
 
-# OS
-Thumbs.db
-.DS_Store
+# Media files
+*.mp4
+*.webp

@@ -30,7 +30,7 @@ if hasattr(sys.stdout, "reconfigure"):
 from api.db import init_db, AsyncSessionLocal
 from api.models import Batch, Record, Match, ExceptionRecord, AuditLogEntry
 from api.audit import compute_entry_hash, GENESIS_HASH
-from api.routers import batches, matches, exceptions, qa, audit, health, portfolio
+from api.routers import batches, matches, exceptions, qa, audit, health, portfolio, simulation
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("ledgr.api.main")
@@ -242,6 +242,7 @@ app.include_router(exceptions.router)
 app.include_router(qa.router)
 app.include_router(audit.router)
 app.include_router(portfolio.router)
+app.include_router(simulation.router)
 
 
 @app.get("/")
